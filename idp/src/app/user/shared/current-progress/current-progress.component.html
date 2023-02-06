@@ -9,20 +9,28 @@
                     <canvas baseChart [data]="data" [options]="options" [type]="'line'">
                     </canvas>
                 </div>
-                <div>
+                <div class="container d-flex justify-content-center">
+                <div class="row">
+                    <div class="col-sm">
                     <circle-progress [percent]="70" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
                         [outerStrokeColor]="'#A162F7'" [innerStrokeColor]="'#a062f77c'" [animation]="true"
                         [animationDuration]="300">
                     </circle-progress>
+                </div>
+                <div class="col-sm">
                     <circle-progress [percent]="20" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
                         [outerStrokeColor]="'#45E3FF'" [innerStrokeColor]="'#45e4ef7d'" [animation]="true"
                         [animationDuration]="300">
                     </circle-progress>
+                </div>
+                <div class="col-sm">
                     <circle-progress [percent]="50" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
                         [outerStrokeColor]="'#6F88FC'" [innerStrokeColor]="'#6f89fc5b'" [animation]="true"
                         [animationDuration]="300">
                     </circle-progress>
                 </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>
