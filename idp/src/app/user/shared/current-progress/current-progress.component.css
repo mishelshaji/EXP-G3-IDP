@@ -1,9 +1,16 @@
-.secondary{
+.secondary {
     background-color: #6f89fc5b;
 }
-.tertiary{
+
+.tertiary {
     background-color: #45e4ef7d;
 }
-.pink{
+
+.pink {
     background-color: #a062f77c;
+}
+
+.line-chart {
+    height: 80vh;
+    width: 70vw;
 }

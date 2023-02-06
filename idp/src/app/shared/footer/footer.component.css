@@ -1,4 +1,6 @@
 footer{
-    /* background-image: "assets/test-images/elon-musk.jpg" */
     background-color: #6F88FC;
+}
+.bottom-footer{
+    background-color: rgba(0, 0, 0, 0.2)
 }

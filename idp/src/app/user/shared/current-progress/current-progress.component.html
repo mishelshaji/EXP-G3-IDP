@@ -5,9 +5,8 @@
             <div class="card-body text-dark">
                 <h4 class="card-title">IDP name</h4>
                 <p class="card-text">Objective name</p>
-                <div class="d-flex mb-5">
-                    <canvas style="height:30vh; width:100vw" baseChart [data]="data" [options]="options"
-                        [type]="'line'">
+                <div class="d-flex mb-5" class="line-chart">
+                    <canvas baseChart [data]="data" [options]="options" [type]="'line'">
                     </canvas>
                 </div>
                 <div>
