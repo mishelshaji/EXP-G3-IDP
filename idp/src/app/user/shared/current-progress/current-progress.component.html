@@ -1,0 +1,30 @@
+<section class="container">
+    <h2 class="text-center my-5">Current IDP</h2>
+    <div class="row">
+        <div class="card text-white shadow  secondary">
+            <div class="card-body text-dark">
+                <h4 class="card-title">IDP name</h4>
+                <p class="card-text">Objective name</p>
+                <div class="d-flex mb-5">
+                    <canvas style="height:30vh; width:100vw" baseChart [data]="data" [options]="options"
+                        [type]="'line'">
+                    </canvas>
+                </div>
+                <div>
+                    <circle-progress [percent]="70" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
+                        [outerStrokeColor]="'#A162F7'" [innerStrokeColor]="'#a062f77c'" [animation]="true"
+                        [animationDuration]="300">
+                    </circle-progress>
+                    <circle-progress [percent]="20" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
+                        [outerStrokeColor]="'#45E3FF'" [innerStrokeColor]="'#45e4ef7d'" [animation]="true"
+                        [animationDuration]="300">
+                    </circle-progress>
+                    <circle-progress [percent]="50" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
+                        [outerStrokeColor]="'#6F88FC'" [innerStrokeColor]="'#6f89fc5b'" [animation]="true"
+                        [animationDuration]="300">
+                    </circle-progress>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
