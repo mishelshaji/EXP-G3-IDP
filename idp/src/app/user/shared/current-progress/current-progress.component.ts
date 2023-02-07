@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
-import { faFilm } from '@fortawesome/free-solid-svg-icons';
+import { faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
+import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-current-progress',
@@ -9,7 +9,7 @@ import { faFilm } from '@fortawesome/free-solid-svg-icons';
 })
 export class CurrentProgressComponent {
   arrowLeftIcon = faArrowAltCircleLeft;
-  arrowRightIcon = faArrowAltCircleLeft;
+  arrowRightIcon = faArrowAltCircleRight;
 
   data = {
     labels: ['.Net', 'C#', 'Angular', 'Softskill', '.Net essential'],

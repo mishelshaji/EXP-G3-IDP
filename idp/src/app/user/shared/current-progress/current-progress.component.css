@@ -11,6 +11,11 @@
 }
 
 .arrow-button {
+    color: grey;
     width: 20vh;
     height: 20vh;
+}
+
+.arrow-button:hover {
+    color: #6F88FC;
 }

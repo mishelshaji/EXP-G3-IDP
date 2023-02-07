@@ -11,4 +11,9 @@ import { RouterModule } from '@angular/router';
 })
 export class NavbarComponent {
 
+  createIdp() {
+    var id:any = document.getElementById('idp');
+    id.style.display = id.style.display == 'block' ? 'none' : 'block';
+  }
+
 }

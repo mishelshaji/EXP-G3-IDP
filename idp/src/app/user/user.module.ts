@@ -9,6 +9,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgChartsModule } from 'ng2-charts';
 import { CurrentObjectivesComponent } from "./shared/current-objectives/current-objectives.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         NgChartsModule,
         CurrentObjectivesComponent,
         CurrentObjectivesComponent,
-        FontAwesomeModule
+        FontAwesomeModule,
+        FormsModule
     ]
 })
 export class UserModule { }
