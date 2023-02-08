@@ -8,7 +8,7 @@
             <label for="year" class="ms-5 col">IDP name</label>
             <input type="input" class="me-5 input-field col" value="IDP {{employeeId}} {{year.value}}" disabled="true">
             <button class="btn btn-outline-secondary create-button d-flex align-items-center mt-3 ms-2 me-2 col"
-                type="button">
+                type="button" [disabled]="form.invalid">
                 <span class="me-3 text-center col">Create</span>
                 <fa-icon [icon]="arrowRightIcon" class="fa-2x"></fa-icon>
             </button>
@@ -17,12 +17,5 @@
 </div>
 <h2 class="text-center my-5">Current IDP</h2>
 <h3 class="text-secondary">Current objectives</h3>
-<hr class="my-3">
-<div class="container d-flex justify-content-center mb-5">
-    <div class="row">
-        <app-current-objectives></app-current-objectives>
-    </div>
-</div>
-<h3 class="text-secondary">Curent training</h3>
 <hr class="my-3">
 <app-current-progress></app-current-progress>

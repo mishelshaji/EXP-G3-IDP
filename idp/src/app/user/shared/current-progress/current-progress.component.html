@@ -1,34 +1,54 @@
-<div class="row d-flex align-items-center me-3 ms-5">
-    <div class="arrow-button"><fa-icon [icon]="arrowLeftIcon" class="fa-5x"></fa-icon></div>
-    <section class="container col-sm me-3" *ngFor="let item of trainingItem">
+<div class="row align-items-center me-1 ms-1">
+    <div class="arrow-button"><fa-icon [icon]="arrowLeftIcon" class="fa-4x" (click)="scrollLeft()"></fa-icon></div>
+    <section class="container col-sm">
         <div class="row">
             <div class="card text-white shadow  secondary">
                 <div class="card-body text-dark">
-                    <h4 class="card-title">Training name</h4>
-                    <p class="card-text">Training description name</p>
+                    <h4 class="card-title">{{trainingItem[progressId].name}}</h4>
+                    <p class="card-text">{{trainingItem[progressId].description}}</p>
                     <div class="d-flex mb-5" class="line-chart">
                         <canvas baseChart [data]="data" [options]="options" [type]="'line'">
                         </canvas>
                     </div>
+                    <h3 class="text-secondary mt-3">Curent training</h3>
+                    <hr class="my-3">
                     <div class="container d-flex justify-content-center">
                         <div class="row">
                             <div class="col-sm">
-                                <circle-progress [percent]="70" [radius]="100" [outerStrokeWidth]="16"
+                                <circle-progress [percent]="data.datasets[0].data[0]" [radius]="80" [outerStrokeWidth]="16"
                                     [innerStrokeWidth]="8" [outerStrokeColor]="'#A162F7'"
                                     [innerStrokeColor]="'#a062f77c'" [animation]="true" [animationDuration]="300">
                                 </circle-progress>
+                                <div class="justify-content-center d-flex text-secondary">
+                                    <h6>{{data.labels[0]}}</h6>
+                                </div>
                             </div>
                             <div class="col-sm">
-                                <circle-progress [percent]="20" [radius]="100" [outerStrokeWidth]="16"
+                                <circle-progress [percent]="data.datasets[0].data[1]" [radius]="80" [outerStrokeWidth]="16"
                                     [innerStrokeWidth]="8" [outerStrokeColor]="'#45E3FF'"
                                     [innerStrokeColor]="'#45e4ef7d'" [animation]="true" [animationDuration]="300">
                                 </circle-progress>
+                                <div class="justify-content-center d-flex text-secondary">
+                                    <h6>{{data.labels[1]}}</h6>
+                                </div>
                             </div>
                             <div class="col-sm">
-                                <circle-progress [percent]="50" [radius]="100" [outerStrokeWidth]="16"
+                                <circle-progress [percent]="data.datasets[0].data[2]" [radius]="80" [outerStrokeWidth]="16"
                                     [innerStrokeWidth]="8" [outerStrokeColor]="'#6F88FC'"
                                     [innerStrokeColor]="'#6f89fc5b'" [animation]="true" [animationDuration]="300">
                                 </circle-progress>
+                                <div class="justify-content-center d-flex text-secondary">
+                                    <h6>{{data.labels[3]}}</h6>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <circle-progress [percent]="data.datasets[0].data[3]" [radius]="80" [outerStrokeWidth]="16"
+                                    [innerStrokeWidth]="8" [outerStrokeColor]="'#6F88FC'"
+                                    [innerStrokeColor]="'#6f89fc5b'" [animation]="true" [animationDuration]="300">
+                                </circle-progress>
+                                <div class="justify-content-center d-flex text-secondary">
+                                    <h6>{{data.labels[4]}}</h6>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -36,5 +56,6 @@
             </div>
         </div>
     </section>
-    <div class="arrow-button ms-5"><fa-icon [icon]="arrowRightIcon" class="fa-5x"></fa-icon></div>
+    <div class="arrow-button"><fa-icon [icon]="arrowRightIcon" class="fa-4x" (click)="scrollRight()"></fa-icon>
+    </div>
 </div>

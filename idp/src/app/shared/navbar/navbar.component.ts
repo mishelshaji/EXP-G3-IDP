@@ -10,9 +10,8 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
   createIdp() {
-    var id:any = document.getElementById('idp');
+    var id: any = document.getElementById('idp');
     id.style.display = id.style.display == 'block' ? 'none' : 'block';
   }
 
