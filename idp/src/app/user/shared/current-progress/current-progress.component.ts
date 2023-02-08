@@ -11,6 +11,11 @@ export class CurrentProgressComponent {
   arrowLeftIcon = faArrowAltCircleLeft;
   arrowRightIcon = faArrowAltCircleRight;
 
+  trainingItem = [
+    {id: 1, name: 'Angular', description: "Angular description",},
+    {id: 1, name: 'Angular', description: "Angular description",}
+  ];
+
   data = {
     labels: ['.Net', 'C#', 'Angular', 'Softskill', '.Net essential'],
     datasets: [{

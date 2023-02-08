@@ -19,3 +19,7 @@
 .arrow-button:hover {
     color: #6F88FC;
 }
+
+.progress {
+    overflow-x: scroll;
+}
