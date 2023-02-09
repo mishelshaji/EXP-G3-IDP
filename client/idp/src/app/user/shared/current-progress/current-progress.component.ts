@@ -12,6 +12,7 @@ export class CurrentProgressComponent {
   arrowLeftIcon = faArrowAltCircleLeft;
   arrowRightIcon = faArrowAltCircleRight;
 
+  objective = []
   trainingItem = [
     { id: 1, name: 'Angular', description: "Angular description", },
     { id: 2, name: '.Net', description: ".Net description", },
@@ -23,7 +24,7 @@ export class CurrentProgressComponent {
   data = {
     labels: ['.Net', 'C#', 'Angular', 'Softskill', '.Net essential'],
     datasets: [{
-      label: 'IDP progress',
+      label: 'Objective progress',
       data: [12, 19, 3, 5, 2],
       borderWidth: 2,
       borderColor: '#A162F7',
