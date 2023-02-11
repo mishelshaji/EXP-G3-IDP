@@ -5,3 +5,11 @@ footer {
 .bottom-footer {
     background-color: hsla(0, 0%, 0%, 0.2)
 }
+
+#contact {
+    display: none;
+}
+
+#description {
+    display: block;
+}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
+import { TrainingService } from 'src/app/service/training.service';
 
 @Component({
   selector: 'app-current-progress',
@@ -8,24 +9,32 @@ import { faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-r
 })
 export class CurrentProgressComponent {
   progressId: number = 0;
+  trainingName: string[] = [];
+  trainingProgress: number[] = [];
 
   arrowLeftIcon = faArrowAltCircleLeft;
   arrowRightIcon = faArrowAltCircleRight;
 
-  objective = []
-  trainingItem = [
-    { id: 1, name: 'Angular', description: "Angular description", },
-    { id: 2, name: '.Net', description: ".Net description", },
-    { id: 3, name: 'C#', description: "C# description", },
-    { id: 4, name: 'SoftSkill', description: "SoftSkill description", },
-    { id: 5, name: '.Net essential', description: ".Net essential description", }
-  ];
+  trainingItem: any[] = [];
+  constructor(private trainingService: TrainingService) {
+
+  }
+
+  ngOnInit() {
+    this.trainingItem = this.trainingService.getAll();
+    this.trainingItem.forEach(element => {
+      this.trainingName.push(element.name);
+      this.trainingProgress.push(element.progress);
+    })
+  }
+
+  
 
   data = {
-    labels: ['.Net', 'C#', 'Angular', 'Softskill', '.Net essential'],
+    labels: this.trainingName,
     datasets: [{
       label: 'Objective progress',
-      data: [12, 19, 3, 5, 2],
+      data: this.trainingProgress,
       borderWidth: 2,
       borderColor: '#A162F7',
       backgroundColor: '#A162F7',

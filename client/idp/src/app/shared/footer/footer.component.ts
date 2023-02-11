@@ -9,5 +9,12 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
+  contactUs() {
+    var contactId: any = document.getElementById('contact');
+    contactId.style.display = contactId.style.display == 'block' ? 'none' : 'block';
+
+    var descriptioniId: any = document.getElementById('description');
+    descriptioniId.style.display = descriptioniId.style.display == 'block' ? 'none' : 'block';
+  }
 
 }

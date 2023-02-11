@@ -15,39 +15,39 @@
                     <div class="container d-flex justify-content-center">
                         <div class="row">
                             <div class="col-sm">
-                                <circle-progress [percent]="data.datasets[0].data[0]" [radius]="80" [outerStrokeWidth]="16"
+                                <circle-progress [percent]="trainingItem[0].progress" [radius]="80" [outerStrokeWidth]="16"
                                     [innerStrokeWidth]="8" [outerStrokeColor]="'#A162F7'"
                                     [innerStrokeColor]="'#a062f77c'" [animation]="true" [animationDuration]="300">
                                 </circle-progress>
                                 <div class="justify-content-center d-flex text-secondary">
-                                    <h6>{{data.labels[0]}}</h6>
+                                    <h6>{{trainingItem[0].name}}</h6>
                                 </div>
                             </div>
                             <div class="col-sm">
-                                <circle-progress [percent]="data.datasets[0].data[1]" [radius]="80" [outerStrokeWidth]="16"
+                                <circle-progress [percent]="trainingItem[1].progress" [radius]="80" [outerStrokeWidth]="16"
                                     [innerStrokeWidth]="8" [outerStrokeColor]="'#45E3FF'"
                                     [innerStrokeColor]="'#45e4ef7d'" [animation]="true" [animationDuration]="300">
                                 </circle-progress>
                                 <div class="justify-content-center d-flex text-secondary">
-                                    <h6>{{data.labels[1]}}</h6>
+                                    <h6>{{trainingItem[1].name}}</h6>
                                 </div>
                             </div>
                             <div class="col-sm">
-                                <circle-progress [percent]="data.datasets[0].data[2]" [radius]="80" [outerStrokeWidth]="16"
+                                <circle-progress [percent]="trainingItem[2].progress" [radius]="80" [outerStrokeWidth]="16"
                                     [innerStrokeWidth]="8" [outerStrokeColor]="'#6F88FC'"
                                     [innerStrokeColor]="'#6f89fc5b'" [animation]="true" [animationDuration]="300">
                                 </circle-progress>
                                 <div class="justify-content-center d-flex text-secondary">
-                                    <h6>{{data.labels[3]}}</h6>
+                                    <h6>{{trainingItem[2].name}}</h6>
                                 </div>
                             </div>
                             <div class="col-sm">
-                                <circle-progress [percent]="data.datasets[0].data[3]" [radius]="80" [outerStrokeWidth]="16"
-                                    [innerStrokeWidth]="8" [outerStrokeColor]="'#6F88FC'"
-                                    [innerStrokeColor]="'#6f89fc5b'" [animation]="true" [animationDuration]="300">
+                                <circle-progress [percent]="trainingItem[3].progress" [radius]="80" [outerStrokeWidth]="16"
+                                    [innerStrokeWidth]="8" [outerStrokeColor]="'#FFBE25EF'"
+                                    [innerStrokeColor]="'#FFBE2581'" [animation]="true" [animationDuration]="300">
                                 </circle-progress>
                                 <div class="justify-content-center d-flex text-secondary">
-                                    <h6>{{data.labels[4]}}</h6>
+                                    <h6>{{trainingItem[3].name}}</h6>
                                 </div>
                             </div>
                         </div>
