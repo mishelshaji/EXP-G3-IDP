@@ -1,6 +1,6 @@
 .tile-one {
     background-color: hsla(0, 100%, 71%, 0.514);
-    color: white;
+    color: hsl(0, 0%, 100%);
 }
 
 .tile-two {
@@ -15,7 +15,7 @@
 
 .tile-four {
     background-color: hsla(252, 100%, 71%, 0.514);
-    color: white;
+    color: hsl(0, 0%, 100%);
 }
 
 .tile:hover {

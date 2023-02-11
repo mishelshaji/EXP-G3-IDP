@@ -12,6 +12,7 @@ export class TrainingService {
     { id: 5, name: 'J++', description: 'J++ I don\'t know what it is.', endDate: '13/10/2023', progress: 20 }
   ]
   constructor() { }
+  
   getAll() {
     return this.training;
   }

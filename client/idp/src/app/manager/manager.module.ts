@@ -7,7 +7,6 @@ import { ViewAllEmployeeComponent } from '../shared/view-all-employee/view-all-e
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     ManagerLayoutComponent,
