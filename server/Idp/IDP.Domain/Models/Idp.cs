@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace Idp.Domain.Models
 {
-    internal class Idp
+    public class Idp
     {
         public int Id { get; set; }
 
         [StringLength(200)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         public DateTime Year { get; set; }
-
-
     }
 }
