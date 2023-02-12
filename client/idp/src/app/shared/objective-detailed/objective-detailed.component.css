@@ -24,9 +24,12 @@
 
 .scroll {
     padding: 4px;
-    width: 95vw;
-    height: 50vh;
+    height: 40vh;
     overflow-y: hidden;
     overflow-x: auto;
     text-align: justify;
+}
+
+p {
+    font-size: 10px;
 }
