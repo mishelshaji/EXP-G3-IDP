@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Idp.Service.Types
 {
-    internal class ServiceResponse<TResult>
+    public class ServiceResponse<TResult>
     {
         private Dictionary<string, List<string>> _errors;
 
@@ -14,5 +14,21 @@ namespace Idp.Service.Types
 
         public Dictionary<string, List<string>> Errors => _errors;
 
+        public TResult Result { get; set; }
+
+        public ServiceResponse()
+        {
+            _errors = new();
+        }
+
+        public void AddError(string key, string errorMessage)
+        {
+            if (!_errors.ContainsKey(key))
+            {
+                _errors[key] = new List<string>();
+            }
+
+            _errors[key].Add(errorMessage);
+        }
     }
 }

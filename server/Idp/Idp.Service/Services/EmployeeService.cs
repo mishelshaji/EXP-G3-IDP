@@ -23,13 +23,48 @@ namespace Idp.Service.Services
                     Id = c.Id,
                     FirstName = c.FirstName,
                     LastName = c.LastName,
+                    Age = c.Age,
+                    Dob = c.Dob,
+                    Email = c.Email,
+                    Mobile = c.Mobile,
+                    Department = c.Department,
+                    Designation = c.Designation,
+                    EmployeeId = c.EmployeeId,
+                    Gender = c.Gender,
+                    Role = c.Role,
                 })
                 .ToListAsync();
         }
 
-        public async Task<ViewEmployeeDto>? UpdateAsync(int id, UpdateEmployeeDto dto)
+        public async Task<ViewEmployeeDto?> GetByIdAsync(int id)
         {
-            var response = new ViewEmployeeDto();
+            // Check if the employee exists.
+            var employee = await _db.Employees.FindAsync(id);
+
+            if (employee == null)
+                return null;
+
+            employee = await _db.Employees.FindAsync(id);
+            return employee == null ? null : new ViewEmployeeDto
+            {
+                Id = employee.Id,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                Age = employee.Age,
+                Dob = employee.Dob,
+                Email = employee.Email,
+                Mobile = employee.Mobile,
+                Department = employee.Department,
+                Designation = employee.Designation,
+                EmployeeId = employee.EmployeeId,
+                Gender = employee.Gender,
+                Role = employee.Role,
+            };
+        }
+
+        public async Task<ServiceResponse<ViewEmployeeDto>?> UpdateAsync(int id, UpdateEmployeeDto dto)
+        {
+            var response = new ServiceResponse<ViewEmployeeDto>();
 
             // Check if the employee exists.
             var employee = await _db.Employees.FindAsync(id);
@@ -43,13 +78,13 @@ namespace Idp.Service.Services
 
             await _db.SaveChangesAsync();
 
-            response = new ViewEmployeeDto
+            response.Result = new ViewEmployeeDto
             {
                 Id = employee.Id,
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
-                Dob = dto.Dob,
-                Mobile = dto.Mobile,
+                Dob = employee.Dob,
+                Mobile = employee.Mobile,
             };
             return response;
         }
@@ -78,17 +113,17 @@ namespace Idp.Service.Services
             return new ViewEmployeeDto
             {
                 Id = employee.Id,
-                FirstName = dto.FirstName,
-                LastName = dto.LastName,
-                Email = dto.Email,
-                Mobile = dto.Mobile,
-                Department = dto.Department,
-                Designation = dto.Designation,
-                EmployeeId = dto.EmployeeId,
-                Gender = dto.Gender,
-                Age = dto.Age,
-                Dob = dto.Dob,
-                Role = dto.Role,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                Email = employee.Email,
+                Mobile = employee.Mobile,
+                Department = employee.Department,
+                Designation = employee.Designation,
+                EmployeeId = employee.EmployeeId,
+                Gender = employee.Gender,
+                Age = employee.Age,
+                Dob = employee.Dob,
+                Role = employee.Role,
             };
         }
 

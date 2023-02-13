@@ -20,18 +20,26 @@ namespace Idp.WebApp.Areas.Admin.Controllers
             return Ok(result);
         }
 
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(ViewEmployeeDto[]), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> GetAsync(int id)
+        {
+            var result = await _services.GetByIdAsync(id);
+            return Ok(result);
+        }
+
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(ViewEmployeeDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Update(int id, UpdateEmployeeDto dto)
         {
-
             var result = await _services.UpdateAsync(id, dto);
 
             return Ok(result);
         }
 
-        [HttpPost("{id}")]
+        [HttpPost]
         public async Task<ActionResult> Post(AddEmployeeDto dto)
         {
             var result = await _services.CreateAsync(dto);

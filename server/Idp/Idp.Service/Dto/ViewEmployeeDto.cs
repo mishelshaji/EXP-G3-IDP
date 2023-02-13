@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Idp.Service.Dto
 {
@@ -33,5 +34,20 @@ namespace Idp.Service.Dto
         public string? ManagerName { get; set; }
 
         public string? Role { get; set; }
+
+        public ViewEmployeeDto()
+        {
+
+        }
+
+        public ViewEmployeeDto(Employee employee)
+        {
+            Id = employee.Id;
+            FirstName = employee.FirstName;
+            LastName = employee.LastName;
+            Gender = employee.Gender;
+            Mobile = employee.Mobile;
+            Dob = employee.Dob;
+        }
     }
 }
