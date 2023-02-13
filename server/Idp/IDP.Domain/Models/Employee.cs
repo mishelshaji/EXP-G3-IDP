@@ -32,7 +32,6 @@ namespace Idp.Domain.Models
 
         [StringLength(50)]
         public string? Gender { get; set; }
-
         public int Age { get; set; }
 
         [StringLength(50)]

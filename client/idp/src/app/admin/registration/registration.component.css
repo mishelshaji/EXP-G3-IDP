@@ -1,10 +1,19 @@
 main {
-    background-color: #fffff6;
     width: 99vw;
 }
 
 label {
     display: inline-block;
-    width: 100px;
+    width: 80px;
     text-align: left;
+}
+
+#registration{
+    height: 60vh;
+    font-size: 10px;
+}
+
+input, button {
+    font-size: 10px;
+    height: 20px;
 }

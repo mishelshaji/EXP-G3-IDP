@@ -27,20 +27,32 @@ namespace Idp.Service.Services
                 .ToListAsync();
         }
 
-        //public async Task<List<ViewEmployeeDto>> UpdateAsync(int id, AddEmployeeDto dto)
-        //{
-        //    return await _db.Employees
-        //        .Select(c => new ViewEmployeeDto
-        //        {
-        //            FirstName = dto.FirstName,
-        //            LastName = dto.LastName,
-        //            Mobile = dto.Mobile,
-        //            Gender = dto.Gender,
-        //            Age = dto.Age,
-        //            Dob = dto.Dob,
-        //        })
-        //        .ToListAsync();
-        //}
+        public async Task<ViewEmployeeDto>? UpdateAsync(int id, UpdateEmployeeDto dto)
+        {
+            var response = new ViewEmployeeDto();
+
+            // Check if the employee exists.
+            var employee = await _db.Employees.FindAsync(id);
+            if (employee == null)
+                return null;
+
+            employee.FirstName = dto.FirstName;
+            employee.LastName = dto.LastName;
+            employee.Dob = dto.Dob;
+            employee.Mobile = dto.Mobile;
+
+            await _db.SaveChangesAsync();
+
+            response = new ViewEmployeeDto
+            {
+                Id = employee.Id,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                Dob = dto.Dob,
+                Mobile = dto.Mobile,
+            };
+            return response;
+        }
 
         public async Task<ViewEmployeeDto> CreateAsync(AddEmployeeDto dto)
         {
