@@ -1,0 +1,28 @@
+<div id="idp" class="container border border-secondary mt-5 border rounded-3 create-idp-container">
+    <p class="text-bold text-secondary mt-4 me-auto">Create IDP</p>
+    <form #form="ngForm" class="d-flex justify-content-center">
+        <div class="mb-5 d-flex align-items-center">
+            <label for="year">Year</label>
+            <div class="ms-3">
+                <input type="number" min="{{currentYear}}" max="2100" name="year" class="form-control input-field col"
+                    placeholder="{{currentYear}}" [(ngModel)]="model.name" #year="ngModel" (year)="year.value" required>
+                <div class="text-danger" *ngIf="year.invalid && year.touched">
+                    <div *ngIf="year.errors?.['min']">Year should be above {{currentYear}}</div>
+                    <div *ngIf="year.errors?.['required']">Year is required</div>
+                    <div *ngIf="year.errors?.['max']">Year should be below 2100</div>
+                </div>
+            </div>
+            <label for="year" class="ms-5 col">IDP name</label>
+            <input type="input" class="me-5 input-field col" value="IDP {{employeeId}} {{year.value}}" disabled="true">
+            <button class="btn btn-outline-secondary create-button d-flex align-items-center mt-3 ms-2 me-2 col"
+                type="button" [disabled]="form.invalid">
+                <span class="me-3 text-center col">Create</span>
+                <fa-icon [icon]="arrowRightIcon" class="fa-2x"></fa-icon>
+            </button>
+        </div>
+    </form>
+</div>
+<h2 class="text-center my-5">Current IDP</h2>
+<h3 class="text-secondary">Current objectives</h3>
+<hr class="my-3">
+<app-current-progress></app-current-progress>

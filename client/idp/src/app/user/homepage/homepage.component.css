@@ -1,0 +1,17 @@
+.input-field {
+    width: 20vw;
+}
+
+.create-idp-container {
+    display: none;
+}
+
+.create-button:hover {
+    background-color: #6F88FC;
+    color: hsl(0, 0%, 100%);
+}
+
+#idp:hover {
+    background-color: hsl(208, 100%, 97%);
+    box-shadow: 0px 10px 20px 10px hsla(0, 0%, 73%, 0.831);
+}
