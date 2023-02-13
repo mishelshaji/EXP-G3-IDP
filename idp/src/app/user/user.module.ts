@@ -11,6 +11,7 @@ import { CurrentObjectivesComponent } from "./shared/current-objectives/current-
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SigninComponent } from './signin/signin.component';
 import { FormsModule } from '@angular/forms';
+import { ForgotComponent } from './forgot/forgot.component';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
         HomepageComponent,
         CurrentProgressComponent,
         SigninComponent,
+        ForgotComponent,
     ],
     imports: [
         CommonModule,
