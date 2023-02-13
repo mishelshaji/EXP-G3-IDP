@@ -9,12 +9,15 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgChartsModule } from 'ng2-charts';
 import { CurrentObjectivesComponent } from "./shared/current-objectives/current-objectives.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SigninComponent } from './signin/signin.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
         UserLayoutComponent,
         HomepageComponent,
         CurrentProgressComponent,
+        SigninComponent,
     ],
     imports: [
         CommonModule,
@@ -23,7 +26,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         NgChartsModule,
         CurrentObjectivesComponent,
         CurrentObjectivesComponent,
-        FontAwesomeModule
+        FontAwesomeModule,
+        FormsModule
     ]
 })
 export class UserModule { }
