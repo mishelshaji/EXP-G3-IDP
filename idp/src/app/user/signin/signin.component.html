@@ -3,7 +3,7 @@
         <div class="container me-0">
             <div>
                 <h1 class="text-center m-5 fw-bold">Welcome Back!</h1>
-                <form class="d-flex align-items-center flex-column" #form="ngForm" (ngSubmit)="OnSubmit(form)">
+                <form class="d-flex align-items-center flex-column" #form="ngForm">
                     <div>
                         <input type="text" name="email" class="mt-5 text-center w-100 p-2 rounded-3"
                             [(ngModel)]="model.email" #email="ngModel" placeholder="someone@gmail.com" minlength="6"
@@ -27,7 +27,7 @@
                     </div>
                     <button type="submit" class="btn btn-outline-dark mt-5 w-25 p-2 rounded-5" [routerLink]="['/home']"
                         [disabled]="form.invalid">Login</button>
-                    <a class="mt-5 text-decoration-none text-dark" [routerLink]="['/forgot']">forgot password?</a>
+                    <a class="mt-5 text-decoration-none text-dark" [routerLink]="['/forgot']">Forgot Password?</a>
                 </form>
             </div>
         </div>

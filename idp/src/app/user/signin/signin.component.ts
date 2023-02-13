@@ -10,10 +10,4 @@ export class SigninComponent {
     email: '',
     password: ''
   }
-  OnSubmit(form: any) {
-    console.log(form);
-  }
-  showData(email: any) {
-    console.log(email);
-  }
 }
