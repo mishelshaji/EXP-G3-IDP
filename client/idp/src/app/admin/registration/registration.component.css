@@ -8,12 +8,13 @@ label {
     text-align: left;
 }
 
-#registration{
+#registration {
     height: 60vh;
     font-size: 10px;
 }
 
-input, button {
+input,
+button {
     font-size: 10px;
     height: 20px;
 }
