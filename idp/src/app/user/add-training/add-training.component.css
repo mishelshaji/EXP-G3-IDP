@@ -1,0 +1,33 @@
+h1 {
+    font-size: 7vh;
+    margin-left: 2vw;
+}
+
+h2 {
+    font-size: 10vh;
+}
+
+.limit {
+    margin-left: 200px;
+}
+
+.box2 {
+    margin-left: 10vw;
+}
+
+.box1 {
+    margin-left: 5vw;
+    margin-top: 10vh;
+}
+
+.ima {
+    margin-left: 20vw;
+}
+
+label {
+    width: 200px;
+}
+
+input {
+    width: 260px
+}

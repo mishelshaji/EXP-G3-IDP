@@ -12,6 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SigninComponent } from './signin/signin.component';
 import { FormsModule } from '@angular/forms';
 import { ForgotComponent } from './forgot/forgot.component';
+import { AddTrainingComponent } from './add-training/add-training.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { ForgotComponent } from './forgot/forgot.component';
         HomepageComponent,
         CurrentProgressComponent,
         SigninComponent,
-        ForgotComponent
+        ForgotComponent,
+        AddTrainingComponent
     ],
     imports: [
         CommonModule,
