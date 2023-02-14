@@ -1,0 +1,70 @@
+.bg-opacity {
+    opacity: 80%;
+    color: black
+}
+
+.container-fluid {
+    background-color: rgb(246, 247, 249);
+    padding: 2rem;
+
+}
+
+.text-left {
+    font-weight: bolder;
+    color: black;
+    position: relative;
+    top: 0 em;
+    left: 05 em;
+}
+
+h2 {
+    font-size: 36px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+h6 {
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    width: 90rem;
+}
+
+.card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    width: 20rem;
+    margin: 1rem;
+}
+
+td img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#message {
+    background-color: rgb(239, 243, 254);
+}
+
+.width {
+    width: 20rem;
+}
+
+.inbox-messages {
+    width: 30rem;
+
+
+}
+
+.theme {
+    background-color: #161a30;
+}
