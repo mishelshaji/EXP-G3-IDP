@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
+  selectedStatus = 'all';
+  
   counters = [
     { name: 'Total Empolyees', count: 1000, limit: 1500 },
     { name: 'Total Created IDP', count: 0, limit: 126 },
@@ -154,6 +156,4 @@ export class HomepageComponent implements OnInit {
     return this.messages.indexOf(message) === this.messages.length - 1;
   }
 
-  
-  selectedStatus = 'all';
 }
