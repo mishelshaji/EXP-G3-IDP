@@ -24,8 +24,7 @@ export class HomepageComponent implements OnInit {
       this.intervalIds[i] = setInterval(() => {
         if (this.counters[i].count === this.counters[i].limit) {
           clearInterval(this.intervalIds[i]);
-        } 
-        else {
+        } else {
           this.counters[i].count++;
         }
       }, 0.01);
@@ -81,7 +80,7 @@ export class HomepageComponent implements OnInit {
       department: 'Sales',
       objective: 'Increase sales by 10%',
       idp: 'IMP-ID-200828-2022',
-      remark: 'pending',
+      remark: 'completed  ',
     },
     {
       name: 'Jane Doe',
@@ -105,7 +104,7 @@ export class HomepageComponent implements OnInit {
       department: 'Sales',
       objective: 'Increase sales by 10%',
       idp: 'IMP-ID-200828-2022',
-      remark: 'pending',
+      remark: 'completed',
     },
     {
       name: 'Jane Doe',
@@ -121,7 +120,7 @@ export class HomepageComponent implements OnInit {
       department: 'IT',
       objective: 'Improve system performance by 20%',
       idp: 'IMP-ID-200908-2022',
-      remark: 'pending',
+      remark: 'not completed',
     },
     {
       name: 'John Doe',
@@ -145,7 +144,7 @@ export class HomepageComponent implements OnInit {
       department: 'IT',
       objective: 'Improve system performance by 20%',
       idp: 'IMP-ID-200908-2022',
-      remark: 'pending',
+      remark: 'not completed',
     },
   ];
 
@@ -154,4 +153,7 @@ export class HomepageComponent implements OnInit {
   lastMessage(message: any) {
     return this.messages.indexOf(message) === this.messages.length - 1;
   }
+
+  
+  selectedStatus = 'all';
 }
