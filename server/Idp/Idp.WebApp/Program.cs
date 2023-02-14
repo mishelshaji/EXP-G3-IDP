@@ -14,6 +14,8 @@ var connStr = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connStr));
 
 builder.Services.AddScoped<EmployeeServices>();
+builder.Services.AddScoped<ObjectiveActionServices>();
+
 
 var app = builder.Build();
 
