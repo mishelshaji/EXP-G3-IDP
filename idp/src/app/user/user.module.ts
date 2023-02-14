@@ -19,7 +19,7 @@ import { ForgotComponent } from './forgot/forgot.component';
         HomepageComponent,
         CurrentProgressComponent,
         SigninComponent,
-        ForgotComponent,
+        ForgotComponent
     ],
     imports: [
         CommonModule,

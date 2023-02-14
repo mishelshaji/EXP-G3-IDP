@@ -23,6 +23,7 @@
                     <div>
                         <input type="input" name="otp" class="mt-5 text-center w-100 p-2 rounded-3"
                             [(ngModel)]="model.otp" #otp="ngModel" placeholder="Enter OTP code" id="otpfield"
+                            [style.display]="unset"
                             minlength="6" maxlength="6" required>
                         <div class="text-danger" *ngIf="otp.invalid && otp.touched">
                             <div

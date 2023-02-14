@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./forgot.component.css']
 })
 export class ForgotComponent {
+  unset = 'set';
   model = {
     email: '',
     password: '',
@@ -13,11 +14,6 @@ export class ForgotComponent {
   }
 
   clicked(e: any) {
-    var target = e.target as HTMLDocument;
-    console.log(target);
-    var t1: any = document.getElementById('otpfield')
-    var t2: any = document.getElementById('subfield')
-    t1.style.display = 'unset';
-    t2.style.display = 'unset';
+    this.unset = 'unset';
   }
 }
