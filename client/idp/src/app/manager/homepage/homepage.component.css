@@ -1,17 +1,16 @@
 .bg-opacity {
     opacity: 80%;
-    color: black
+    color: #000000
 }
 
 .container-fluid {
-    background-color: rgb(246, 247, 249);
+    background-color: #000000;
     padding: 2rem;
-
 }
 
 .text-left {
     font-weight: bolder;
-    color: black;
+    color: #000000;
     position: relative;
     top: 0 em;
     left: 05 em;
@@ -21,10 +20,6 @@ h2 {
     font-size: 36px;
     text-align: center;
     margin-top: 20px;
-}
-
-h6 {
-    text-align: center;
 }
 
 .row {
@@ -61,8 +56,6 @@ td img {
 
 .inbox-messages {
     width: 30rem;
-
-
 }
 
 .theme {

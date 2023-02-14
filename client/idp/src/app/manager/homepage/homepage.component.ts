@@ -12,7 +12,8 @@ export class HomepageComponent implements OnInit {
     { name: 'Total Pending IDP', count: 0, limit: 600 },
     { name: 'Total Completed IDP', count: 0, limit: 660 },
   ];
-  IntervalIds: any[] = [];
+
+  intervalIds: any[] = [];
 
   ngOnInit() {
     this.startCounters();
@@ -20,10 +21,11 @@ export class HomepageComponent implements OnInit {
 
   startCounters() {
     for (let i = 0; i < this.counters.length; i++) {
-      this.IntervalIds[i] = setInterval(() => {
+      this.intervalIds[i] = setInterval(() => {
         if (this.counters[i].count === this.counters[i].limit) {
-          clearInterval(this.IntervalIds[i]);
-        } else {
+          clearInterval(this.intervalIds[i]);
+        } 
+        else {
           this.counters[i].count++;
         }
       }, 0.01);
@@ -47,6 +49,7 @@ export class HomepageComponent implements OnInit {
       text: 'Vivamus eget velit vel libero mollis consectetur.',
     },
   ];
+
   users = [
     {
       name: 'John Doe',
@@ -145,7 +148,9 @@ export class HomepageComponent implements OnInit {
       remark: 'pending',
     },
   ];
+
   constructor() {}
+
   lastMessage(message: any) {
     return this.messages.indexOf(message) === this.messages.length - 1;
   }
