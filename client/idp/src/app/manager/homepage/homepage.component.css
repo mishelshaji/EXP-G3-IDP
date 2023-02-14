@@ -1,25 +1,6 @@
-.bg-opacity {
-    opacity: 80%;
-    color: #000000
-}
-
 .container-fluid {
-    background-color: #000000;
+    background-color: #f6efef;
     padding: 2rem;
-}
-
-.text-left {
-    font-weight: bolder;
-    color: #000000;
-    position: relative;
-    top: 0 em;
-    left: 05 em;
-}
-
-h2 {
-    font-size: 36px;
-    text-align: center;
-    margin-top: 20px;
 }
 
 .row {
