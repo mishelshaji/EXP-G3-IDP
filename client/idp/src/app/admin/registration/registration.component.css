@@ -3,18 +3,30 @@ main {
 }
 
 label {
-    display: inline-block;
-    width: 80px;
+    width: 90px;
     text-align: left;
 }
 
 #registration {
-    height: 60vh;
-    font-size: 10px;
+    font-size: 15px;
 }
 
 input,
-button {
-    font-size: 10px;
-    height: 20px;
+.role {
+    font-size: 13px;
+    height: 25px;
+}
+
+@media screen and (max-width: 992px) {
+    img {
+        display: none;
+    }
+
+    main {
+        background-image: url("/assets/images/girl-laptop2.jpg");
+    }
+
+    #registration {
+        background-color: #ffffff89;
+    }
 }

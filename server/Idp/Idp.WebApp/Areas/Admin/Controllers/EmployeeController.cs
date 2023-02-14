@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Idp.WebApp.Areas.Admin.Controllers
 {
-    public class EmployeeController : AdminControllerBase
+    public class EmployeeController : UserControllerBase
     {
         private readonly EmployeeServices _services;
 
