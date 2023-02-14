@@ -8,13 +8,13 @@ const routes: Routes = [
     path: '',
     component: ManagerLayoutComponent,
     children: [
-      { path: 'manager-homepage', component: HomepageComponent },
+      { path: 'manager-homepage', component: HomepageComponent }
     ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class ManagerRoutingModule {}
