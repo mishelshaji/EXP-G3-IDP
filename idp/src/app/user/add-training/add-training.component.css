@@ -1,10 +1,10 @@
 h1 {
-    font-size: 7vh;
-    margin-left: 2vw;
+    font-size: 70px;
+    margin-left: 38px;
 }
 
 h2 {
-    font-size: 10vh;
+    font-size: 55px;
 }
 
 .limit {
@@ -12,16 +12,18 @@ h2 {
 }
 
 .box2 {
-    margin-left: 10vw;
+    background-image: url("/assets/images/men.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .box1 {
-    margin-left: 5vw;
-    margin-top: 10vh;
+    margin-left: 75px;
+    margin-top: 40px;
 }
 
 .ima {
-    margin-left: 20vw;
+    margin-left: 303px;
 }
 
 label {
@@ -30,4 +32,9 @@ label {
 
 input {
     width: 260px
+}
+
+.container {
+    height: 720px;
+    width: 565px;
 }

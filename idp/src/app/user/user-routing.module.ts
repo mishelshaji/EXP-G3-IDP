@@ -12,7 +12,7 @@ const routes: Routes = [
       { path: '', component: HomepageComponent },
       { path: 'signin', component: SigninComponent },
       { path: 'forgot-password', component: ForgotComponent },
-      {path: 'add-training', component: AddTrainingComponent}
+      { path: 'add-training', component: AddTrainingComponent }
     ]
   }
 ];

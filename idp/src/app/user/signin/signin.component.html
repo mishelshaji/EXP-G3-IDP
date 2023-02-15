@@ -19,9 +19,7 @@
                         <input type="password" name="password" placeholder="Enter your password"
                             class="mt-5 text-center w-100 p-2 rounded-3 " [(ngModel)]="model.password"
                             #password="ngModel" minlength="8" maxlength="25" required>
-                        <div class="text-danger" *ngIf="password.invalid && password.touched">
-                            <div *ngIf="password.errors?.['minlength']">Password is too small.</div>
-                            <div *ngIf="password.errors?.['maxlength']">Password is too long.</div>
+                            <div class="text-danger" *ngIf="password.invalid && password.touched">
                             <div *ngIf="password.errors?.['required']">Password is required.</div>
                         </div>
                     </div>

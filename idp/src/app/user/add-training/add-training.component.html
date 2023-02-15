@@ -1,64 +1,62 @@
-<div class="d-flex">
-    <div class="box1">
-        <form #form="ngForm">
-            <table>
-                <thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <label for="name" name="training">Enter your training name</label>
-                            <input type="text" name="name" id="name" [(ngModel)]="model.training" #training="ngModel"
-                                class="mt-5" [(ngModel)]="model.training" required>
-                            <div class="text-danger" *ngIf="training.invalid && training.touched">
-                                <div *ngIf="training.errors?.['required']">training name is required.</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="data">Starting Date</label>
-                            <input type="date" name="date" class="mt-5" id="date" [(ngModel)]="model.date"
-                                #date="ngModel" required>
-                            <div class="text-danger" *ngIf="date.invalid && date.touched">
-                                <div *ngIf="date.errors?.['required']">Date is required.</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="url">Enter your course URL</label>
-                            <input type="text" name="url" id="url" class="mt-5"
-                                pattern="http(s?)(:\/\/)((www.)?)(([^.]+)\.)?([a-zA-z0-9\-_]+)(.com|.net|.gov|.org|.in)(\/[^\s]*)?"
-                                [(ngModel)]="model.url" #url="ngModel" required>
-                            <div class="text-danger" *ngIf="url.invalid && url.touched">
-                                <div *ngIf="url.errors?.['required']">URL is required.</div>
-                                <div *ngIf="url.errors?.['pattern']">URL is invalid.</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <textarea name="dis" id="dis" cols="60" rows="5"
-                                placeholder="Enter your training description" class="rounded-3 mt-5"
-                                [(ngModel)]="model.text" #text="ngModel" required></textarea>
-                            <div class="text-danger" *ngIf="text.invalid && text.touched">
-                                <div *ngIf="text.errors?.['required']">description is required.</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button type="submit" class="btn btn-outline-dark mt-5 p-2 w-25 rounded-5"
-                                [disabled]="form.invalid">Submit</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </form>
+<div class="d-flex justify-content-end">
+    <div class="box1 me-5 w-50">
+        <div class="container ps-5 rounded-5 shadow shadow-dark">
+            <form #form="ngForm">
+                <table>
+                    <thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="name" name="training">Training name</label>
+                                <input type="text" name="name" id="name" [(ngModel)]="model.training"
+                                    #training="ngModel" class="mt-5" [(ngModel)]="model.training" required>
+                                <div class="text-danger" *ngIf="training.invalid && training.touched">
+                                    <div *ngIf="training.errors?.['required']">Training name is required.</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="data">Ending Date</label>
+                                <input type="date" name="date" class="mt-5" id="date" [(ngModel)]="model.date"
+                                    #date="ngModel" required>
+                                <div class="text-danger" *ngIf="date.invalid && date.touched">
+                                    <div *ngIf="date.errors?.['required']">Date is required.</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="url">Training course URL</label>
+                                <input type="text" name="url" id="url" class="mt-5"
+                                    pattern="http(s?)(:\/\/)((www.)?)(([^.]+)\.)?([a-zA-z0-9\-_]+)(.com|.net|.gov|.org|.in)(\/[^\s]*)?"
+                                    [(ngModel)]="model.url" #url="ngModel" required>
+                                <div class="text-danger" *ngIf="url.invalid && url.touched">
+                                    <div *ngIf="url.errors?.['required']">URL is required.</div>
+                                    <div *ngIf="url.errors?.['pattern']">URL is invalid.</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea name="dis" id="dis" cols="60" rows="9" placeholder="Training description"
+                                    class="rounded-3 mt-5" [(ngModel)]="model.text" #text="ngModel" required></textarea>
+                                <div class="text-danger" *ngIf="text.invalid && text.touched">
+                                    <div *ngIf="text.errors?.['required']">Description is required.</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit" class="btn btn-outline-dark mt-5 p-2 w-25 rounded-5"
+                                    [disabled]="form.invalid">Submit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
     </div>
-    <div class="box2 mt-5">
-        <h1 class="fw-bold m-3">Learn Without </h1>
-        <h2 class="fw-bold limit">Limits...</h2>
-        <img src="/assets/images/pic25.png" alt="#" class="ima ms-5 mt-5" width="80%">
+    <div class="box2 w-50 ms-5">
     </div>
 </div>

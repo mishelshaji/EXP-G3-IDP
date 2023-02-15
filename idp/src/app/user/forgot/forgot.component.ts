@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./forgot.component.css']
 })
 export class ForgotComponent {
-  unset = 'set';
+  display = 'none';
   model = {
     email: '',
     password: '',
@@ -14,6 +14,6 @@ export class ForgotComponent {
   }
 
   clicked(e: any) {
-    this.unset = 'unset';
+    this.display = 'block';
   }
 }
