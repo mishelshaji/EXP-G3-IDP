@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '', component: UserLayoutComponent, children: [
       { path: 'home', component: HomepageComponent },
       { path: 'objective-detailed', component: ObjectiveDetailedComponent },
-      {path:'idp',component:ShowAllIdpComponent}
+      { path: 'idp', component: ShowAllIdpComponent }
     ]
   }
 ];
