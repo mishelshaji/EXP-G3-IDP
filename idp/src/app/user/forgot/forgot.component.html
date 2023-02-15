@@ -19,7 +19,7 @@
                     <button type="submit" name="verify" class="btn btn-outline-dark mt-5 w-25 p-2 rounded-5"
                         (click)="clicked($event)" [disabled]="email.invalid">Verify</button>
                 </form>
-                <form class="d-flex align-items-center flex-column" [style.display]="display" #form2="ngForm">
+                <form class="d-flex align-items-center flex-column" *ngIf="display" #form2="ngForm">
                     <div>
                         <input type="input" name="otp" class="mt-5 text-center w-100 p-2 rounded-3"
                             [(ngModel)]="model.otp" #otp="ngModel" placeholder="Enter OTP code" id="otpfield"

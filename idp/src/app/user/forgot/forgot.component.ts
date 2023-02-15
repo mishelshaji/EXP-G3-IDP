@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./forgot.component.css']
 })
 export class ForgotComponent {
-  display = 'none';
+  display: boolean = false;
   model = {
     email: '',
     password: '',
@@ -14,6 +14,6 @@ export class ForgotComponent {
   }
 
   clicked(e: any) {
-    this.display = 'block';
+    this.display = true;
   }
 }
