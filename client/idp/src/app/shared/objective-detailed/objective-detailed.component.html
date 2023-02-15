@@ -6,18 +6,30 @@
             <table class="table table-striped table-hover text-light">
                 <thead>
                     <tr>
+                        <th>SlNo</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Start Date</th>
-                        <th>End Date</th>   
+                        <th>End Date</th>
+                        <th>URL</th>
+                        <th>Progress</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="target" *ngFor="let item of list">
                     <tr>
+                        <td>1</td>
                         <td>item</td>
                         <td>Description</td>
                         <td>Start Date</td>
                         <td>End Date</td>
+                        <td>URL</td>
+                        <td>Progress</td>
+                        <td>
+                            <button class="btn btn-warning">
+                                <span class="fa fa-eye"></span>
+                                Update
+                            </button>
                     </tr>
                 </tbody>
             </table>
@@ -30,18 +42,30 @@
             <table class="table table-striped table-hover text-light">
                 <thead>
                     <tr>
+                        <th>SlNo</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Start Date</th>
                         <th>End Date</th>
+                        <th>Certificate</th>
+                        <th>Progress</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="target" *ngFor="let item of list">
                     <tr>
+                        <td>1</td>
                         <td>item</td>
                         <td>Description</td>
                         <td>Start Date</td>
                         <td>End Date</td>
+                        <td>Certificate</td>
+                        <td>Progress</td>
+                        <td>
+                            <button class="btn btn-warning">
+                                <span class="fa fa-eye"></span>
+                                Update
+                            </button>
                     </tr>
                 </tbody>
             </table>
