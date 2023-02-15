@@ -11,10 +11,10 @@ namespace Idp.Domain.Models
         public int Id { get; set; }
 
         [StringLength(50)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [StringLength(50)]
-        public string Link { get; set; }
+        public string? Link { get; set; }
 
         public int Progress { get; set; }
 

@@ -6,15 +6,10 @@ using System.Threading.Tasks;
 
 namespace Idp.Domain.Models
 {
-    public class Idp
+    public class Year
     {
         public int Id { get; set; }
 
-        [StringLength(200)]
-        public string? Name { get; set; }
-
-        public int YearId { get; set; }
-
-        public Year Year { get; set; }
+        public DateTime Years { get; set; }
     }
 }
