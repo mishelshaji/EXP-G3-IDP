@@ -8,7 +8,7 @@ import { IdpService } from 'src/app/service/idp.service';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent {
-  @ViewChild('year') year: string = `2023`;
+  @ViewChild('year') year: number = 2023;
 
   idpFetchYear: number[] = [];
   selectedIdp: number = new Date().getFullYear();
@@ -19,7 +19,7 @@ export class HomepageComponent {
   idpItem: any[] = [];
 
   ngAfterViewInit() {
-    this.year = `2023`;
+    this.year = 2023;
   }
 
   constructor(private idpService: IdpService) {

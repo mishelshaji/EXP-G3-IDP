@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgChartsModule } from 'ng2-charts';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NgChartsModule } from 'ng2-charts';
     RouterModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     NavbarComponent,
     FooterComponent,
     FontAwesomeModule,
