@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Idp.Domain.Models
 {
-    public class Action
+    public class ObjectiveAction
     {
         public int Id { get; set; }
 
@@ -15,6 +15,9 @@ namespace Idp.Domain.Models
 
         [StringLength(50)]
         public string Certificate { get; set; }
+
+        [StringLength(250)]
+        public string Description { get; set; }
 
         public DateTime StartDate { get; set; }
 

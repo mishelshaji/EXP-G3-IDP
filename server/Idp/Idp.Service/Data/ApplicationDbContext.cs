@@ -16,5 +16,8 @@ namespace Idp.Service.Data
         }
 
         public DbSet<Employee> Employees { get; set; }
+
+        public DbSet<ObjectiveAction> ObjectiveActions { get; set; }
+
     }
 }

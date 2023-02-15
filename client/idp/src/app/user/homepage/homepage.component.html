@@ -22,7 +22,15 @@
         </div>
     </form>
 </div>
-<h2 class="text-center my-5">Current IDP</h2>
-<h3 class="text-secondary">Current objectives</h3>
-<hr class="my-3">
+<div class="btn-group d-flex align-items-center mt-5 ms-5" id="selectIdp">
+    <label class="me-3">Idp:</label>
+    <input type="text" disabled class="form-control" value="{{selectedIdp}}">
+    <div class="btn-group" ngbDropdown role="group">
+        <button type="button" class="btn btn-outline-primary" ngbDropdownToggle>Select</button>
+        <div class="dropdown-menu" ngbDropdownMenu *ngFor="let item of idpFetchYear">
+            <button ngbDropdownItem (click)="setIdp(item)">{{item}}</button>
+        </div>
+    </div>
+</div>
+<hr class="mb-3 ms-5 me-5">
 <app-current-progress></app-current-progress>

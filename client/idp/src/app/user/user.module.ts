@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserRoutingModule } from './user-routing.module';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -27,7 +27,8 @@ import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
         CurrentObjectivesComponent,
         CurrentObjectivesComponent,
         FontAwesomeModule,
-        FormsModule
+        FormsModule,
+        NgbModule
     ]
 })
 export class UserModule { }

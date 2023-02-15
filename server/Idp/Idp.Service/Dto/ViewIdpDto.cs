@@ -13,6 +13,6 @@ namespace Idp.Service.Dto
 
         public string? Name { get; set; }
 
-        public DateTime Year { get; set; }
+        public string? Year { get; set; }
     }
 }
