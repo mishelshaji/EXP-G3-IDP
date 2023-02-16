@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InvalidpageComponent } from './shared/invalidpage/invalidpage.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 
 const routes: Routes = [
