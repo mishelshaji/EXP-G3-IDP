@@ -24,7 +24,7 @@ import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
         SigninComponent,
         ForgotComponent,
         AddTrainingComponent,
-        AddActionComponent
+        AddActionComponent,
         ShowAllIdpComponent,
     ],
     imports: [
