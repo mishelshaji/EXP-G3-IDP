@@ -19,6 +19,8 @@ namespace Idp.Domain.Models
 
         public DateTime Dob { get; set; }
 
+        [ForeignKey(nameof(Manager))]
+
         public int ManagerId { get; set; }
 
         public Manager? Manager { get; set; }

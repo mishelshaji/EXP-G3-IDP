@@ -13,6 +13,7 @@ import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
 import { ShowAllObjectiveComponent } from './show-all-objective/show-all-objective.component';
 import { ObjectivesComponent } from '../shared/objectives/objectives.component';
 import { NavbarUserComponent } from '../shared/navbar-user/navbar-user.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { NavbarUserComponent } from '../shared/navbar-user/navbar-user.component
         CurrentProgressComponent,
         ShowAllIdpComponent,
         ShowAllObjectiveComponent,
+        ProfileComponent,
     ],
     imports: [
         CommonModule,

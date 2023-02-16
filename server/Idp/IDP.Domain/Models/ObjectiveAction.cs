@@ -27,9 +27,13 @@ namespace Idp.Domain.Models
 
         public int UserId { get; set; }
 
+        [ForeignKey(nameof(Objective))]
+
         public int ObjectiveId { get; set; }
 
         public Objective? Objective { get; set; }
+
+        [ForeignKey(nameof(Idp))]
 
         public int IdpId { get; set; }
 

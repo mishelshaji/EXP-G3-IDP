@@ -71,6 +71,7 @@ namespace Idp.Service.Data
             //user.PasswordHash = passwordHasher.HashPassword(user, "Pass@123");
             //builder.Entity<ApplicationUser>().HasData(user);
             #endregion
+
         }
 
 
