@@ -10,6 +10,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
+import { NavbarManagerComponent } from './shared/navbar-manager/navbar-manager.component';
 
 @NgModule({
   declarations: [

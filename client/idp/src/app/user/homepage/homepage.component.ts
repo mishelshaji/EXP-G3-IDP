@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 import { IdpService } from 'src/app/service/idp.service';
 
@@ -22,7 +23,7 @@ export class HomepageComponent {
     this.year = 2023;
   }
 
-  constructor(private idpService: IdpService) {
+  constructor(private _router: Router, private idpService: IdpService) {
 
   }
 
@@ -35,6 +36,10 @@ export class HomepageComponent {
 
   setIdp(item: number) {
     this.selectedIdp = item;
+  }
+
+  createIdp() {
+    this._router.navigate(['/user/idp'])
   }
 
   model = {

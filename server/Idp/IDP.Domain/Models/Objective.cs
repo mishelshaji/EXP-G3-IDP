@@ -16,9 +16,8 @@ namespace Idp.Domain.Models
         public string? Category { get; set; }
 
         public int IdpId { get; set; }
-        public Idp? Idp { get; set; }
 
-        public int UserId { get; set; }
+        public Idp Idp { get; set; }
 
         public bool Status { get; set; }
 

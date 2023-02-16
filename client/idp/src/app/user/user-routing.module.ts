@@ -9,7 +9,7 @@ import { UserLayoutComponent } from './user-layout/user-layout.component';
 const routes: Routes = [
   {
     path: '', component: UserLayoutComponent, children: [
-      { path: 'home', component: HomepageComponent },
+      { path: '', component: HomepageComponent },
       { path: 'objective-detailed', component: ObjectiveDetailedComponent },
       { path: 'idp', component: ShowAllIdpComponent },
       { path: 'objectives', component: ObjectivesComponent }

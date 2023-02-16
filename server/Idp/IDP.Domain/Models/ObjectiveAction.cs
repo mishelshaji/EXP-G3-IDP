@@ -33,7 +33,7 @@ namespace Idp.Domain.Models
 
         public int IdpId { get; set; }
 
-        public Idp? Idp { get; set; }
+        public Idp Idp { get; set; }
 
     }
 }

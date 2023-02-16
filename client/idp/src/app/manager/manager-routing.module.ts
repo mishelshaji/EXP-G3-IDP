@@ -6,7 +6,7 @@ import { ManagerLayoutComponent } from './manager-layout/manager-layout.componen
 const routes: Routes = [
   {
     path: '', component: ManagerLayoutComponent, children: [
-      { path: 'home', component:  HomeComponent},
+      { path: '', component:  HomeComponent},
     ]
   }
 ];

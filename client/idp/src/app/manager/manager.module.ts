@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { ViewAllEmployeeComponent } from '../shared/view-all-employee/view-all-employee.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
+import { NavbarManagerComponent } from '../shared/navbar-manager/navbar-manager.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     ManagerRoutingModule,
     ViewAllEmployeeComponent,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    NavbarManagerComponent
   ]
 })
 export class ManagerModule { }

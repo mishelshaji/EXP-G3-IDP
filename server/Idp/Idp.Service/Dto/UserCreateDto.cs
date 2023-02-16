@@ -1,17 +1,22 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Idp.Domain.Models
+namespace Idp.Service.Dto
 {
-    public class ApplicationUser : IdentityUser
+    public class UserCreateDto
     {
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public string Email { get; set; }
+
+        public string Password { get; set; }
+
+        public string PhoneNumber { get; set; }
 
         public string Department { get; set; }
 
@@ -19,9 +24,7 @@ namespace Idp.Domain.Models
 
         public DateTime Dob { get; set; }
 
-        public int ManagerId { get; set; }
-
-        public Manager? Manager { get; set; }
+        //public int ManagerId { get; set; }
 
         public int EmployeeId { get; set; }
     }

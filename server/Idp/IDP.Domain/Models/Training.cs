@@ -22,9 +22,9 @@ namespace Idp.Domain.Models
 
         public DateTime EndDate { get; set; }
 
-        public int UserId { get; set; }
-
         public int IdpId { get; set; }
+
+        public Idp Idp { get; set; }
 
         public int ObjectiveId { get; set; }
     }

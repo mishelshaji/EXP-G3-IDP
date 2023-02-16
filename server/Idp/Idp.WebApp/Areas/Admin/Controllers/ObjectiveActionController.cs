@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Idp.WebApp.Areas.Admin.Controllers
 {
-    public class ObjectiveActionController : UserControllerBase
+    public class ObjectiveActionController : AdminControllerBase
     {
         private readonly ObjectiveActionServices _service;
 
