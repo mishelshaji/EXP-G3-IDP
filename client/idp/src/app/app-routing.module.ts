@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotfoundComponent } from './shared/notfound/notfound.component';
 
 const routes: Routes = [
   {
-    path: 'user', 
-    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
   {
-    path: 'manager', 
-    loadChildren: () => import('./manager/manager.module').then(m => m.ManagerModule)
+    path: 'manager',
+    loadChildren: () =>
+      import('./manager/manager.module').then((m) => m.ManagerModule),
   },
   {
-    path: 'admin', 
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
+    path: '**',
+    component: NotfoundComponent,
   },
   {
     path: '', 
@@ -22,6 +29,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
