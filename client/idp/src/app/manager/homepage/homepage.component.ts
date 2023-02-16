@@ -155,5 +155,14 @@ export class HomepageComponent implements OnInit {
   lastMessage(message: any) {
     return this.messages.indexOf(message) === this.messages.length - 1;
   }
+  
+  resultMessage: string = '';
 
+  onApprove() {
+    this.resultMessage = 'Approved';
+  }
+
+  onReject() {
+    this.resultMessage = 'Rejected';
+  }
 }

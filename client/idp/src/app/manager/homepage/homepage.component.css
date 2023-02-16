@@ -42,3 +42,25 @@ td img {
 .theme {
     background-color: #161a30;
 }
+.select{
+    font-weight: bold;
+    text-align: center;
+}
+#result-msg {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  .result-msg {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+  }  
+  .result-msg.approved {
+    color: #058826;
+  }
+  
+  .result-msg.rejected {
+    color: #e31e1e;
+  }

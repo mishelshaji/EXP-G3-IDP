@@ -61,15 +61,28 @@
                         </select>
                     </div>
                 </th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
+            <tr *ngFor="let user of users" [hidden]="selectedStatus !== 'all' && user.status !== selectedStatus && 
+            (selectedStatus !== 'completed' || user.status!== 'Completed') && 
+            (selectedStatus !== 'not started' || user.status !== 'Not Started') && 
+            (selectedStatus !== 'pending' || user.status !== 'Pending')">
                 <td><img src="{{user.profile}}" alt="{{user.name}}"></td>
                 <td>{{user.name}}</td>
                 <td>{{user.department}}</td>
                 <td>{{user.idp}}</td>
                 <td>{{user.objective}}</td>
-                <td>{{user.remark}}</td>
+                <td style="text-align: center;">{{user.status}}</td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success"  id="approve-btn" (click)="onApprove()" [style.display]="resultMessage ? 'none' : 'inline-block'">Approve</button>
+                        <button type="button" class="btn btn-danger"  id="reject-btn" (click)="onReject()"[style.display]="resultMessage ? 'none' : 'inline-block'">Reject</button>
+                        <p *ngIf="resultMessage" class="result-msg" [class.approved]="resultMessage === 'Approved'" [class.rejected]="resultMessage === 'Rejected'">{{ resultMessage }}</p>
+                    </div>
+                </td>
+                <td><a [routerLink]="['/user/idp']" class="text-warning text-decoration-none">View</a></td>
             </tr>
         </tbody>
     </table>
