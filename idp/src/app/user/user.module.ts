@@ -13,6 +13,7 @@ import { SigninComponent } from './signin/signin.component';
 import { FormsModule } from '@angular/forms';
 import { ForgotComponent } from './forgot/forgot.component';
 import { AddTrainingComponent } from './add-training/add-training.component';
+import { AddActionComponent } from './add-action/add-action.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { AddTrainingComponent } from './add-training/add-training.component';
         CurrentProgressComponent,
         SigninComponent,
         ForgotComponent,
-        AddTrainingComponent
+        AddTrainingComponent,
+        AddActionComponent
     ],
     imports: [
         CommonModule,
