@@ -1,0 +1,61 @@
+<div class="row align-items-center me-1 ms-1 mb-5">
+    <div class="arrow-button"><fa-icon [icon]="arrowLeftIcon" class="fa-4x" (click)="scrollLeft()"></fa-icon></div>
+    <section class="container col-sm">
+        <div class="row">
+            <div class="card text-white shadow">
+                <div class="card-body text-dark h-25">
+                    <h4 class="card-title">{{trainingItem[progressId].name}}</h4>
+                    <p class="card-text">{{trainingItem[progressId].description}}</p>
+                    <div class="d-flex mb-5" class="line-chart">
+                        <canvas baseChart [data]="data" [options]="options" [type]="'line'">
+                        </canvas>
+                    </div>
+                    <h3 class="text-secondary mt-3">Least Progress Objective</h3>
+                    <hr class="my-3">
+                    <div class="container d-flex justify-content-center">
+                        <div class="row">
+                            <div class="col-sm">
+                                <circle-progress [percent]="trainingItem[0].progress" [radius]="80"
+                                    [outerStrokeWidth]="16" [innerStrokeWidth]="8" [outerStrokeColor]="'#A162F7'"
+                                    [innerStrokeColor]="'#a062f77c'" [animation]="true" [animationDuration]="300">
+                                </circle-progress>
+                                <div class="justify-content-center d-flex text-secondary">
+                                    <h6>{{trainingItem[0].name}}</h6>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <circle-progress [percent]="trainingItem[1].progress" [radius]="80"
+                                    [outerStrokeWidth]="16" [innerStrokeWidth]="8" [outerStrokeColor]="'#45E3FF'"
+                                    [innerStrokeColor]="'#45e4ef7d'" [animation]="true" [animationDuration]="300">
+                                </circle-progress>
+                                <div class="justify-content-center d-flex text-secondary">
+                                    <h6>{{trainingItem[1].name}}</h6>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <circle-progress [percent]="trainingItem[2].progress" [radius]="80"
+                                    [outerStrokeWidth]="16" [innerStrokeWidth]="8" [outerStrokeColor]="'#6F88FC'"
+                                    [innerStrokeColor]="'#6f89fc5b'" [animation]="true" [animationDuration]="300">
+                                </circle-progress>
+                                <div class="justify-content-center d-flex text-secondary">
+                                    <h6>{{trainingItem[2].name}}</h6>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <circle-progress [percent]="trainingItem[3].progress" [radius]="80"
+                                    [outerStrokeWidth]="16" [innerStrokeWidth]="8" [outerStrokeColor]="'#FFBE25EF'"
+                                    [innerStrokeColor]="'#FFBE2581'" [animation]="true" [animationDuration]="300">
+                                </circle-progress>
+                                <div class="justify-content-center d-flex text-secondary">
+                                    <h6>{{trainingItem[3].name}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="arrow-button"><fa-icon [icon]="arrowRightIcon" class="fa-4x" (click)="scrollRight()"></fa-icon>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+footer {
+    background-color: #1c2240;
+}
+
+.bottom-footer {
+    background-color: hsla(0, 0%, 0%, 0.2)
+}
+
+#contact {
+    display: none;
+}

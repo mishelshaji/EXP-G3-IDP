@@ -1,0 +1,32 @@
+main {
+    width: 99vw;
+}
+
+label {
+    width: 90px;
+    text-align: left;
+}
+
+#registration {
+    font-size: 15px;
+}
+
+input,
+.role {
+    font-size: 13px;
+    height: 25px;
+}
+
+@media screen and (max-width: 992px) {
+    img {
+        display: none;
+    }
+
+    main {
+        background-image: url("/assets/images/girl-laptop2.jpg");
+    }
+
+    #registration {
+        background-color: #ffffff89;
+    }
+}
