@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: ManagerLayoutComponent,
     children: [
-      { path: 'manager-homepage', component: HomepageComponent }
+      { path: 'manager', component: HomepageComponent }
     ],
   },
 ];
