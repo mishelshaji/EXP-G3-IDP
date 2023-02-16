@@ -53,9 +53,8 @@
                 <th scope="col">Objective</th>
                 <th scope="col">
                     <div class="form-group d-flex">
-                        <label for="status">Remarks </label>
-                        <select class="form-control" id="status" [(ngModel)]="selectedStatus">
-                            <option value="all">All</option>
+                        <select class="form-control select" id="status" [(ngModel)]="selectedStatus">
+                            <option value="all">All Status</option>
                             <option value="not started">Not Started</option>
                             <option value="pending">Pending</option>
                             <option value="completed">Completed</option>
@@ -65,10 +64,6 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let user of users" [hidden]="selectedStatus !== 'all' && user.remark !== selectedStatus && 
-            (selectedStatus !== 'completed' || user.remark!== 'Completed') && 
-            (selectedStatus !== 'not started' || user.remark !== 'Not Started') && 
-            (selectedStatus !== 'pending' || user.remark !== 'Pending')">
                 <td><img src="{{user.profile}}" alt="{{user.name}}"></td>
                 <td>{{user.name}}</td>
                 <td>{{user.department}}</td>

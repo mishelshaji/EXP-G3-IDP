@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
   selectedStatus = 'all';
-  
+
   counters = [
     { name: 'Total Empolyees', count: 1000, limit: 1500 },
     { name: 'Total Created IDP', count: 0, limit: 126 },
@@ -58,7 +58,7 @@ export class HomepageComponent implements OnInit {
       department: 'Sales',
       objective: 'Increase sales by 10%',
       idp: 'IMP-ID-200828-2022',
-      remark: 'pending',
+      status: 'not started',
     },
     {
       name: 'Jane Doe',
@@ -66,7 +66,7 @@ export class HomepageComponent implements OnInit {
       department: 'Marketing',
       objective: 'Develop a new marketing strategy',
       idp: 'IMP-ID-200808-2022',
-      remark: 'pending',
+      status: 'pending',
     },
     {
       name: 'Jim Smith',
@@ -74,7 +74,7 @@ export class HomepageComponent implements OnInit {
       department: 'IT',
       objective: 'Improve system performance by 20%',
       idp: 'IMP-ID-200908-2022',
-      remark: 'pending',
+      status: 'pending',
     },
     {
       name: 'John Doe',
@@ -82,7 +82,7 @@ export class HomepageComponent implements OnInit {
       department: 'Sales',
       objective: 'Increase sales by 10%',
       idp: 'IMP-ID-200828-2022',
-      remark: 'completed  ',
+      status: 'completed  ',
     },
     {
       name: 'Jane Doe',
@@ -90,7 +90,7 @@ export class HomepageComponent implements OnInit {
       department: 'Marketing',
       objective: 'Develop a new marketing strategy',
       idp: 'IMP-ID-200808-2022',
-      remark: 'pending',
+      status: 'pending',
     },
     {
       name: 'Jim Smith',
@@ -98,7 +98,7 @@ export class HomepageComponent implements OnInit {
       department: 'IT',
       objective: 'Improve system performance by 20%',
       idp: 'IMP-ID-200908-2022',
-      remark: 'pending',
+      status: 'pending',
     },
     {
       name: 'John Doe',
@@ -106,7 +106,7 @@ export class HomepageComponent implements OnInit {
       department: 'Sales',
       objective: 'Increase sales by 10%',
       idp: 'IMP-ID-200828-2022',
-      remark: 'completed',
+      status: 'completed',
     },
     {
       name: 'Jane Doe',
@@ -114,7 +114,7 @@ export class HomepageComponent implements OnInit {
       department: 'Marketing',
       objective: 'Develop a new marketing strategy',
       idp: 'IMP-ID-200808-2022',
-      remark: 'pending',
+      status: 'pending',
     },
     {
       name: 'Jim Smith',
@@ -122,7 +122,7 @@ export class HomepageComponent implements OnInit {
       department: 'IT',
       objective: 'Improve system performance by 20%',
       idp: 'IMP-ID-200908-2022',
-      remark: 'not completed',
+      status: 'not started',
     },
     {
       name: 'John Doe',
@@ -130,7 +130,7 @@ export class HomepageComponent implements OnInit {
       department: 'Sales',
       objective: 'Increase sales by 10%',
       idp: 'IMP-ID-200828-2022',
-      remark: 'pending',
+      status: 'pending',
     },
     {
       name: 'Jane Doe',
@@ -138,7 +138,7 @@ export class HomepageComponent implements OnInit {
       department: 'Marketing',
       objective: 'Develop a new marketing strategy',
       idp: 'IMP-ID-200808-2022',
-      remark: 'pending',
+      status: 'pending',
     },
     {
       name: 'Jim Smith',
@@ -146,7 +146,7 @@ export class HomepageComponent implements OnInit {
       department: 'IT',
       objective: 'Improve system performance by 20%',
       idp: 'IMP-ID-200908-2022',
-      remark: 'not completed',
+      status: 'not started',
     },
   ];
 
