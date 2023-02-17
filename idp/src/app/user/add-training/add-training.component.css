@@ -1,0 +1,40 @@
+h1 {
+    font-size: 70px;
+    margin-left: 38px;
+}
+
+h2 {
+    font-size: 55px;
+}
+
+.limit {
+    margin-left: 200px;
+}
+
+.box2 {
+    background-image: url("/assets/images/men.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.box1 {
+    margin-left: 75px;
+    margin-top: 40px;
+}
+
+.ima {
+    margin-left: 303px;
+}
+
+label {
+    width: 200px;
+}
+
+input {
+    width: 260px
+}
+
+.container {
+    height: 580px;
+    width: 565px;
+}

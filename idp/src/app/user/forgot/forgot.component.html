@@ -1,0 +1,39 @@
+<div class="container-fluid m-0" id="intro">
+    <div class="row">
+        <div class="container mt-5 ">
+            <div class="box rounded-2 shadow shadow-dark shadow-intensity-lg">
+                <h1 class="text-center pt-5 text-dark">Forgot Password?</h1>
+                <form class="d-flex align-items-center flex-column">
+                    <div>
+                        <input type="email" name="email" class="mt-5  text-center w-100 p-2 rounded-3"
+                            placeholder="Enter email" [(ngModel)]="model.email" #email="ngModel"
+                            placeholder="Enter email" minlength="8" maxlength="70"
+                            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                        <div class="text-danger" *ngIf="email.invalid && email.touched">
+                            <div *ngIf="email.errors?.['minlength']">Email is too short.</div>
+                            <div *ngIf="email.errors?.['required']">Email is required.</div>
+                            <div *ngIf="email.errors?.['maxlength']">Email is too long.</div>
+                            <div *ngIf="email.errors?.['pattern']">Email is invalid.</div>
+                        </div>
+                    </div>
+                    <button type="submit" name="verify" class="btn btn-outline-dark mt-5 w-25 p-2 rounded-5"
+                        (click)="clicked($event)" [disabled]="email.invalid">Verify</button>
+                </form>
+                <form class="d-flex align-items-center flex-column" *ngIf="display" #form2="ngForm">
+                    <div>
+                        <input type="input" name="otp" class="mt-5 text-center w-100 p-2 rounded-3"
+                            [(ngModel)]="model.otp" #otp="ngModel" placeholder="Enter OTP code" id="otpfield"
+                            minlength="6" maxlength="6" required>
+                        <div class="text-danger" *ngIf="otp.invalid && otp.touched">
+                            <div
+                                *ngIf="otp.errors?.['pattern'] || otp.errors?.['number'] || otp.errors?.['required'] || otp.errors?.['minlength']">
+                                OTP is invalid.</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline-dark mt-5 w-25 p-2 rounded-5" [routerLink]="['/reset']"
+                        id="subfield" [disabled]="form2.invalid">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
