@@ -44,10 +44,6 @@ form {
     gap: 0.5rem;
 }
 
-h1 {
-    text-align: center;
-}
-
 @media only screen and (max-width:900px) {
     .leftside {
         flex-basis: 100%;
