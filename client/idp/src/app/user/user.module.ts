@@ -11,6 +11,7 @@ import { CurrentObjectivesComponent } from "./shared/current-objectives/current-
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
+import { CreateObjectiveComponent } from './create-objective/create-objective.component';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
         HomepageComponent,
         CurrentProgressComponent,
         ShowAllIdpComponent,
+        CreateObjectiveComponent,
     ],
     imports: [
         CommonModule,
