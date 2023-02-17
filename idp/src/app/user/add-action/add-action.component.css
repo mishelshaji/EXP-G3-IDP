@@ -2,12 +2,15 @@
     margin-left: 75px;
     margin-top: 40px;
 }
+
 label {
     width: 200px;
 }
+
 input {
     width: 260px
 }
+
 .container {
     height: 580px;
     width: 565px;
