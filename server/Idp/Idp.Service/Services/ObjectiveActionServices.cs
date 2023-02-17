@@ -22,19 +22,16 @@ namespace Idp.Service.Services
                 {
                     Id = c.Id,
                     Name = c.Name,
-                    EndDate= c.EndDate,
-                    StartDate= c.StartDate,
+                    EndDate = c.EndDate,
+                    StartDate = c.StartDate,
                     Progress = c.Progress,
                     Description = c.Certificate,
-
-
                 })
                 .ToListAsync();
         }
 
         public async Task<ViewActionDto?> GetByIdAsync(int id)
         {
-            // Check if the action exists.
             var action = await _db.ObjectiveActions.FindAsync(id);
 
             if (action == null)
@@ -81,3 +78,5 @@ namespace Idp.Service.Services
 
     }
 }
+
+

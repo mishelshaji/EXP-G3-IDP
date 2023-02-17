@@ -7,28 +7,43 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { CurrentProgressComponent } from './shared/current-progress/current-progress.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgChartsModule } from 'ng2-charts';
-import { CurrentObjectivesComponent } from "./shared/current-objectives/current-objectives.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SigninComponent } from './signin/signin.component';
 import { FormsModule } from '@angular/forms';
+import { ForgotComponent } from './forgot/forgot.component';
+import { AddTrainingComponent } from './add-training/add-training.component';
+import { AddActionComponent } from './add-action/add-action.component';
 import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
+import { ShowAllObjectiveComponent } from './show-all-objective/show-all-objective.component';
+import { ObjectivesComponent } from '../shared/objectives/objectives.component';
+import { NavbarUserComponent } from '../shared/navbar-user/navbar-user.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CreateObjectiveComponent } from './create-objective/create-objective.component';
 
 @NgModule({
     declarations: [
         UserLayoutComponent,
         HomepageComponent,
         CurrentProgressComponent,
+        SigninComponent,
+        ForgotComponent,
+        AddTrainingComponent,
+        AddActionComponent,
         ShowAllIdpComponent,
+        ShowAllObjectiveComponent,
+        ProfileComponent,
+        CreateObjectiveComponent,
     ],
     imports: [
         CommonModule,
         UserRoutingModule,
         NgCircleProgressModule,
         NgChartsModule,
-        CurrentObjectivesComponent,
-        CurrentObjectivesComponent,
         FontAwesomeModule,
         FormsModule,
-        NgbModule
+        NgbModule,
+        ObjectivesComponent,
+        NavbarUserComponent,
     ]
 })
 export class UserModule { }

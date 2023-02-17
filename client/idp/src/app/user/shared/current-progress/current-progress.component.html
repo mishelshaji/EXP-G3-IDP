@@ -1,16 +1,14 @@
 <div class="row align-items-center me-1 ms-1 mb-5">
-    <div class="arrow-button"><fa-icon [icon]="arrowLeftIcon" class="fa-4x" (click)="scrollLeft()"></fa-icon></div>
     <section class="container col-sm">
         <div class="row">
             <div class="card text-white shadow">
                 <div class="card-body text-dark h-25">
-                    <h4 class="card-title">{{trainingItem[progressId].name}}</h4>
-                    <p class="card-text">{{trainingItem[progressId].description}}</p>
+                    <h4 class="card-title">Individual Development Plan Progress</h4>
                     <div class="d-flex mb-5" class="line-chart">
                         <canvas baseChart [data]="data" [options]="options" [type]="'line'">
                         </canvas>
                     </div>
-                    <h3 class="text-secondary mt-3">Least Progress Objective</h3>
+                    <h3 class="text-secondary mt-3">Objective Progress</h3>
                     <hr class="my-3">
                     <div class="container d-flex justify-content-center">
                         <div class="row">
@@ -56,6 +54,4 @@
             </div>
         </div>
     </section>
-    <div class="arrow-button"><fa-icon [icon]="arrowRightIcon" class="fa-4x" (click)="scrollRight()"></fa-icon>
-    </div>
 </div>
