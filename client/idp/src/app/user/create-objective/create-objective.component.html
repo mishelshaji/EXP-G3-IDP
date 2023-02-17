@@ -1,0 +1,30 @@
+<main>
+    <div class="leftside">
+        <form class="form-control" #form="ngForm" (ngsubmit)="onSubmit(form)">
+            <h1>Create Objective</h1>
+            <div class="holder">
+                <label for="Category">Category:</label>
+                <select name="category" id="category">
+                    <option value="technical" [(ngModel)]="model.technical">Technical</option>
+                    <option value="technical" [(ngModel)]="model.technical">Communication skills</option>
+                    <option value="technical" [(ngModel)]="model.technical">Behavioural skills</option>
+                </select>
+                <label for="objective">Objective:</label>
+                <textarea name="objective" id="objective" cols="30" rows="3" [(ngModel)]="model.description"
+                    #description="ngModel" required maxlength="150"></textarea>
+                <div class="text-danger" *ngIf="description.touched">
+                    <div *ngIf="description.errors?.['required']">Enter objective</div>
+                    <div *ngIf="description.errors?.['maxlength']">maximum 150 characters</div>
+                </div>
+                <label for="startdate">Start Date:</label>
+                <input type="date" [(ngModel)]="model.start" #start="ngModel">
+                <label for="Enddate">End Date:</label>
+                <input type="date" [(ngModel)]="model.end" #end="ngModel">
+                <button value="submit" class="btn btn-success w-100 my-3 rounded-5">SAVE</button>
+            </div>
+        </form>
+    </div>
+    <div class="rightside">
+        <img src="../../../assets/img/Mimage.png" alt="an image">
+    </div>
+</main>
