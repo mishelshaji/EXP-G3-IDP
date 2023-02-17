@@ -1,3 +1,4 @@
+using idp.Service.Services;
 using Idp.Service.Data;
 using Idp.Service.Services;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 
 builder.Services.AddScoped<EmployeeServices>();
 builder.Services.AddScoped<ObjectiveActionServices>();
-
+builder.Services.AddScoped<IdpService>();
 
 var app = builder.Build();
 
