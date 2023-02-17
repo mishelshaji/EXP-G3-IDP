@@ -60,6 +60,8 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddScoped<ObjectiveActionServices>();
 builder.Services.AddScoped<AccountsService>();
+builder.Services.AddScoped<ManagerService>();
+
 
 var app = builder.Build();
 

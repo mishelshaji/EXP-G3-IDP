@@ -78,5 +78,7 @@ namespace Idp.Service.Data
         public DbSet<ObjectiveAction> ObjectiveActions { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        public DbSet<Manager> Managers { get; set; }
     }
 }

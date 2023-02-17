@@ -46,7 +46,7 @@ namespace Idp.Service.Services
                 Department = dto.Department,
                 Designation = dto.Designation,
                 Dob = dto.Dob,
-                //ManagerId = dto.ManagerId,
+                ManagerId = dto.ManagerId,
                 EmployeeId = dto.EmployeeId,
                 UserName = Guid.NewGuid().ToString()
             };
