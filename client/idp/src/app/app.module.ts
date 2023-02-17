@@ -11,6 +11,9 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
 import { NavbarManagerComponent } from './shared/navbar-manager/navbar-manager.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenHelper } from 'src/utilities/helpers/tokenHelper';
+import { TokenInterceptor } from 'src/utilities/interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,9 +29,13 @@ import { NavbarManagerComponent } from './shared/navbar-manager/navbar-manager.c
     FooterComponent,
     FontAwesomeModule,
     NgCircleProgressModule.forRoot(),
-    NgChartsModule
+    NgChartsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+      TokenHelper,
+      { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

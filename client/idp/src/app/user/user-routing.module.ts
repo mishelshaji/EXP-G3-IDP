@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddActionComponent } from './add-action/add-action.component';
 import { AddTrainingComponent } from './add-training/add-training.component';
 import { ForgotComponent } from './forgot/forgot.component';
-import { ObjectiveDetailedComponent } from '../shared/objective-detailed/objective-detailed.component';
 import { ObjectivesComponent } from '../shared/objectives/objectives.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateObjectiveComponent } from './create-objective/create-objective.component';
@@ -20,7 +19,7 @@ const routes: Routes = [
       { path: 'objective-detailed', component: ObjectiveDetailedComponent },
       { path: 'idp', component: ShowAllIdpComponent },
       { path: 'objectives', component: ObjectivesComponent },
-      { path: 'profile', component: ProfileComponent }
+      { path: 'profile', component: ProfileComponent },
       { path: 'signin', component: SigninComponent },
       { path: 'forgot-password', component: ForgotComponent },
       { path: 'add-training', component: AddTrainingComponent },

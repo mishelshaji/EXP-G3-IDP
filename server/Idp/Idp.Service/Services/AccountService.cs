@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -94,13 +95,38 @@ namespace Idp.Service.Services
             return response;
         }
 
+        public async Task<ProfileViewDto> GetProfileAsync(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return null;
+            }
+
+            return new ProfileViewDto
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Department = user.Department,
+                Designation = user.Designation,
+                EmployeeId = user.EmployeeId
+            };
+        }
 
         private string GenerateToken(ApplicationUser user)
         {
+            var role = _userManager.GetRolesAsync(user)
+            .GetAwaiter()
+            .GetResult()
+            .First();
+
             var claims = new Claim[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
-                new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}")
+                new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
+                new Claim(ClaimTypes.Role, role)
             };
 
             string issuer = _configuration["Jwt:Issuer"];
