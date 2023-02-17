@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddActionComponent } from './add-action/add-action.component';
 import { AddTrainingComponent } from './add-training/add-training.component';
 import { ForgotComponent } from './forgot/forgot.component';
+import { ObjectiveDetailedComponent } from '../shared/objective-detailed/objective-detailed.component';
+import { CreateObjectiveComponent } from './create-objective/create-objective.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SigninComponent } from './signin/signin.component';
 import { ObjectiveDetailedComponent } from '../shared/objective-detailed/objective-detailed.component';
@@ -19,7 +21,8 @@ const routes: Routes = [
       { path: 'add-action', component: AddActionComponent},
       { path: 'home', component: HomepageComponent },
       { path: 'objective-detailed', component: ObjectiveDetailedComponent },
-      { path: 'idp', component: ShowAllIdpComponent }
+      { path: 'idp', component: ShowAllIdpComponent },
+      { path: 'objective', component: CreateObjectiveComponent }
     ]
   }
 ];

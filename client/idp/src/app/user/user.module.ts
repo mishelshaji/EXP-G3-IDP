@@ -15,6 +15,7 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { AddTrainingComponent } from './add-training/add-training.component';
 import { AddActionComponent } from './add-action/add-action.component';
 import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
+import { CreateObjectiveComponent } from './create-objective/create-objective.component';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
         AddTrainingComponent,
         AddActionComponent,
         ShowAllIdpComponent,
+        CreateObjectiveComponent,
     ],
     imports: [
         CommonModule,
