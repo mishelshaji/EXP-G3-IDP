@@ -19,5 +19,7 @@ namespace Idp.Service.Data
 
         public DbSet<ObjectiveAction> ObjectiveActions { get; set; }
 
+        public DbSet<Training> Trainings { get; set; }
+
     }
 }
