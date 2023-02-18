@@ -3,36 +3,32 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Idp.WebApp.Areas.Admin.Controllers
 {
-    public class ObjectiveActionController : UserControllerBase
+    public class ObjectiveActionController : AdminControllerBase
     {
-        private readonly ObjectiveActionServices _services;
+        private readonly ObjectiveActionServices _service;
 
         public ObjectiveActionController(ObjectiveActionServices services)
         {
-            this._services = services;
+            this._service = services;
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(ViewEmployeeDto[]), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ViewActionDto[]), StatusCodes.Status200OK)]
         public async Task<ActionResult> GetAllAsync()
         {
-            var result = await _services.GetAllAsync();
+            var result = await _service.GetAllAsync();
             return Ok(result);
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(ViewEmployeeDto[]), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ViewActionDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> GetAsync(int id)
         {
-            var result = await _services.GetByIdAsync(id);
-            return Ok(result);
-        }
+            var result = await _service.GetByIdAsync(id);
+            if (result == null)
+                return NotFound();
 
-        [HttpPost]
-        public async Task<ActionResult> Post(AddActionDto dto)
-        {
-            var result = await _services.CreateAsync(dto);
             return Ok(result);
         }
     }

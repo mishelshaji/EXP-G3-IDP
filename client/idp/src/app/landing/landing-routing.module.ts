@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LandingLayoutComponent } from './landing-layout/landing-layout.component';
 import { LobbyComponent } from './lobby/lobby.component';
 
 const routes: Routes = [
-  { path: '', component: LobbyComponent }
+  { path: '', component: LandingLayoutComponent, children: [
+    {path: '', component: LobbyComponent}
+  ] }
 ];
 
 @NgModule({

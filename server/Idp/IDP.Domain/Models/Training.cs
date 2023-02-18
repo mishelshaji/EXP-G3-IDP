@@ -11,10 +11,10 @@ namespace Idp.Domain.Models
         public int Id { get; set; }
 
         [StringLength(50)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [StringLength(50)]
-        public string Link { get; set; }
+        public string? Link { get; set; }
 
         public int Progress { get; set; }
 
@@ -22,10 +22,16 @@ namespace Idp.Domain.Models
 
         public DateTime EndDate { get; set; }
 
-        public int UserId { get; set; }
+        [ForeignKey(nameof(Idp))]
 
         public int IdpId { get; set; }
 
+        public Idp Idp { get; set; }
+
+        [ForeignKey(nameof(Objective))]
+
         public int ObjectiveId { get; set; }
+
+        public Objective Objective { get; set; }
     }
 }

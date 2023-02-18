@@ -5,12 +5,14 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { GetReportComponent } from './get-report/get-report.component';
 
 
 @NgModule({
   declarations: [
     RegistrationComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    GetReportComponent
   ],
   imports: [
     CommonModule,

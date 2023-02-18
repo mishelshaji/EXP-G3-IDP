@@ -1,5 +1,8 @@
 <section>
-    <h5 class="text-secondary mt-3">Training Items</h5>
+    <div class="d-flex m-3">
+        <h5 class="text-secondary">Training Item</h5>
+        <button class="btn btn-outline-dark rounded-4 ms-auto h-25">Create new</button>
+    </div>
     <hr>
     <div class="d-flex justify-content-center">
         <div class="scroll">
@@ -16,8 +19,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody id="target" *ngFor="let item of list">
-                    <tr>
+                <tbody>
                     <tr *ngFor="let training of trainings">
                         <td>{{training.Id}}</td>
                         <td>{{training.Name}}</td>
@@ -37,7 +39,10 @@
             </table>
         </div>
     </div>
-    <h5 class="text-secondary mt-3">Action items</h5>
+    <div class="d-flex m-3">
+        <h5 class="text-secondary">Action items</h5>
+        <button class="btn btn-outline-dark rounded-4 ms-auto h-25">Create new</button>
+    </div>
     <hr>
     <div class="d-flex justify-content-center mb-5">
         <div class="scroll">
@@ -64,10 +69,26 @@
                         <td>Certificate</td>
                         <td>Progress</td>
                         <td>
-                            <button class="btn btn-warning">
+                            <button class="btn btn-warning" (click)="editProgress()">
+                                <span class="fa fa-eye"></span>
+                                Edit
+                            </button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="edit" class="text-dark">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Progress:</td>
+                        <td><input type="text" id="training-progress"></td>
+                        <td>
+                            <button class="btn btn-warning" (click)="submitProgress()">
                                 <span class="fa fa-eye"></span>
                                 Update
                             </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

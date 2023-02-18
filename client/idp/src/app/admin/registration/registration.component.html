@@ -1,7 +1,7 @@
 <main class="row d-flex">
     <img src="assets/images/girl-laptop2.jpg" alt="registration image" class="col-lg-7">
-    <div class="col-lg-5 d-flex flex-column justify-content-center">
-        <div class="w-100 pb-5 container border rounded-5 shadow" id="registration">
+    <div class="col-lg-5 d-flex flex-column justify-content-center mt-3 mb-3">
+        <form class="w-100 pb-5 container border rounded-5 shadow" id="registration">
             <h2 class="mb-3 mt-5">User Registration</h2>
             <div class="d-flex align-items-center mb-3">
                 <label for="firstName" class="me-3 w-50">FirstName:</label>
@@ -40,6 +40,10 @@
                 <input type="text" class="form-control" id="department">
             </div>
             <div class="d-flex align-items-center mb-3">
+                <label for="managerId" class="me-3">Employee ID:</label>
+                <input type="text" class="form-control" id="managerId">
+            </div>
+            <div class="d-flex align-items-center mb-3">
                 <label for="managerId" class="me-3">Manager ID:</label>
                 <input type="text" class="form-control" id="managerId">
             </div>
@@ -57,6 +61,6 @@
             <div class="w-100 d-flex justify-content-center mt-3">
                 <button class="btn btn-outline-dark w-25 rounded-4 ms-5">Register</button>
             </div>
-        </div>
+        </form>
     </div>
 </main>
