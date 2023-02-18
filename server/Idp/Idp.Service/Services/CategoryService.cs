@@ -36,5 +36,23 @@ namespace Idp.Service.Services
                 
             };
         }
+        public async Task<CategoryViewDto> CreateAsync(CategoryCreateDto dto)
+        {
+            var category = new Category
+            {
+                Name = dto.Name,
+                
+            };
+
+            _db.Categories.Add(category);
+            await _db.SaveChangesAsync();
+
+            return new CategoryViewDto
+            {
+                Id = category.Id,
+                Name = category.Name,
+                
+            };
+        }
     }
 }
