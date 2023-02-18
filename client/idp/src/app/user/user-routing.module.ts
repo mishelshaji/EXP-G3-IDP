@@ -9,7 +9,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { CreateObjectiveComponent } from './create-objective/create-objective.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SigninComponent } from './signin/signin.component';
-import { ObjectiveDetailedComponent } from '../shared/objective-detailed/objective-detailed.component';
 import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
 
@@ -20,7 +19,7 @@ const routes: Routes = [
       { path: 'objective-detailed', component: ObjectiveDetailedComponent },
       { path: 'idp', component: ShowAllIdpComponent },
       { path: 'objectives', component: ObjectivesComponent },
-      { path: 'profile', component: ProfileComponent }
+      { path: 'profile', component: ProfileComponent },
       { path: 'signin', component: SigninComponent },
       { path: 'forgot-password', component: ForgotComponent },
       { path: 'add-training', component: AddTrainingComponent },
