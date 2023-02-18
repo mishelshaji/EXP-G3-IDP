@@ -9,7 +9,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { CreateObjectiveComponent } from './create-objective/create-objective.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SigninComponent } from './signin/signin.component';
-import { ObjectiveDetailedComponent } from '../shared/objective-detailed/objective-detailed.component';
 import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
 

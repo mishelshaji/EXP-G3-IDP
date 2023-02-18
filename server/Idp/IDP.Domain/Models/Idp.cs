@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Idp.Domain.Models
 {
-    public class Idp
+    public class IDP
     {
         public int Id { get; set; }
 
