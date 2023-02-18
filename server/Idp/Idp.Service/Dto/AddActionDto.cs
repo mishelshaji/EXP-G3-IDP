@@ -20,5 +20,9 @@ namespace Idp.Service.Dto
 
         public string? Certificate { get; set; }
 
+        public int ObjectiveId { get; set; }
+
+        public int IdpId { get; set;}
+
     }
 }

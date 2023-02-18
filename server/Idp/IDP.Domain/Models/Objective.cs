@@ -11,13 +11,15 @@ namespace Idp.Domain.Models
         public int Id { get; set; }
 
         [StringLength(200)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
-        public int CategoryId { get; set; }
+        public string? Category { get; set; }
+
+        [ForeignKey(nameof(Idp))]
 
         public int IdpId { get; set; }
 
-        public int UserId { get; set; }
+        public Idp Idp { get; set; }
 
         public bool Status { get; set; }
 

@@ -11,13 +11,13 @@ namespace Idp.Domain.Models
         public int Id { get; set; }
 
         [StringLength(50)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [StringLength(50)]
-        public string Certificate { get; set; }
+        public string? Certificate { get; set; }
 
         [StringLength(250)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         public DateTime StartDate { get; set; }
 
@@ -27,8 +27,17 @@ namespace Idp.Domain.Models
 
         public int UserId { get; set; }
 
+        [ForeignKey(nameof(Objective))]
+
         public int ObjectiveId { get; set; }
 
+        public Objective? Objective { get; set; }
+
+        [ForeignKey(nameof(Idp))]
+
         public int IdpId { get; set; }
+
+        public Idp Idp { get; set; }
+
     }
 }

@@ -20,6 +20,8 @@ export class CurrentProgressComponent {
 
   }
 
+  idpName: string[] = ['.Net expert', 'Expert in Angular', '.Net advanced', 'node expert', 'become good at preesentation'];
+
   ngOnInit() {
     this.trainingItem = this.trainingService.getAll();
     this.trainingItem.forEach(element => {
@@ -28,12 +30,10 @@ export class CurrentProgressComponent {
     })
   }
 
-  
-
   data = {
-    labels: this.trainingName,
+    labels: this.idpName,
     datasets: [{
-      label: 'Objective progress',
+      label: 'IDP progress',
       data: this.trainingProgress,
       borderWidth: 2,
       borderColor: '#A162F7',

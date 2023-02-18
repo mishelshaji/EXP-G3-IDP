@@ -1,0 +1,55 @@
+main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.leftside {
+    flex-basis: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem;
+    background-color: #eee;
+}
+
+.rightside {
+    flex-basis: 60%;
+    height: 100%;
+    background-color: #eee;
+}
+
+.rightside img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+
+}
+
+.holder {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 0.5rem;
+}
+
+@media only screen and (max-width:900px) {
+    .leftside {
+        flex-basis: 100%;
+    }
+
+    .rightside {
+        display: none;
+    }
+}

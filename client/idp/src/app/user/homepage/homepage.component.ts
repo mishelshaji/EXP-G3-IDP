@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 import { IdpService } from 'src/app/service/idp.service';
 
@@ -8,7 +9,7 @@ import { IdpService } from 'src/app/service/idp.service';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent {
-  @ViewChild('year') year: string = `2023`;
+  @ViewChild('year') year: number = 2023;
 
   idpFetchYear: number[] = [];
   selectedIdp: number = new Date().getFullYear();
@@ -19,10 +20,10 @@ export class HomepageComponent {
   idpItem: any[] = [];
 
   ngAfterViewInit() {
-    this.year = `2023`;
+    this.year = 2023;
   }
 
-  constructor(private idpService: IdpService) {
+  constructor(private _router: Router, private idpService: IdpService) {
 
   }
 
@@ -35,6 +36,10 @@ export class HomepageComponent {
 
   setIdp(item: number) {
     this.selectedIdp = item;
+  }
+
+  createIdp() {
+    this._router.navigate(['/user/idp'])
   }
 
   model = {

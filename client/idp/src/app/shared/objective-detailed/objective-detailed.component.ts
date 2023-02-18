@@ -10,4 +10,13 @@ import { CommonModule } from '@angular/common';
 })
 export class ObjectiveDetailedComponent {
   list: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3];
+  edit: boolean = false;
+
+  editProgress() {
+    this.edit = true;
+  }
+
+  submitProgress() {
+    this.edit = false
+  }
 }

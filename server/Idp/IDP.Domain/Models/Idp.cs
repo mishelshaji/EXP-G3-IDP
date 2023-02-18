@@ -13,6 +13,10 @@ namespace Idp.Domain.Models
         [StringLength(200)]
         public string? Name { get; set; }
 
-        public DateTime Year { get; set; }
+        [ForeignKey(nameof(Year))]
+
+        public int YearId { get; set; }
+
+        public Year Year { get; set; }
     }
 }

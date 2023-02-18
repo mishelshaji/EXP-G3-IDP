@@ -5,7 +5,7 @@ namespace Idp.WebApp.Areas.User.Controllers
     [Area("User")]
     [Route("api/[area]/[controller]")]
     [ApiController]
-    public class ManagerControllerBase : ControllerBase
+    public class UserControllerBase : ControllerBase
     {
     }
 }
