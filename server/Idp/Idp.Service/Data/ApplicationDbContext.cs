@@ -75,8 +75,8 @@ namespace Idp.Service.Data
 
         }
 
-
         public DbSet<ObjectiveAction> ObjectiveActions { get; set; }
+
         public DbSet<IDP> Idps { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }

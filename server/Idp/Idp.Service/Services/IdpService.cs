@@ -16,6 +16,7 @@ namespace idp.Service.Services
         {
             _db = db;
         }
+
         public async Task<IdpViewDto> AddIdpAsync(CreateIdpDto dto)
         {
             var result = new IDP
