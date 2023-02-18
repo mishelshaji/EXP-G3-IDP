@@ -21,7 +21,6 @@ export class CurrentProgressComponent {
   }
 
   ngOnInit() {
-    this.trainingItem = this.trainingService.getAll();
     this.trainingItem.forEach(element => {
       this.trainingName.push(element.name);
       this.trainingProgress.push(element.progress);

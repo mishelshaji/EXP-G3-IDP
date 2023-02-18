@@ -18,18 +18,20 @@
                 </thead>
                 <tbody id="target" *ngFor="let item of list">
                     <tr>
-                        <td>1</td>
-                        <td>item</td>
-                        <td>Description</td>
-                        <td>Start Date</td>
-                        <td>End Date</td>
-                        <td>URL</td>
-                        <td>Progress</td>
-                        <td>
-                            <button class="btn btn-warning">
-                                <span class="fa fa-eye"></span>
-                                Update
-                            </button>
+                    <tr *ngFor="let training of trainings">
+                        <td>{{training.Id}}</td>
+                        <td>{{training.Name}}</td>
+                        <td>{{training.Link}}</td>
+                        <td>{{training.Progress}}</td>
+                        <td>{{training.StartDate}}</td>
+                        <td>{{training.EndDate}}</td>
+                        <td>{{training.UserId}}</td>
+                        <td>{{training.IdpId}}</td>
+                        <td>{{training.ObjectiveId}}</td>
+                        <button class="btn btn-warning">
+                            <span class="fa fa-eye"></span>
+                            Update
+                        </button>
                     </tr>
                 </tbody>
             </table>
