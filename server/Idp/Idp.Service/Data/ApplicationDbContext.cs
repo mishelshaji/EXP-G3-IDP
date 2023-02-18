@@ -84,5 +84,6 @@ namespace Idp.Service.Data
         public DbSet<Category> Categories { get; set; }
 
 
+        public DbSet<Training> Trainings { get; set; }
     }
 }
