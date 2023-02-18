@@ -20,6 +20,10 @@ namespace Idp.Service.Dto
 
         public int EmployeeId { get; set; }
 
+        public string Gender { get; set; }
+
+        public DateTime Dob { get; set; }
+
 
         public string PhoneNumber { get; set; }
     }

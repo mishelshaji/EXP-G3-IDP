@@ -12,11 +12,11 @@ export class AccountsService {
 
     }
 
-    login(model: LoginDto){
+    login(model: LoginDto) {
         return this.http.post(this.url + "/login", model);
     }
 
-    getProfile(){
+    getProfile() {
         return this.http.get(this.url + "/profile");
     }
 }

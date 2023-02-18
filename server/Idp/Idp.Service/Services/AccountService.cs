@@ -111,7 +111,9 @@ namespace Idp.Service.Services
                 PhoneNumber = user.PhoneNumber,
                 Department = user.Department,
                 Designation = user.Designation,
-                EmployeeId = user.EmployeeId
+                EmployeeId = user.EmployeeId,
+                Dob = user.Dob,
+                Gender = user.Gender,
             };
         }
 
