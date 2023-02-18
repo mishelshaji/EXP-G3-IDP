@@ -24,7 +24,6 @@ namespace Idp.Service.Dto
 
         public DateTime Dob { get; set; }
 
-
         public string PhoneNumber { get; set; }
     }
 }

@@ -38,7 +38,6 @@ namespace Idp.WebApp.Areas.Admin.Controllers
         {
             var result = await _service.CreateAsync(dto);
             return Ok(result);
-            //return CreatedAtAction(nameof(GetAsync), new { id = result.Id }, result);
         }
     }
 }

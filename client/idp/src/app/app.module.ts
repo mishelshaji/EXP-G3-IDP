@@ -29,7 +29,7 @@ import { TokenInterceptor } from 'src/utilities/interceptors/token.interceptor';
     FontAwesomeModule,
     NgCircleProgressModule.forRoot(),
     NgChartsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
       TokenHelper,

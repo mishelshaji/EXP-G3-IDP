@@ -43,6 +43,7 @@ namespace Idp.WebApp.Areas.User.Controllers
 
         [Authorize(Roles = "User")]
         [HttpGet("profile")]
+        [ProducesResponseType(typeof(ViewActionDto[]), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetProfile()
         {
             var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
