@@ -1,5 +1,6 @@
 using Idp.Domain.Models;
 using Idp.Service.Data;
+using Idp.Service.Service;
 using Idp.Service.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -60,6 +61,8 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddScoped<ObjectiveActionServices>();
 builder.Services.AddScoped<AccountsService>();
+builder.Services.AddScoped<ObjectiveService>();
+builder.Services.AddScoped<CategoryService>();
 
 var app = builder.Build();
 

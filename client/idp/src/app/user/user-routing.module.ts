@@ -20,7 +20,7 @@ const routes: Routes = [
       { path: 'objective-detailed', component: ObjectiveDetailedComponent },
       { path: 'idp', component: ShowAllIdpComponent },
       { path: 'objectives', component: ObjectivesComponent },
-      { path: 'profile', component: ProfileComponent }
+      { path: 'profile', component: ProfileComponent },
       { path: 'signin', component: SigninComponent },
       { path: 'forgot-password', component: ForgotComponent },
       { path: 'add-training', component: AddTrainingComponent },
