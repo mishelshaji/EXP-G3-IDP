@@ -18,6 +18,7 @@ namespace IDP.Service.Services
         {
             _db = db;
         }
+
         public async Task<List<TrainingViewDto>> GetAllAsync()
         {
             return await _db.Trainings
@@ -34,6 +35,7 @@ namespace IDP.Service.Services
                     ObjectiveId = c.ObjectiveId,
                 }).ToListAsync();
         }
+
         public async Task<TrainingViewDto> CreateAsync(TrainingCreateDto dto)
         {
             var Training = new Training
@@ -61,6 +63,7 @@ namespace IDP.Service.Services
             };
 
         }
+        
         public async Task<TrainingViewDto?> GetByIdAsync(int id)
         {
             Training? training = await _db.Trainings.FindAsync(id);
