@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Idp.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -74,9 +75,11 @@ namespace Idp.Service.Data
 
         }
 
-
         public DbSet<ObjectiveAction> ObjectiveActions { get; set; }
 
+        public DbSet<IDP> Idps { get; set; }
+
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Training> Trainings { get; set; }
     }
 }
