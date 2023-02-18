@@ -17,6 +17,7 @@ namespace idp.WebApp.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(IdpViewDto), StatusCodes.Status200OK)]
         public async Task<ActionResult> Post(CreateIdpDto dto)
         {
             var result = await _service.AddIdpAsync(dto);
@@ -24,6 +25,7 @@ namespace idp.WebApp.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(typeof(IdpViewDto), StatusCodes.Status200OK)]
         public async Task<ActionResult> GetIdp()
         {
             var result = await _service.GetIdpAsync();
@@ -32,10 +34,12 @@ namespace idp.WebApp.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(IdpViewDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
         public async Task<ActionResult> GetById(string id)
         {
             var result = await _service.GetByIdAsync(id);
-            return Ok(result);
+            return result == null ? NotFound() : Ok(result);
 
         }
     }

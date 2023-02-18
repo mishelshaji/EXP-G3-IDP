@@ -1,6 +1,4 @@
-﻿using idp.Domain.Models;
-using idp.Service.Data;
-using idp.Service.Dto;
+﻿using idp.Service.Dto;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,18 +18,20 @@ namespace idp.Service.Services
         }
         public async Task<IdpViewDto> AddIdpAsync(CreateIdpDto dto)
         {
-            var result = new Idp
+            var result = new IDP
             {
                 Name = dto.Name,
                 Year = dto.Year
             };
+
             _db.Idps.Add(result);
             await _db.SaveChangesAsync();
+
             return new IdpViewDto
             {
                 Id = result.Id,
-                Name= result.Name,
-                Year= result.Year
+                Name = result.Name,
+                Year = result.Year
             };
         }
 
@@ -49,7 +49,7 @@ namespace idp.Service.Services
         public async Task<IdpViewDto?> GetByIdAsync(string id)
         {
             var id1 = Convert.ToInt32(id);
-            Idp? idp = await _db.Idps.FindAsync(id1);
+            IDP? idp = await _db.Idps.FindAsync(id1);
             return idp == null ? null : new IdpViewDto
             {
                 Id = idp.Id,

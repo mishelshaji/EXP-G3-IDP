@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Idp.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Idp.Domain.Models;
 
 namespace Idp.Service.Data
 {
@@ -18,6 +18,7 @@ namespace Idp.Service.Data
         public DbSet<Employee> Employees { get; set; }
 
         public DbSet<ObjectiveAction> ObjectiveActions { get; set; }
+        public DbSet<IDP> Idps { get; set; }
 
     }
 }
