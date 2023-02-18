@@ -80,5 +80,6 @@ namespace Idp.Service.Data
         public DbSet<IDP> Idps { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Training> Trainings { get; set; }
     }
 }
