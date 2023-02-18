@@ -19,7 +19,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody id="target" *ngFor="let item of list">
+                <tbody id="target" *ngFor="let item of action">
                     <tr>
                         <td>1</td>
                         <td>item</td>
@@ -74,7 +74,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody id="target" *ngFor="let item of list">
+                <tbody id="target" *ngFor="let item of action">
                     <tr>
                         <td>1</td>
                         <td>item</td>
@@ -91,7 +91,7 @@
                         </td>
                     </tr>
                     <tr *ngIf="edit" class="text-dark">
-                        <td></td>
+                        <td>{{action}}</td>
                         <td></td>
                         <td></td>
                         <td></td>

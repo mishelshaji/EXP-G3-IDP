@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActionService } from 'src/app/service/action.service';
 
 @Component({
   selector: 'app-objective-detailed',
@@ -9,7 +10,6 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./objective-detailed.component.css']
 })
 export class ObjectiveDetailedComponent {
-  list: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3];
   edit: boolean = false;
 
   editProgress() {
@@ -19,4 +19,36 @@ export class ObjectiveDetailedComponent {
   submitProgress() {
     this.edit = false
   }
+
+    /**
+   * This is the list of action that will be displayed in the UI.
+   * It will be initialized in the ngOnInit method. The default value is null.
+   */
+    action: ActionViewDto[] | null = null;
+
+
+    /**
+     * @param service This is the instance of ActionService that will be used to
+     */
+    constructor(private service: ActionService) {
+  
+    }
+  
+    /**
+     * This method will be called when the component is initialized. It will
+     * fetch the list of action from the server. The list will be stored
+     * in the action property. If the server returns an error, an alert
+     * will be displayed to the user.
+     */
+    ngOnInit() {
+      this.service.getAll().subscribe({
+        next: (data: ActionViewDto[] | null) => {
+          this.action = data;
+          console.log(this.action);
+        },
+        error: () => {
+          alert("Loading action failed. Please try again later.");
+        }
+      })
+    }
 }

@@ -10,7 +10,7 @@ export class UserUploadComponent {
 
   formData = new FormData();
 
-  constructor(private employee: EmployeeService){}
+  constructor(private employee: EmployeeService) { }
 
   fileSelected(e: any) {
     const file: File = e.target.files[0];
@@ -19,11 +19,11 @@ export class UserUploadComponent {
     }
   }
 
-  uploadFile(){
+  uploadFile() {
     this.employee.create(this.formData).subscribe({
       next: () => {
         alert("Employees added successfully");
-    },
+      },
     })
   }
 }

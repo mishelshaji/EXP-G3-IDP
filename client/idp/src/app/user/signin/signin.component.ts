@@ -25,7 +25,6 @@ export class SigninComponent {
         this.tokenHelper.setToken(response.result);
         this.router.navigateByUrl('/user/profile');
         console.log(response.result);
-        
       }
     })
   }
