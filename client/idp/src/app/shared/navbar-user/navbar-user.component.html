@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-sm navbar-dark secondary">
+    <div class="container me-2">
+        <a class="navbar-brand ms-4" [routerLink]="['/']">IDP</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <button class="btn nav-link" [routerLink]="['/user/']">Home</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn nav-link" (click)="createIdp()">Create IDP</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn nav-link" [routerLink]="['/user/idp']">Show IDP</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn nav-link" [routerLink]="['/contact']">Contact</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn nav-link" [routerLink]="['/about']">About</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn nav-link" [routerLink]="['']">Logout</button>
+                </li>
+                <li class="nav-item">
+                    <img src="/assets/images/elon-musk.jpg" alt="..." class="rounded-circle border border-2"
+                        width="50px">
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

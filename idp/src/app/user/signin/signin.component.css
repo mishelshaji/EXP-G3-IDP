@@ -1,0 +1,10 @@
+.container {
+    background-color: hsla(208, 52%, 94%, 0.594);
+    height: 92.5vh;
+    width: 30vw;
+}
+
+#intro {
+    background-image: url("/assets/images/pic7.jpg");
+    background-size: cover;
+}
