@@ -1,7 +1,4 @@
-﻿using CartSharp.Domain.Types;
-using IDP.Domain.Models;
-using IDP.Service.Data;
-using IDP.Service.Dto;
+﻿using IDP.Service.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +9,9 @@ namespace IDP.Service.Services
 {
     public class TrainingService
     {
-        private readonly ApplicationDBContext _db;
+        private readonly ApplicationDbContext _db;
 
-        public TrainingService(ApplicationDBContext db)
+        public TrainingService(ApplicationDbContext db)
         {
             _db = db;
         }
@@ -29,8 +26,6 @@ namespace IDP.Service.Services
                     Progress = c.Progress,
                     StartDate = c.StartDate,
                     EndDate = c.EndDate,
-                    UserId = c.UserId,
-                    IdpId = c.IdpId,
                     ObjectiveId = c.ObjectiveId,
                 }).ToListAsync();
         }
@@ -43,7 +38,6 @@ namespace IDP.Service.Services
                 Progress = dto.Progress,
                 StartDate = dto.StartDate,
                 EndDate = dto.EndDate,
-                UserId = dto.UserId,
                 ObjectiveId = dto.ObjectiveId,
             };
             _db.Trainings.Add(Training);
@@ -56,7 +50,6 @@ namespace IDP.Service.Services
                 Progress = Training.Progress,
                 StartDate = Training.StartDate,
                 EndDate = Training.EndDate,
-                UserId = Training.UserId,
                 ObjectiveId = Training.ObjectiveId,
             };
 
@@ -72,7 +65,6 @@ namespace IDP.Service.Services
                 Progress = training.Progress,
                 StartDate = training.StartDate,
                 EndDate = training.EndDate,
-                UserId = training.UserId,
                 ObjectiveId = training.ObjectiveId,
 
             };
@@ -99,7 +91,6 @@ namespace IDP.Service.Services
             category.Progress = dto.Progress;
             category.StartDate = dto.StartDate;
             category.EndDate = dto.EndDate;
-            category.UserId = dto.UserId;
             category.ObjectiveId = dto.ObjectiveId;
             await _db.SaveChangesAsync();
 

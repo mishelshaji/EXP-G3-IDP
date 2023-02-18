@@ -1,5 +1,4 @@
-﻿using IDP.Domain.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Intrinsics.X86;
@@ -31,8 +30,6 @@ namespace IDP.Service.Dto
             Progress = training.Progress;
             StartDate = training.StartDate;
             EndDate = training.EndDate;
-            UserId = training.UserId;
-            IdpId = training.IdpId;
             ObjectiveId = training.ObjectiveId;
 
         }
