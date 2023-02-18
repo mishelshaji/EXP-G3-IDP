@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Idp.Domain.Models
+namespace idp.Service.Dto
 {
-    public class IDP
+    public class IdpViewDto
     {
         public int Id { get; set; }
 
-        [StringLength(200)]
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         public DateTime Year { get; set; }
     }
