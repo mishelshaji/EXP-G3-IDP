@@ -18,13 +18,13 @@ const routes: Routes = [
       import('./admin/admin.module').then((m) => m.AdminModule),
   },
   {
-    path: '**',
-    component: NotfoundComponent,
-  },
-  {
     path: '', 
     loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule)
   },
+  {
+    path: '**',
+    component: NotfoundComponent,
+  }
 ];
 
 @NgModule({

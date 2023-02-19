@@ -1,5 +1,8 @@
 ﻿using Idp.WebApp.Areas.User.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
+using System.Security.Claims;
 
 namespace Idp.WebApp.Areas.User.Controllers
 {
@@ -36,6 +39,16 @@ namespace Idp.WebApp.Areas.User.Controllers
                 return Ok(result);
 
             return BadRequest(result.Errors);
+        }
+
+        [Authorize(Roles = "User")]
+        [HttpGet("profile")]
+        [ProducesResponseType(typeof(ViewActionDto[]), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetProfile()
+        {
+            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _service.GetProfileAsync(id);
+            return user == null ? NotFound() : Ok(user);
         }
     }
 }

@@ -22,16 +22,8 @@ namespace Idp.Domain.Models
 
         public DateTime EndDate { get; set; }
 
-        [ForeignKey(nameof(Idp))]
-
-        public int IdpId { get; set; }
-
-        public Idp Idp { get; set; }
-
         [ForeignKey(nameof(Objective))]
-
         public int ObjectiveId { get; set; }
-
         public Objective Objective { get; set; }
     }
 }

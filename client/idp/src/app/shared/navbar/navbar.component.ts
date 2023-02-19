@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,9 +10,14 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  createIdp() {
-    var id: any = document.getElementById('idp');
-    id.style.display = id.style.display == 'block' ? 'none' : 'block';
+  constructor(
+    private router: Router) { }
+
+  navigateToLobby() {
+    this.router.navigate([''])
   }
 
+  navigateToSignin() {
+    this.router.navigate(['/signin'])
+  }
 }

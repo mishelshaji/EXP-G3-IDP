@@ -24,7 +24,9 @@ namespace Idp.Service.Dto
 
         public DateTime Dob { get; set; }
 
-        //public int ManagerId { get; set; }
+        public string Gender { get; set; }
+
+        public int ManagerId { get; set; }
 
         public int EmployeeId { get; set; }
     }

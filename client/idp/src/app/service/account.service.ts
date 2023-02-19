@@ -6,17 +6,17 @@ import { Injectable } from '@angular/core';
 })
 export class AccountsService {
 
-    url = "https://localhost:7036/api/accounts";
+    url = "https://localhost:7264/api/user/accounts";
 
     constructor(private http: HttpClient) {
 
     }
 
-    login(model: LoginDto){
+    login(model: LoginDto) {
         return this.http.post(this.url + "/login", model);
     }
 
-    getProfile(){
+    getProfile() {
         return this.http.get(this.url + "/profile");
     }
 }

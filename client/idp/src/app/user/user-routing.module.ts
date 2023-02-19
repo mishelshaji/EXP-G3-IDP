@@ -22,8 +22,6 @@ const routes: Routes = [
       { path: 'idp', component: ShowAllIdpComponent },
       { path: 'objectives', component: ObjectivesComponent },
       { path: 'profile', component: ProfileComponent },
-      { path: 'signin', component: SigninComponent },
-      { path: 'forgot-password', component: ForgotComponent },
       { path: 'add-training', component: AddTrainingComponent },
       { path: 'add-action', component: AddActionComponent },
       { path: 'home', component: HomepageComponent },

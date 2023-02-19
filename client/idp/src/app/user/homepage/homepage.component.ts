@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
-import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IdpService } from 'src/app/service/idp.service';
+import { ProfileService } from 'src/app/service/profile.service';
 
 @Component({
   selector: 'app-homepage',
@@ -9,41 +9,56 @@ import { IdpService } from 'src/app/service/idp.service';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent {
-  @ViewChild('year') year: number = 2023;
-
-  idpFetchYear: number[] = [];
-  selectedIdp: number = new Date().getFullYear();
-  currentYear: number = new Date().getFullYear();
-  employeeId: number = 21010;
-  arrowRightIcon = faPlusSquare;
-  idpName: string = ``;
-  idpItem: any[] = [];
-
-  ngAfterViewInit() {
-    this.year = 2023;
+  
+  userId = {
+    id: ''
   }
 
-  constructor(private _router: Router, private idpService: IdpService) {
-
+  model: IdpCreateDto = {
+    name: '',
+    year: new Date(),
+    userId: this.userId.id
   }
 
-  ngOnInit() {
-    this.idpItem = this.idpService.getAll();
-    this.idpItem.forEach(element => {
-      this.idpFetchYear.push(element.year);
-    });
+  changeFunction(e:any) {
+    this.model.userId = this.userId.id;
+    this.model.name = 'IDP ' + 799 + ' ' + e;   
+    this.model.year = e;
   }
 
-  setIdp(item: number) {
-    this.selectedIdp = item;
+
+  idps: IdpViewDto[] | null = null;
+
+  constructor(
+    private idpService: IdpService,
+    private profileService: ProfileService,
+    private router: Router) { }
+
+  ngOnInit(): void {
+    this.profileService.get().subscribe({
+      next: (data) => {
+        this.userId = data;
+        console.log(this.userId.id);
+      },
+      error: () => {
+        console.log("Loading id failed. Please try again later.");        
+      }
+    })
   }
 
   createIdp() {
-    this._router.navigate(['/user/idp'])
+    this.idpService.create(this.model).subscribe({
+        next: () => {
+            alert("Idp created successfully");
+            return this.router.navigate(['user', 'idp']);
+        },
+        error: (error) => {
+            console.error(error);
+            console.log(this.model);
+            
+            alert("Error creating idp");
+        }
+    })
   }
 
-  model = {
-    name: '',
-    year: ''
-  };
 }

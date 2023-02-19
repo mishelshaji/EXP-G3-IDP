@@ -8,7 +8,7 @@ import { CurrentProgressComponent } from './shared/current-progress/current-prog
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgChartsModule } from 'ng2-charts';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SigninComponent } from './signin/signin.component';
+import { SigninComponent } from '../landing/signin/signin.component';
 import { FormsModule } from '@angular/forms';
 import { ForgotComponent } from './forgot/forgot.component';
 import { AddTrainingComponent } from './add-training/add-training.component';
@@ -18,6 +18,7 @@ import { ObjectivesComponent } from '../shared/objectives/objectives.component';
 import { NavbarUserComponent } from '../shared/navbar-user/navbar-user.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateObjectiveComponent } from './create-objective/create-objective.component';
+import { UserUploadComponent } from './user-upload/user-upload.component';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import { CreateObjectiveComponent } from './create-objective/create-objective.co
         ShowAllIdpComponent,
         ProfileComponent,
         CreateObjectiveComponent,
+        UserUploadComponent,
     ],
     imports: [
         CommonModule,

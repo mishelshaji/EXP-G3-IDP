@@ -1,14 +1,55 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { ObjectiveService } from 'src/app/service/objective.service';
 
 @Component({
   selector: 'app-objectives',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './objectives.component.html',
   styleUrls: ['./objectives.component.css']
 })
 export class ObjectivesComponent {
-  list: number[] = [1, 2, 3, 4, 5, 6, 7, 8]
+  
+    /**
+   * This is the list of objective that will be displayed in the UI.
+   * It will be initialized in the ngOnInit method. The default value is null.
+   */
+    objective:any = {
+      name: '',
+      description: '',
+      category: '',
+      startDate: '',
+      endDate: '',
+      categoryId: 0,
+      idpId: 0,
+      userId: '',
+    };
+
+
+    /**
+     * @param service This is the instance of objectiveService that will be used to
+     */
+    constructor(private service: ObjectiveService) {
+  
+    }
+  
+    /**
+     * This method will be called when the component is initialized. It will
+     * fetch the list of objective from the server. The list will be stored
+     * in the objective property. If the server returns an error, an alert
+     * will be displayed to the user.
+     */
+    ngOnInit() {
+      this.service.getAll().subscribe({
+        next: (data: ObjectiveViewDto[] | null) => {
+          this.objective = data;
+          console.log(this.objective);
+        },
+        error: () => {
+          alert("Loading objective failed. Please try again later.");
+        }
+      })
+    }
 }

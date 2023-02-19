@@ -4,33 +4,24 @@
         <div class="mb-5 d-flex align-items-center">
             <label for="year">Year</label>
             <div class="ms-3">
-                <input type="number" min="{{currentYear}}" max="2100" name="year" class="form-control input-field col"
-                    placeholder="{{currentYear}}" [(ngModel)]="model.name" #year="ngModel" (year)="year.value" required>
+                <input type="number" id="year" name="year" min="{{2023}}" max="2100" name="year"
+                    class="form-control input-field col" placeholder="{{2023}}" [(ngModel)]="model.year" #year="ngModel"
+                    (ngModelChange)="changeFunction($event)" required>
                 <div class="text-danger" *ngIf="year.invalid && year.touched">
-                    <div *ngIf="year.errors?.['min']">Year should be above {{currentYear}}</div>
+                    <div *ngIf="year.errors?.['min']">Year should be above {{23}}</div>
                     <div *ngIf="year.errors?.['required']">Year is required</div>
                     <div *ngIf="year.errors?.['max']">Year should be below 2100</div>
                 </div>
             </div>
-            <label for="year" class="ms-5 col">IDP name</label>
-            <input type="input" class="me-5 input-field col" value="IDP {{employeeId}} {{year.value}}" disabled="true">
+            <label for="name" class="ms-5 col">IDP name</label>
+            <input type="input" id="name" name="name" class="me-5 input-field col" value="{{model.name}}" disabled="true">
             <button class="btn btn-outline-secondary create-button d-flex align-items-center mt-3 ms-2 me-2 col"
                 type="button" [disabled]="form.invalid" (click)="createIdp()">
                 <span class="me-3 text-center col">Create</span>
-                <fa-icon [icon]="arrowRightIcon" class="fa-2x"></fa-icon>
+                <!-- <fa-icon [icon]="arrowRightIcon" class="fa-2x"></fa-icon> -->
             </button>
         </div>
     </form>
-</div>
-<div class="btn-group d-flex align-items-center mt-5 ms-5" id="selectIdp">
-    <label class="me-3">Idp:</label>
-    <input type="text" disabled class="form-control" value="{{selectedIdp}}">
-    <div class="btn-group" ngbDropdown role="group">
-        <button type="button" class="btn btn-outline-primary" ngbDropdownToggle>Select</button>
-        <div class="dropdown-menu" ngbDropdownMenu *ngFor="let item of idpFetchYear">
-            <button ngbDropdownItem (click)="setIdp(item)">{{item}}</button>
-        </div>
-    </div>
 </div>
 <hr class="mb-3 ms-5 me-5">
 <app-current-progress></app-current-progress>

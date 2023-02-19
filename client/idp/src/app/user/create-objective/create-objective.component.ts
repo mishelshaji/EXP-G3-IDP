@@ -7,8 +7,9 @@ import { Component } from '@angular/core';
 })
 export class CreateObjectiveComponent {
   model = {
+    name: '',
     description: '',
-    technical: '',
+    category: '',
     start: '',
     end: ''
   };

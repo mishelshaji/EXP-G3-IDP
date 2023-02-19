@@ -1,13 +1,12 @@
 ﻿using idp.Service.Dto;
 using idp.Service.Services;
+using Idp.WebApp.Areas.User.Controllers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace idp.WebApp.Controllers
+namespace Idp.WebApp.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class IdpController : ControllerBase
+    public class IdpController : UserControllerBase
     {
         private readonly IdpService _service;
 

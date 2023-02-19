@@ -19,10 +19,11 @@ namespace idp.Service.Services
 
         public async Task<IdpViewDto> AddIdpAsync(CreateIdpDto dto)
         {
-            var result = new IDP
+            var result = new IdpPlan
             {
                 Name = dto.Name,
-                Year = dto.Year
+                Year = dto.Year,
+                ApplicationUserId = dto.UserId
             };
 
             _db.Idps.Add(result);
@@ -32,7 +33,8 @@ namespace idp.Service.Services
             {
                 Id = result.Id,
                 Name = result.Name,
-                Year = result.Year
+                Year = result.Year,
+                UserId = result.ApplicationUserId
             };
         }
 
@@ -43,19 +45,21 @@ namespace idp.Service.Services
             {
                 Id = c.Id,
                 Name = c.Name,
-                Year = c.Year
+                Year = c.Year,
+                UserId = c.ApplicationUserId
             }).ToList();
         }
 
         public async Task<IdpViewDto?> GetByIdAsync(string id)
         {
             var id1 = Convert.ToInt32(id);
-            IDP? idp = await _db.Idps.FindAsync(id1);
+            IdpPlan? idp = await _db.Idps.FindAsync(id1);
             return idp == null ? null : new IdpViewDto
             {
                 Id = idp.Id,
                 Name = idp.Name,
-                Year = idp.Year
+                Year = idp.Year,
+                UserId = idp.ApplicationUserId 
             };
         }
     }

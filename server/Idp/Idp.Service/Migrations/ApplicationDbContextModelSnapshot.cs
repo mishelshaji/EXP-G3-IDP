@@ -201,9 +201,6 @@ namespace Idp.Service.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdpId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -217,12 +214,7 @@ namespace Idp.Service.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("IdpId");
 
                     b.HasIndex("ObjectiveId");
 
@@ -436,8 +428,6 @@ namespace Idp.Service.Migrations
                         .HasForeignKey("ObjectiveId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Idp");
 
                     b.Navigation("Objective");
                 });
