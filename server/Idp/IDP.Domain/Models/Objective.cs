@@ -17,7 +17,7 @@ namespace Idp.Domain.Models
 
         [ForeignKey(nameof(Idp))]
         public int IdpId { get; set; }
-        public Idp Idp { get; set; }
+        public IdpPlan Idp { get; set; }
 
         public bool Status { get; set; }
 

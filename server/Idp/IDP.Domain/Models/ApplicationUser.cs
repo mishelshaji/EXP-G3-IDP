@@ -21,7 +21,7 @@ namespace Idp.Domain.Models
 
         public string Designation { get; set; }
 
-        public string Gender { get; set; }
+        public string? Gender { get; set; }
 
         public DateTime Dob { get; set; }
 

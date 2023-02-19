@@ -1,24 +1,18 @@
-h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    color: rgb(22, 15, 15);
-    font-family: monospace;
-    width: 100%;
-    display: grid;
-    place-items: center;
-    border-bottom: 3px solid rgb(18, 29, 30);
-    background-color: rgb(224, 165, 78);
+.tile:hover {
+    box-shadow: 0px 10px 20px 10px hsla(0, 0%, 73%, 0.831);
 }
 
-.show {
-    font-size: 2rem;
-}
-
-.box {
+.scroll {
     width: 90vw;
-    height: 50vh;
+    height: 40vh;
+    overflow-y: auto;
+    text-align: justify;
 }
 
-h5 {
-    padding-left: 2%;
+p {
+    font-size: 10px;
+}
+
+thead {
+    background-color: #161830;
 }

@@ -1,6 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
-import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IdpService } from 'src/app/service/idp.service';
 
 @Component({
@@ -9,41 +8,65 @@ import { IdpService } from 'src/app/service/idp.service';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent {
-  @ViewChild('year') year: number = 2023;
+  // model: IdpCreateDto = {
+  //     name: '',
+  //     userId: 0,
+  //     year: new Date(),
+  // }
 
-  idpFetchYear: number[] = [];
-  selectedIdp: number = new Date().getFullYear();
-  currentYear: number = new Date().getFullYear();
-  employeeId: number = 21010;
-  arrowRightIcon = faPlusSquare;
-  idpName: string = ``;
-  idpItem: any[] = [];
+  // idps: IdpViewDto[] | null = null;
 
-  ngAfterViewInit() {
-    this.year = 2023;
-  }
+  // userId: number | null = null;
 
-  constructor(private _router: Router, private idpService: IdpService) {
+  // formData = new FormData();
 
-  }
+  // constructor(
+  //     private idpService: IdpService,
+  //     private route: ActivatedRoute,
+  //     private router: Router) { }
 
-  ngOnInit() {
-    this.idpItem = this.idpService.getAll();
-    this.idpItem.forEach(element => {
-      this.idpFetchYear.push(element.year);
-    });
-  }
+  // /**
+  //  * Fetches all idps from the server and stores them in the idps
+  //  * property. If an error occurs, an alert is shown.
+  //  */
+  // ngOnInit(): void {
+  //     this.idpService.getAll().subscribe({
+  //         next: (idps) => {
+  //             this.idps = idps;
+  //         },
+  //         error: (error) => {
+  //             console.error(error);
+  //             alert("Error loading idps");
+  //         }
+  //     });
 
-  setIdp(item: number) {
-    this.selectedIdp = item;
-  }
 
-  createIdp() {
-    this._router.navigate(['/user/idp'])
-  }
+  //     this.userId = this.route.snapshot.params['id'];
 
-  model = {
-    name: '',
-    year: ''
-  };
+  //     this.idpService.getById(this.userId as number).subscribe({
+  //         next: (product: IdpViewDto) => {
+  //             this.model.name = product.name;
+  //             this.model.userId = product.userId;
+  //             this.model.year = product.year;
+  //         }
+  //     })
+  // }
+
+  // saveData() {
+  //     this.formData.append("name", this.model.name);
+  //     this.formData.append("id", this.model.userId.toString());
+  //     this.formData.append("year", this.model.year.toString());
+
+  //     this.idpService.create(this.formData).subscribe({
+  //         next: () => {
+  //             alert("Product created successfully");
+  //             return this.router.navigate(['admin', 'products']);
+  //         },
+  //         error: (error) => {
+  //             console.error(error);
+  //             alert("Error creating product");
+  //         }
+  //     })
+  // }
+
 }

@@ -25,8 +25,6 @@ namespace Idp.Domain.Models
 
         public int Progress { get; set; }
 
-        public int UserId { get; set; }
-
         [ForeignKey(nameof(Objective))]
         public int ObjectiveId { get; set; }
         public Objective? Objective { get; set; }

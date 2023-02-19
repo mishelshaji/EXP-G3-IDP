@@ -7,8 +7,8 @@ declare interface ActionCreateDto {
 
     userId: number
     /**
-     * The description of the category. It should be a short description of the
-     * category and should not exceed 250 characters.
+     * The description of the action. It should be a short description of the
+     * action and should not exceed 250 characters.
      */
     description: string;
 }

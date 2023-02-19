@@ -13,5 +13,7 @@ namespace idp.Service.Dto
         public string Name { get; set; }
 
         public DateTime Year { get; set; }
+
+        public int UserId { get; set; }
     }
 }

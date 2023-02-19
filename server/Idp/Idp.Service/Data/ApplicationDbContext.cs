@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Idp.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
@@ -81,7 +80,7 @@ namespace Idp.Service.Data
 
         public DbSet<Employee> Employees { get; set; }
 
-        public DbSet<IDP> Idps { get; set; }
+        public DbSet<IdpPlan> Idps { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         
