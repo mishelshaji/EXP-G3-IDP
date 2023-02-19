@@ -19,7 +19,7 @@ namespace Idp.Domain.Models
 
         public DateTime? EndDate { get; set; }
 
-        public string Status { get; set; }
+        public bool Status { get; set; }
 
     }
 }

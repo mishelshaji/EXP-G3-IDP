@@ -66,10 +66,5 @@ namespace Idp.Service.Service
                 EndDate = objective.EndDate
             };
         }
-        
-        }
-
-
     }
-
-
+}

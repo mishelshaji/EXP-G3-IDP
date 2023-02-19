@@ -33,7 +33,6 @@ namespace Idp.Service.Services
             {
                 Id = category.Id,
                 Name = category.Name,
-                
             };
         }
         public async Task<CategoryViewDto> CreateAsync(CategoryCreateDto dto)
@@ -41,7 +40,6 @@ namespace Idp.Service.Services
             var category = new Category
             {
                 Name = dto.Name,
-                
             };
 
             _db.Categories.Add(category);
@@ -51,7 +49,6 @@ namespace Idp.Service.Services
             {
                 Id = category.Id,
                 Name = category.Name,
-                
             };
         }
     }
