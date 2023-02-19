@@ -14,7 +14,6 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { AddTrainingComponent } from './add-training/add-training.component';
 import { AddActionComponent } from './add-action/add-action.component';
 import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
-import { ShowAllObjectiveComponent } from './show-all-objective/show-all-objective.component';
 import { ObjectivesComponent } from '../shared/objectives/objectives.component';
 import { NavbarUserComponent } from '../shared/navbar-user/navbar-user.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -30,7 +29,6 @@ import { CreateObjectiveComponent } from './create-objective/create-objective.co
         AddTrainingComponent,
         AddActionComponent,
         ShowAllIdpComponent,
-        ShowAllObjectiveComponent,
         ProfileComponent,
         CreateObjectiveComponent,
     ],
