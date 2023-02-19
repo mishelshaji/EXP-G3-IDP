@@ -14,7 +14,7 @@ export class ObjectiveService {
     /**
      * This is the base URL of the API. It will be used to make HTTP requests.
      */
-    url = 'https://localhost:7264/api/user/objective';
+    url = 'https://localhost:7264/api/user/ObjectivesControllers';
 
     constructor(private http: HttpClient) { }
 

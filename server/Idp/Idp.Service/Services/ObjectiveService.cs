@@ -23,7 +23,8 @@ namespace Idp.Service.Service
                     Id = c.Id,
                     Name = c.Name,
                     Status = c.Status,
-                    Category = c.Category,
+                    CategoryId = c.CategoryId,
+                    IdpId= c.IdpId,
                     StartDate = c.StartDate,
                     EndDate = c.EndDate
                 })
@@ -37,7 +38,7 @@ namespace Idp.Service.Service
                 Id = objective.Id,
                 Name = objective.Name,
                 Status = objective.Status,
-                Category = objective.Category,
+                CategoryId = objective.CategoryId,
                 StartDate = objective.StartDate,
                 EndDate = objective.EndDate
             };
@@ -48,9 +49,10 @@ namespace Idp.Service.Service
             {
                 Name = dto.Name,
                 Status = dto.Status,
-                Category = dto.Category,
+                CategoryId = dto.CategoryId,
                 StartDate = dto.StartDate,
-                EndDate = dto.EndDate
+                EndDate = dto.EndDate,
+                IdpId= dto.IdpId,
             };
 
             _db.Objectives.Add(objective);
@@ -61,9 +63,10 @@ namespace Idp.Service.Service
                 Id = objective.Id,
                 Name = objective.Name,
                 Status = objective.Status,
-                Category = objective.Category,
+                CategoryId = objective.CategoryId,
                 StartDate = objective.StartDate,
-                EndDate = objective.EndDate
+                EndDate = objective.EndDate,
+                IdpId= dto.IdpId,
             };
         }
     }

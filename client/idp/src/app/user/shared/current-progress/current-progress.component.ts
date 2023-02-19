@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
-import { TrainingService } from 'src/app/service/training.service';
 
 @Component({
   selector: 'app-current-progress',
@@ -16,7 +15,7 @@ export class CurrentProgressComponent {
   arrowRightIcon = faArrowAltCircleRight;
 
   trainingItem: any[] = [];
-  constructor(private trainingService: TrainingService) {
+  constructor() {
 
   }
 

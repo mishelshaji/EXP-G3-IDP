@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Idp.WebApp.Areas.Admin.Controllers
+namespace Idp.WebApp.Areas.User.Controllers
 {
 
-    public class ObjectivesControllers : AdminControllerBase
+    public class ObjectivesControllers : UserControllerBase
     {
         private readonly ObjectiveService _service;
 
@@ -36,6 +36,6 @@ namespace Idp.WebApp.Areas.Admin.Controllers
             var result = await _service.CreateAsync(dto);
             return Ok(result);
         }
-        
+
     }
 }

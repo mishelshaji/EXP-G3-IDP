@@ -13,11 +13,17 @@ namespace Idp.Domain.Models
         [StringLength(200)]
         public string? Name { get; set; }
 
-        public string? Category { get; set; }
-
         public DateTime? StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
+
+        [ForeignKey(nameof(Idp))]
+        public int IdpId { get; set; }
+        public IdpPlan Idp { get; set; }
+
+        [ForeignKey(nameof(CategoryId))]
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
 
         public bool Status { get; set; }
 

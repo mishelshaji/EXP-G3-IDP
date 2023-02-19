@@ -49,6 +49,7 @@ namespace Idp.Service.Services
                 Dob = dto.Dob,
                 ManagerId = dto.ManagerId,
                 EmployeeId = dto.EmployeeId,
+                Gender = dto.Gender,
                 UserName = Guid.NewGuid().ToString()
             };
 

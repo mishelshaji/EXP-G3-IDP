@@ -25,8 +25,8 @@ namespace Idp.Domain.Models
 
         public int Progress { get; set; }
 
-        [ForeignKey(nameof(Objective))]
-        public int ObjectiveId { get; set; }
-        public Objective? Objective { get; set; }
+        [ForeignKey(nameof(ObjId))]
+        public int ObjId { get; set; }
+        public Objective? Obj { get; set; }
     }
 }

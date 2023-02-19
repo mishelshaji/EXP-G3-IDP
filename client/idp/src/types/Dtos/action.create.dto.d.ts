@@ -1,6 +1,8 @@
 declare interface ActionCreateDto {
     name: string;
 
+    startDate: Date;
+
     endDate: Date
 
     objective: number
@@ -11,4 +13,8 @@ declare interface ActionCreateDto {
      * action and should not exceed 250 characters.
      */
     description: string;
+
+    certificate: string
+
+    progress: number
 }
