@@ -166,21 +166,20 @@ namespace Idp.Service.Migrations
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdpId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdpId");
-
-                    b.ToTable("Objective");
+                    b.ToTable("Objectives");
                 });
 
             modelBuilder.Entity("Idp.Domain.Models.ObjectiveAction", b =>
@@ -275,10 +274,17 @@ namespace Idp.Service.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e2a85572-7b8c-4a95-a862-c557c3b2e869",
-                            ConcurrencyStamp = "e2a85572-7b8c-4a95-a862-c557c3b2e869",
+                            Id = "e2a85572-7b8c-4a95-a862-c557c3b2e868",
+                            ConcurrencyStamp = "e2a85572-7b8c-4a95-a862-c557c3b2e868",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "e2a85572-7b8c-4a95-a862-c557c3b2e869",
+                            ConcurrencyStamp = "e2a85572-7b8c-4a95-a862-c557c3b2e869",
+                            Name = "Manager",
+                            NormalizedName = "MANAGER"
                         },
                         new
                         {
@@ -415,17 +421,6 @@ namespace Idp.Service.Migrations
                         .IsRequired();
 
                     b.Navigation("Year");
-                });
-
-            modelBuilder.Entity("Idp.Domain.Models.Objective", b =>
-                {
-                    b.HasOne("Idp.Domain.Models.Idp", "Idp")
-                        .WithMany()
-                        .HasForeignKey("IdpId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Idp");
                 });
 
             modelBuilder.Entity("Idp.Domain.Models.ObjectiveAction", b =>

@@ -77,9 +77,14 @@ namespace Idp.Service.Data
 
         public DbSet<ObjectiveAction> ObjectiveActions { get; set; }
 
+        public DbSet<Objective> Objectives { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
         public DbSet<IDP> Idps { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        
         public DbSet<Training> Trainings { get; set; }
     }
 }
