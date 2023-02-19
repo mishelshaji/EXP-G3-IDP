@@ -9,10 +9,10 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <button class="btn nav-link" [routerLink]="['/lobby']">Lobby</button>
+                    <button class="btn nav-link" (click)="navigateToLobby()">Lobby</button>
                 </li>
                 <li class="nav-item">
-                    <button class="btn nav-link" [routerLink]="['/user/signin']">SignIn</button>
+                    <button class="btn nav-link" (click)="navigateToSignin()">SignIn</button>
                 </li>
             </ul>
         </div>

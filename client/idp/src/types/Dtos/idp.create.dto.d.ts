@@ -1,7 +1,7 @@
 declare interface IdpCreateDto {
     name: string;
 
-    userId: number
+    userId: string
  
     year: Date;
 }

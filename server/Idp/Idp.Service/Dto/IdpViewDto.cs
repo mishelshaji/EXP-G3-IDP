@@ -14,6 +14,6 @@ namespace idp.Service.Dto
 
         public DateTime Year { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
     }
 }

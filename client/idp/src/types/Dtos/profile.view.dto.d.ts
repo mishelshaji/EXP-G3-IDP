@@ -1,4 +1,5 @@
 declare interface ProfileViewDto {
+    id: string,
     firstName: string,
     lastName: string,
     department: string,

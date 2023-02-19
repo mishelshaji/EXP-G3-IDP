@@ -8,7 +8,7 @@ import { CurrentProgressComponent } from './shared/current-progress/current-prog
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgChartsModule } from 'ng2-charts';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SigninComponent } from './signin/signin.component';
+import { SigninComponent } from '../landing/signin/signin.component';
 import { FormsModule } from '@angular/forms';
 import { ForgotComponent } from './forgot/forgot.component';
 import { AddTrainingComponent } from './add-training/add-training.component';

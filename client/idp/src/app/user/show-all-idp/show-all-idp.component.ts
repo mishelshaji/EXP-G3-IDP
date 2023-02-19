@@ -7,7 +7,6 @@ import { IdpService } from 'src/app/service/idp.service';
   styleUrls: ['./show-all-idp.component.css']
 })
 export class ShowAllIdpComponent {
-
     /**
    * This is the list of idp that will be displayed in the UI.
    * It will be initialized in the ngOnInit method. The default value is null.

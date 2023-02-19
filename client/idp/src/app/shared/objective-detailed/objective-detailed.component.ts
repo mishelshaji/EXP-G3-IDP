@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActionService } from 'src/app/service/action.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-objective-detailed',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './objective-detailed.component.html',
   styleUrls: ['./objective-detailed.component.css']
 })
@@ -25,7 +26,6 @@ export class ObjectiveDetailedComponent {
    * It will be initialized in the ngOnInit method. The default value is null.
    */
     action: ActionViewDto[] | null = null;
-
 
     /**
      * @param service This is the instance of ActionService that will be used to

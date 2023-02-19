@@ -22,17 +22,8 @@ export class ProfileService {
      * @param id The unique identifier of the profile.
      * @returns {Observable<any>} An observable that will emit the category with the specified id.
      */
-    getById(id: number) {
+    get() {
         return this.http.get<ProfileViewDto>(this.url + '/');
-    }
-  
-    /**
-     * Used to fetch a Profile by its unique identifier.
-     * @param id The unique identifier of the Profile.
-     * @returns {Observable<any>} An observable that will emit the Profile with the specified id.
-     */
-    create(model: ProfileViewDto) {
-        return this.http.post<ProfileViewDto>(this.url, model);
     }
   
     /**

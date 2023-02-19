@@ -105,6 +105,7 @@ namespace Idp.Service.Services
 
             return new ProfileViewDto
             {
+                Id = user.Id,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,

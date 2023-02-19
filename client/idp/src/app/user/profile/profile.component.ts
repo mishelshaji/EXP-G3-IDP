@@ -19,7 +19,7 @@ export class ProfileComponent {
     department: '',
     designation: '',
     employeeId: '',
-    mobile: '',
+    phoneNumber: '',
     dob: '',
     gender: ''
   }
@@ -38,7 +38,7 @@ export class ProfileComponent {
    * will be displayed to the user.
    */
   ngOnInit() {
-    this.service.getById(1).subscribe({
+    this.service.get().subscribe({
       next: (data) => {
         this.profile = data;
         console.log(this.profile);  

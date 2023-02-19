@@ -18,14 +18,14 @@
                     <div>
                         <input type="password" name="password" placeholder="Enter your password"
                             class="mt-5 text-center w-100 p-2 rounded-3 " [(ngModel)]="model.password"
-                            #password="ngModel" minlength="8" maxlength="25" required>
+                            #password="ngModel" minlength="6" maxlength="25" required>
                             <div class="text-danger" *ngIf="password.invalid && password.touched">
                             <div *ngIf="password.errors?.['required']">Password is required.</div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-outline-dark mt-5 w-25 p-2 rounded-5"
                         [disabled]="form.invalid">Login</button>
-                    <a class="mt-5 text-decoration-none text-dark" [routerLink]="['/forgot']">Forgot Password?</a>
+                    <a class="mt-5 text-decoration-none text-dark" [routerLink]="['/forgot-password']">Forgot Password?</a>
                 </form>
             </div>
         </div>

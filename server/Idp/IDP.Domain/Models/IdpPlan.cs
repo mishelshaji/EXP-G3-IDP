@@ -19,7 +19,7 @@ namespace Idp.Domain.Models
         public DateTime Year { get; set; }
 
         [ForeignKey(nameof(ApplicationUserId))]
-        public int ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
         public ApplicationUser? User { get; set; }
     }
 }

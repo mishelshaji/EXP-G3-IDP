@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IdpService } from 'src/app/service/idp.service';
+import { ProfileService } from 'src/app/service/profile.service';
 
 @Component({
   selector: 'app-homepage',
@@ -8,65 +9,56 @@ import { IdpService } from 'src/app/service/idp.service';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent {
-  // model: IdpCreateDto = {
-  //     name: '',
-  //     userId: 0,
-  //     year: new Date(),
-  // }
+  
+  userId = {
+    id: ''
+  }
 
-  // idps: IdpViewDto[] | null = null;
+  model: IdpCreateDto = {
+    name: '',
+    year: new Date(),
+    userId: this.userId.id
+  }
 
-  // userId: number | null = null;
-
-  // formData = new FormData();
-
-  // constructor(
-  //     private idpService: IdpService,
-  //     private route: ActivatedRoute,
-  //     private router: Router) { }
-
-  // /**
-  //  * Fetches all idps from the server and stores them in the idps
-  //  * property. If an error occurs, an alert is shown.
-  //  */
-  // ngOnInit(): void {
-  //     this.idpService.getAll().subscribe({
-  //         next: (idps) => {
-  //             this.idps = idps;
-  //         },
-  //         error: (error) => {
-  //             console.error(error);
-  //             alert("Error loading idps");
-  //         }
-  //     });
+  changeFunction(e:any) {
+    this.model.userId = this.userId.id;
+    this.model.name = 'IDP ' + 799 + ' ' + e;   
+    this.model.year = e;
+  }
 
 
-  //     this.userId = this.route.snapshot.params['id'];
+  idps: IdpViewDto[] | null = null;
 
-  //     this.idpService.getById(this.userId as number).subscribe({
-  //         next: (product: IdpViewDto) => {
-  //             this.model.name = product.name;
-  //             this.model.userId = product.userId;
-  //             this.model.year = product.year;
-  //         }
-  //     })
-  // }
+  constructor(
+    private idpService: IdpService,
+    private profileService: ProfileService,
+    private router: Router) { }
 
-  // saveData() {
-  //     this.formData.append("name", this.model.name);
-  //     this.formData.append("id", this.model.userId.toString());
-  //     this.formData.append("year", this.model.year.toString());
+  ngOnInit(): void {
+    this.profileService.get().subscribe({
+      next: (data) => {
+        this.userId = data;
+        console.log(this.userId.id);
+      },
+      error: () => {
+        console.log("Loading id failed. Please try again later.");        
+      }
+    })
+  }
 
-  //     this.idpService.create(this.formData).subscribe({
-  //         next: () => {
-  //             alert("Product created successfully");
-  //             return this.router.navigate(['admin', 'products']);
-  //         },
-  //         error: (error) => {
-  //             console.error(error);
-  //             alert("Error creating product");
-  //         }
-  //     })
-  // }
+  createIdp() {
+    this.idpService.create(this.model).subscribe({
+        next: () => {
+            alert("Idp created successfully");
+            return this.router.navigate(['user', 'idp']);
+        },
+        error: (error) => {
+            console.error(error);
+            console.log(this.model);
+            
+            alert("Error creating idp");
+        }
+    })
+  }
 
 }
