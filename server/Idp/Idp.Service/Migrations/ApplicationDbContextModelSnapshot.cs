@@ -59,9 +59,6 @@ namespace Idp.Service.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -104,9 +101,6 @@ namespace Idp.Service.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId")
-                        .IsUnique();
-
                     b.HasIndex("ManagerId");
 
                     b.HasIndex("NormalizedEmail")
@@ -120,51 +114,26 @@ namespace Idp.Service.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Idp.Domain.Models.Employee", b =>
+            modelBuilder.Entity("Idp.Domain.Models.Idp", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Image")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Employees");
-                });
-
-            modelBuilder.Entity("Idp.Domain.Models.IdpPlan", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ApplicationUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<DateTime>("Year")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("YearId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("YearId");
 
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasFilter("[Name] IS NOT NULL");
-
-                    b.ToTable("Idps");
+                    b.ToTable("Idp");
                 });
 
             modelBuilder.Entity("Idp.Domain.Models.Manager", b =>
@@ -183,10 +152,7 @@ namespace Idp.Service.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId")
-                        .IsUnique();
-
-                    b.ToTable("Managers");
+                    b.ToTable("Manager");
                 });
 
             modelBuilder.Entity("Idp.Domain.Models.Objective", b =>
@@ -256,7 +222,7 @@ namespace Idp.Service.Migrations
                     b.ToTable("ObjectiveActions");
                 });
 
-            modelBuilder.Entity("Idp.Domain.Models.Training", b =>
+            modelBuilder.Entity("Idp.Domain.Models.Year", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -264,31 +230,12 @@ namespace Idp.Service.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Link")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("ObjectiveId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Progress")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTime>("Years")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ObjectiveId");
-
-                    b.ToTable("Trainings");
+                    b.ToTable("Year");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -320,17 +267,10 @@ namespace Idp.Service.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e2a85572-7b8c-4a95-a862-c557c3b2e868",
-                            ConcurrencyStamp = "e2a85572-7b8c-4a95-a862-c557c3b2e868",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
                             Id = "e2a85572-7b8c-4a95-a862-c557c3b2e869",
                             ConcurrencyStamp = "e2a85572-7b8c-4a95-a862-c557c3b2e869",
-                            Name = "Manager",
-                            NormalizedName = "MANAGER"
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
                         },
                         new
                         {
@@ -458,20 +398,20 @@ namespace Idp.Service.Migrations
                     b.Navigation("Manager");
                 });
 
-            modelBuilder.Entity("Idp.Domain.Models.IdpPlan", b =>
+            modelBuilder.Entity("Idp.Domain.Models.Idp", b =>
                 {
-                    b.HasOne("Idp.Domain.Models.ApplicationUser", "User")
+                    b.HasOne("Idp.Domain.Models.Year", "Year")
                         .WithMany()
-                        .HasForeignKey("ApplicationUserId")
+                        .HasForeignKey("YearId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Year");
                 });
 
             modelBuilder.Entity("Idp.Domain.Models.Objective", b =>
                 {
-                    b.HasOne("Idp.Domain.Models.IdpPlan", "Idp")
+                    b.HasOne("Idp.Domain.Models.Idp", "Idp")
                         .WithMany()
                         .HasForeignKey("IdpId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -482,17 +422,12 @@ namespace Idp.Service.Migrations
 
             modelBuilder.Entity("Idp.Domain.Models.ObjectiveAction", b =>
                 {
-                    b.HasOne("Idp.Domain.Models.Objective", "Objective")
+                    b.HasOne("Idp.Domain.Models.Idp", "Idp")
                         .WithMany()
-                        .HasForeignKey("ObjectiveId")
+                        .HasForeignKey("IdpId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Objective");
-                });
-
-            modelBuilder.Entity("Idp.Domain.Models.Training", b =>
-                {
                     b.HasOne("Idp.Domain.Models.Objective", "Objective")
                         .WithMany()
                         .HasForeignKey("ObjectiveId")
