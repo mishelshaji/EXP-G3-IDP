@@ -17,12 +17,6 @@ namespace Idp.Domain.Models
 
         public DateTime? StartDate { get; set; }
 
-        //[ForeignKey(nameof(Idp))]
-
-        //public int IdpId { get; set; }
-
-        //public Idp Idp { get; set; }
-
         public string Status { get; set; }
 
     }

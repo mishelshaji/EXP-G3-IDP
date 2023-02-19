@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Idp.WebApp.Areas.Admin.Controllers
 {
-    
+
     public class CategoriesController : AdminControllerBase
     {
         private readonly CategoryService _service;
