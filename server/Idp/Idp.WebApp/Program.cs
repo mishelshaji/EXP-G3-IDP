@@ -1,4 +1,3 @@
-using idp.Service.Services;
 using Idp.Domain.Models;
 using Idp.Service.Data;
 using Idp.Service.Services;
@@ -64,9 +63,6 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddScoped<ObjectiveActionServices>();
 builder.Services.AddScoped<AccountsService>();
-builder.Services.AddScoped<ManagerService>();
-builder.Services.AddScoped<EmployeeService>();
-
 
 var app = builder.Build();
 
@@ -83,8 +79,6 @@ app.UseCors(options =>
     options.AllowAnyHeader();
     options.AllowAnyMethod();
 });
-
-app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 
