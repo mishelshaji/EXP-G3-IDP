@@ -29,6 +29,23 @@ namespace IDP.Service.Services
                     ObjectiveId = c.ObjectiveId,
                 }).ToListAsync();
         }
+
+        public async Task<List<TrainingViewDto>> GetByObjectiveAsync(int id)
+        {
+            return await _db.Trainings
+                .Where(m => m.ObjectiveId == id)
+                .Select(c => new TrainingViewDto
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Link = c.Link,
+                    Progress = c.Progress,
+                    StartDate = c.StartDate,
+                    EndDate = c.EndDate,
+                    ObjectiveId = c.ObjectiveId,
+                }).ToListAsync();
+        }
+
         public async Task<TrainingViewDto> CreateAsync(TrainingCreateDto dto)
         {
             var Training = new Training
@@ -54,6 +71,7 @@ namespace IDP.Service.Services
             };
 
         }
+
         public async Task<TrainingViewDto?> GetByIdAsync(int id)
         {
             Training? training = await _db.Trainings.FindAsync(id);
@@ -102,7 +120,6 @@ namespace IDP.Service.Services
                 Progress = category.Progress,
                 StartDate = category.StartDate,
                 EndDate = category.EndDate,
-                UserId = dto.UserId,
                 ObjectiveId = dto.ObjectiveId,
             };
             return response;

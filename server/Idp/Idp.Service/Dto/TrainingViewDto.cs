@@ -15,8 +15,6 @@ namespace IDP.Service.Dto
         public int Progress { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public int UserId { get; set; }
-        public int IdpId { get; set; }
         public int ObjectiveId { get; set; }
         public TrainingViewDto()
         {
@@ -31,7 +29,6 @@ namespace IDP.Service.Dto
             StartDate = training.StartDate;
             EndDate = training.EndDate;
             ObjectiveId = training.ObjectiveId;
-
         }
     }
 }

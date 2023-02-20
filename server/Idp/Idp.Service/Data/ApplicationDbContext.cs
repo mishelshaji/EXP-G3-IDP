@@ -78,16 +78,18 @@ namespace Idp.Service.Data
 
         public DbSet<Manager> Managers { get; set; }
 
-        public DbSet<Employee> Employees { get; set; }
+        public DbSet<EmployeeUpload> EmployeesUpload { get; set; }
 
         public DbSet<IdpPlan> Idps { get; set; }
 
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         
         public DbSet<Training> Trainings { get; set; }
         
         public DbSet<Objective> Objectives { get; set; }
 
         public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Employee> Employees { get; set; }
     }
 }

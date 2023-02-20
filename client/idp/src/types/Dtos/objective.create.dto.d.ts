@@ -1,13 +1,11 @@
 declare interface ObjectiveCreateDto {
     name: string;
 
-    userId: string;
-
     idpId: number;
 
     categoryId: number;
 
-    status: string;
+    status: boolean;
 
     startDate: Date;
 

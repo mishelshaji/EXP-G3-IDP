@@ -15,15 +15,15 @@ const routes: Routes = [
   {
     path: '', component: UserLayoutComponent, children: [
       { path: '', component: HomepageComponent },
-      { path: 'objective-detailed', component: ObjectiveDetailedComponent },
+      { path: 'objective-detailed/:id', component: ObjectiveDetailedComponent },
       { path: 'idp', component: ShowAllIdpComponent },
       { path: 'objectives/:id', component: ObjectivesComponent },
       { path: 'profile', component: ProfileComponent },
-      { path: 'add-training', component: AddTrainingComponent },
-      { path: 'add-action', component: AddActionComponent},
+      { path: 'add-training/:id', component: AddTrainingComponent },
+      { path: 'add-action/:id', component: AddActionComponent},
       { path: 'home', component: HomepageComponent },
       { path: 'idp', component: ShowAllIdpComponent },
-      { path: 'create-objective', component: CreateObjectiveComponent },
+      { path: 'create-objective/:id', component: CreateObjectiveComponent },
       { path: 'userupload', component: UserUploadComponent }
     ]
   }

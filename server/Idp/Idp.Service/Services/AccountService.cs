@@ -77,6 +77,9 @@ namespace Idp.Service.Services
                 response.AddError(nameof(dto.Email), "An account with this email does not exist.");
                 return response;
             }
+            //var hasher = new PasswordHasher<ApplicationUser>();
+            //var hashedPassword = hasher.HashPassword(user, "jhfhgfhg");
+            //user.PasswordHash = hashedPassword;
 
             var signin = await _signinManager.CheckPasswordSignInAsync(user, dto.Password, true);
             if (signin.Succeeded)

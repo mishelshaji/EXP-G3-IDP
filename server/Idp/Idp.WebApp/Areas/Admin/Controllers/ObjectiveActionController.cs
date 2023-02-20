@@ -25,7 +25,7 @@ namespace Idp.WebApp.Areas.Admin.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> GetAsync(int id)
         {
-            var result = await _service.GetByIdAsync(id);
+            var result = await _service.GetByObjectiveAsync(id);
             if (result == null)
                 return NotFound();
 

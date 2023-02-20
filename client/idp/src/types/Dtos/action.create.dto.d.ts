@@ -5,16 +5,13 @@ declare interface ActionCreateDto {
 
     endDate: Date
 
-    objective: number
+    objectiveId: number
 
-    userId: number
     /**
      * The description of the action. It should be a short description of the
      * action and should not exceed 250 characters.
      */
     description: string;
-
-    certificate: string
 
     progress: number
 }

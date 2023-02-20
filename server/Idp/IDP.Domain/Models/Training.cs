@@ -13,7 +13,6 @@ namespace Idp.Domain.Models
         [StringLength(50)]
         public string? Name { get; set; }
 
-        [StringLength(50)]
         public string? Link { get; set; }
 
         public int Progress { get; set; }

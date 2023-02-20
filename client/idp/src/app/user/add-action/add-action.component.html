@@ -1,56 +1,69 @@
-<div class="container ps-5 rounded-5 shadow shadow-dark mt-5 ms-5">
-    <form #form="ngForm">
-        <table>
-            <thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <label for="action" name="action">Action name</label>
-                        <input type="text" name="name" id="name" [(ngModel)]="model.action" #action="ngModel"
-                            class="mt-5" [(ngModel)]="model.action" required>
-                        <div class="text-danger" *ngIf="action.invalid && action.touched">
-                            <div *ngIf="action.errors?.['required']">Training name is required.</div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="data">Ending Date</label>
-                        <input type="date" name="date" class="mt-5" id="date" [(ngModel)]="model.date" #date="ngModel"
-                            required>
-                        <div class="text-danger" *ngIf="date.invalid && date.touched">
-                            <div *ngIf="date.errors?.['required']">Date is required.</div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="file">Upload Certificate</label>
-                        <input type="file" name="file" id="file" class="mt-5" pattern="^[^+]+\.pdf$"
-                            [(ngModel)]="model.file" #file="ngModel" required>
-                        <div class="text-danger" *ngIf="file.invalid && file.touched">
-                            <div *ngIf="file.errors?.['pattern']">It's not pdf format.</div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <textarea name="dis" id="dis" cols="60" rows="5" placeholder="Action description"
-                            class="rounded-3 mt-5" [(ngModel)]="model.text" #text="ngModel" required></textarea>
-                        <div class="text-danger" *ngIf="text.invalid && text.touched">
-                            <div *ngIf="text.errors?.['required']">Action is description required.</div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="submit" class="btn btn-outline-dark mt-3 p-2 w-25 rounded-5"
-                            [disabled]="form.invalid">Submit</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
-    <div class="box2 w-100 mt-4">
+<div class="row d-flex">
+    <div class="container rounded-5 shadow shadow-dark m-1 h-50 p-5 col">
+        <form #form="ngForm" (ngSubmit)="createAction()">
+            <table>
+                <thead>
+                    <h3 class="text-secondary">Add Action</h3>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <label for="action" name="action">Action name</label>
+                            <input type="text" name="name" id="name" [(ngModel)]="model.name" #action="ngModel"
+                                class="mt-5" [(ngModel)]="model.name" required>
+                            <div class="text-danger" *ngIf="action.invalid && action.touched">
+                                <div *ngIf="action.errors?.['required']">Action name is required.</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="startingData">Starting Date</label>
+                            <input type="date" name="date" class="mt-5" id="startingdate"
+                                [(ngModel)]="model.startDate" #startDate="ngModel" required>
+                            <div class="text-danger" *ngIf="startDate.invalid && startDate.touched">
+                                <div *ngIf="startDate.errors?.['required']">Start date is required.</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="endData">Ending Date</label>
+                            <input type="date" name="date" class="mt-5" id="endDate" [(ngModel)]="model.endDate"
+                                #endDate="ngModel" required>
+                            <div class="text-danger" *ngIf="endDate.invalid && endDate.touched">
+                                <div *ngIf="endDate.errors?.['required']">End date is required.</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="file">Upload Certificate</label>
+                            <input type="file" name="file" id="file" class="mt-5" pattern="^[^+]+\.pdf$"
+                                [(ngModel)]="model.certificate" #file="ngModel" (change)="fileSelected($event)" required>
+                            <div class="text-danger" *ngIf="file.invalid && file.touched">
+                                <div *ngIf="file.errors?.['pattern']">It's not pdf format.</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea name="description" id="description" cols="60" rows="5" placeholder="Action description"
+                                class="rounded-3 mt-5" [(ngModel)]="model.description" #description="ngModel" required></textarea>
+                            <div class="text-danger" *ngIf="description.invalid && description.touched">
+                                <div *ngIf="description.errors?.['required']">Action description is required.</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="submit" class="btn btn-outline-dark mt-3 p-2 w-25 rounded-5"
+                                [disabled]="form.invalid">Submit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
     </div>
+    <img src="/assets/images/girl-laptop2.jpg" class="col">
 </div>

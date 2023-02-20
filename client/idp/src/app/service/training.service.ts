@@ -14,7 +14,7 @@ export class TrainingService {
     /**
      * This is the base URL of the API. It will be used to make HTTP requests.
      */
-    url = 'https://localhost:7264/api/user/training';
+    url = 'https://localhost:7264/api/user/trainings';
 
     constructor(private http: HttpClient) { }
 
@@ -22,8 +22,8 @@ export class TrainingService {
      * The getAll method will fetch the list of trainings from the server.
      * @returns {Observable<trainingViewDto[]>} Return the list of trainings from the server.
      */
-    getAll() {
-        return this.http.get<TrainingViewDto[]>(this.url);
+    getByObjective(id: number) {
+        return this.http.get<TrainingViewDto[]>(this.url + "/" + id);
     }
 
     /**

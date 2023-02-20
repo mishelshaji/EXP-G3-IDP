@@ -1,7 +1,8 @@
 <section>
     <div class="d-flex m-3">
         <h5 class="text-secondary">Training Item</h5>
-        <button class="btn btn-outline-dark rounded-4 ms-auto h-25">Create new</button>
+        <a class="btn btn-outline-dark rounded-4 ms-auto h-25" [routerLink]="['/user/add-training', objectiveId]">Create
+            new</a>
     </div>
     <hr>
     <div class="d-flex justify-content-center">
@@ -12,36 +13,36 @@
                         <th>SlNo</th>
                         <th>Name</th>
                         <th>Description</th>
+                        <th>URL</th>
                         <th>Start Date</th>
                         <th>End Date</th>
-                        <th>URL</th>
                         <th>Progress</th>
                         <th></th>
                     </tr>
                 </thead>
-                <!-- <tbody>
-                    <tr *ngFor="let training of action">
-                        <td>{{training.Id}}</td>
-                        <td>{{training.Name}}</td>
-                        <td>{{training.Link}}</td>
-                        <td>{{training.Progress}}</td>
-                        <td>{{training.StartDate}}</td>
-                        <td>{{training.EndDate}}</td>
-                        <td>{{training.UserId}}</td>
-                        <td>{{training.IdpId}}</td>
-                        <td>{{training.ObjectiveId}}</td>
-                        <button class="btn btn-warning">
-                            <span class="fa fa-eye"></span>
-                            Update
-                        </button>
+                <tbody>
+                    <tr *ngFor="let training of training">
+                        <td>{{training.id}}</td>
+                        <td>{{training.name}}</td>
+                        <td>{{training.description}}</td>
+                        <td>{{training.url}}</td>
+                        <td>{{training.startDate | date: 'dd/MM/YYYY'}}</td>
+                        <td>{{training.endDate | date: 'dd/MM/YYYY'}}</td>
+                        <td>{{training.progress}}</td>
+                        <td>
+                            <button class="btn btn-warning">
+                                <span class="fa fa-eye"></span>
+                                Update
+                            </button>
+                        </td>
                     </tr>
-                </tbody> -->
+                </tbody>
             </table>
         </div>
     </div>
     <div class="d-flex m-3">
         <h5 class="text-secondary">Action items</h5>
-        <button class="btn btn-outline-dark rounded-4 ms-auto h-25">Create new</button>
+        <a class="btn btn-outline-dark rounded-4 ms-auto h-25" [routerLink]="['/user/add-action', objectiveId]">Create new</a>
     </div>
     <hr>
     <div class="d-flex justify-content-center mb-5">
@@ -52,9 +53,9 @@
                         <th>SlNo</th>
                         <th>Name</th>
                         <th>Description</th>
+                        <th>Certificate</th>
                         <th>Start Date</th>
                         <th>End Date</th>
-                        <th>Certificate</th>
                         <th>Progress</th>
                         <th></th>
                     </tr>
@@ -64,29 +65,14 @@
                         <td>{{item.id}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.description}}</td>
-                        <td>{{item.startDate}}</td>
-                        <td>{{item.endDate}}</td>
                         <td>{{item.certificate}}</td>
+                        <td>{{item.startDate | date: 'dd/MM/YYYY'}}</td>
+                        <td>{{item.endDate | date: 'dd/MM/YYYY'}}</td>
                         <td>{{item.progress}}</td>
                         <td>
                             <button class="btn btn-warning" (click)="editProgress()">
                                 <span class="fa fa-eye"></span>
                                 Edit
-                            </button>
-                        </td>
-                    </tr>
-                    <tr *ngIf="edit" class="text-dark">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Progress:</td>
-                        <td><input type="text" id="training-progress"></td>
-                        <td>
-                            <button class="btn btn-warning" (click)="submitProgress()">
-                                <span class="fa fa-eye"></span>
-                                Update
                             </button>
                         </td>
                     </tr>

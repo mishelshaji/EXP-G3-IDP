@@ -1,5 +1,9 @@
-﻿using System;
+﻿using CsvHelper;
+using Idp.Domain.Models;
+using System;
 using System.Collections.Generic;
+using System.Formats.Asn1;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +24,8 @@ namespace Idp.Service.Services
             _webHost = webHost;
         }
 
+
+
         public async Task<ServiceResponse<EmployeeViewDto>> CreateAsync(EmployeeUploadDto dto)
         {
             var result = new ServiceResponse<EmployeeViewDto>();
@@ -27,7 +33,7 @@ namespace Idp.Service.Services
             // Saving employees image to disk.
             string fileNameByUser = dto.Image.FileName;
             string fileExtension = Path.GetExtension(fileNameByUser).ToLower();
-            var allowedFileExtensions = new[] { ".jpg", ".jpeg", ".png" };
+            var allowedFileExtensions = new[] { ".csv" };
 
             if (!allowedFileExtensions.Contains(fileExtension))
             {
@@ -44,17 +50,41 @@ namespace Idp.Service.Services
                 await dto.Image.CopyToAsync(fileStream);
             }
 
-            var employees = new Employee()
+            var employees = new EmployeeUpload()
             {
                 Image = Path.Combine(uniqueFileName)
             };
-            _db.Employees.Add(employees);
+            _db.EmployeesUpload.Add(employees);
             await _db.SaveChangesAsync();
 
             result.Result = new()
             {
                 Id = employees.Id
             };
+
+            var reader = new StreamReader(uploadsDir);
+            var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            var employeesFile = csv.GetRecords<EmployeeDto>();
+
+            var employeesList = new Employee();
+
+            //foreach (var employee in employeesFile)
+            //{
+            //   employeesList = new Employee
+            //   {
+            //       Name = employee.Name,
+            //       //Email= employee.Email,
+            //       Department = employee.Department,
+            //       Designation = employee.Designation,
+            //       Dob= employee.Dob,
+            //       //Phone= employee.Phone,
+            //       EmployeeId= employee.EmployeeId,
+            //       ManagerEmployeeId= employee.ManagerEmployeeId,
+            //       ManagerId = employee.ManagerId,
+
+            //   }
+            //}
+
             return result;
         }
     }

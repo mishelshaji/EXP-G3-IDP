@@ -33,13 +33,21 @@ namespace IDP.WebApp.Areas.User.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(TrainingViewDto), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetOne(int id)
+        [ProducesResponseType(typeof(TrainingViewDto[]), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetByObjectiveId(int id)
         {
-            var result = await _service.GetByIdAsync(id);
-            return result == null ? NotFound() : Ok(result);
+            var result = await _service.GetByObjectiveAsync(id);
+            return Ok(result);
         }
+
+        //[HttpGet("{id}")]
+        //[ProducesResponseType(typeof(TrainingViewDto), StatusCodes.Status200OK)]
+        //[ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
+        //public async Task<IActionResult> GetOne(int id)
+        //{
+        //    var result = await _service.GetByIdAsync(id);
+        //    return result == null ? NotFound() : Ok(result);
+        //}
 
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(TrainingViewDto), StatusCodes.Status200OK)]

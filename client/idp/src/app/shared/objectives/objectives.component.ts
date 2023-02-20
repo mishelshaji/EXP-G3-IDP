@@ -17,6 +17,7 @@ export class ObjectivesComponent {
    */
     objective: ObjectiveViewDto[] | null = null;
 
+    idpId = 0;
 
     /**
      * @param service This is the instance of objectiveService that will be used to
@@ -32,8 +33,8 @@ export class ObjectivesComponent {
      * will be displayed to the user.
      */
     ngOnInit() {
-    const idpId = this.router.snapshot.params["id"];
-      this.service.getAll(idpId).subscribe({
+    this.idpId = this.router.snapshot.params["id"];
+      this.service.getAll(this.idpId).subscribe({
         next: (data: ObjectiveViewDto[] | null) => {
           this.objective = data;
           console.log(this.objective);
@@ -42,9 +43,5 @@ export class ObjectivesComponent {
           alert("Loading objective failed. Please try again later.");
         }
       })
-    }
-
-    navigateToObjective(id:number) {
-      // this.router.navigate(['/user/objectives']);
     }
 }

@@ -1,37 +1,29 @@
 <main>
     <div class="leftside">
-        <form class="form-control" name="form" #form="ngForm" (ngsubmit)="onSubmit(form)">
-            <h2 class="text-center text-secondary">Create Objective</h2>
+        <form class="form-control" #form="ngForm" (ngSubmit)="createObjective()">
+            <h1>Create Objective</h1>
             <div class="holder">
                 <label for="Category">Category:</label>
-                <select name="category" id="category">
-                    <option name="technical" value="Technical" [(ngModel)]="model.category">Technical</option>
-                    <option name="communication" value="Communication" [(ngModel)]="model.category">Communication skills</option>
-                    <option name="behavioural" value="Behavioural" [(ngModel)]="model.category">Behavioural skills</option>
+                <select name="category" [(ngModel)]="model.categoryId" id="category" *ngFor="let item of category">
+                    <option value="{{item.id}}">{{item.name}}</option>
                 </select>
+                <label for="objective">Objective:</label>
                 <label for="objective">Name:</label>
-                <input type="text" name="name" id="name" cols="30" rows="3" [(ngModel)]="model.name"
-                    #name="ngModel" required maxlength="50">
+                <input type="text" name="name" id="name" cols="30" rows="3" [(ngModel)]="model.name" #name="ngModel"
+                    required maxlength="50">
                 <div class="text-danger" *ngIf="name.touched">
-                    <div *ngIf="name.errors?.['required']">Objective name is required</div>
+                    <div *ngIf="name.errors?.['required']">Enter objective</div>
                     <div *ngIf="name.errors?.['maxlength']">maximum 50 characters</div>
                 </div>
-                <label for="objective">Objective:</label>
-                <textarea name="objective" id="objective" cols="30" rows="3" [(ngModel)]="model.description"
-                    #description="ngModel" required maxlength="150"></textarea>
-                <div class="text-danger" *ngIf="description.touched">
-                    <div *ngIf="description.errors?.['required']">Objective description is required</div>
-                    <div *ngIf="description.errors?.['maxlength']">maximum 150 characters</div>
-                </div>
-                <label for="startDate">Start Date:</label>
-                <input name="startDate" type="date" [(ngModel)]="model.start" #start="ngModel">
-                <label for="endDate">End Date:</label>
-                <input name="endDate" type="date" [(ngModel)]="model.end" #end="ngModel">
-                <button value="submit" class="btn btn-outline-dark w-100 my-3 rounded-5">Create</button>
+                <label for="startdate">Start Date:</label>
+                <input name="startDate" type="date" [(ngModel)]="model.startDate" #start="ngModel">
+                <label for="Enddate">End Date:</label>
+                <input name="endDate" type="date" [(ngModel)]="model.endDate" #end="ngModel">
+                <button value="submit" class="btn btn-success w-100 my-3 rounded-5">SAVE</button>
             </div>
         </form>
     </div>
     <div class="rightside">
-        <img src="../../../assets/Mimage.png" alt="an image">
+        <img src="/assets/images/Mimage.png" alt="an image">
     </div>
 </main>
