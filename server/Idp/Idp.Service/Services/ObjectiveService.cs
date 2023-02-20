@@ -15,21 +15,27 @@ namespace Idp.Service.Service
             _db = db;
         }
 
-        public async Task<List<ObjectiveViewDto>> GetAllAsync()
+        public async Task<List<ObjectiveViewDto>> GetByIdpAsync(int id)
         {
             return await _db.Objectives
+                .Include(m => m.Category)
+                .Where(m => m.IdpId == id)
                 .Select(c => new ObjectiveViewDto
                 {
                     Id = c.Id,
                     Name = c.Name,
                     Status = c.Status,
-                    CategoryId = c.CategoryId,
                     IdpId= c.IdpId,
                     StartDate = c.StartDate,
-                    EndDate = c.EndDate
+                    EndDate = c.EndDate,
+                    Category = new() 
+                    { 
+                        Name = c.Category.Name
+                    }
                 })
                 .ToListAsync();
         }
+
         public async Task<ObjectiveViewDto?> GetByIdAsync(int id)
         {
             Objective? objective = await _db.Objectives.FindAsync(id);
@@ -38,7 +44,6 @@ namespace Idp.Service.Service
                 Id = objective.Id,
                 Name = objective.Name,
                 Status = objective.Status,
-                CategoryId = objective.CategoryId,
                 StartDate = objective.StartDate,
                 EndDate = objective.EndDate
             };
@@ -63,7 +68,6 @@ namespace Idp.Service.Service
                 Id = objective.Id,
                 Name = objective.Name,
                 Status = objective.Status,
-                CategoryId = objective.CategoryId,
                 StartDate = objective.StartDate,
                 EndDate = objective.EndDate,
                 IdpId= dto.IdpId,

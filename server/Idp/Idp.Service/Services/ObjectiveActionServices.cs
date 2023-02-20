@@ -59,6 +59,7 @@ namespace Idp.Service.Services
                 StartDate = dto.StartDate,
                 Progress = dto.Progress,
                 Certificate = dto.Certificate,
+                ObjId = dto.ObjectiveId,
             };
 
             _db.ObjectiveActions.Add(action);
@@ -73,6 +74,7 @@ namespace Idp.Service.Services
                 StartDate = dto.StartDate,
                 Progress = dto.Progress,
                 Certificate = dto.Certificate,
+                ObjectiveId = dto.ObjectiveId,
             };
         }
 

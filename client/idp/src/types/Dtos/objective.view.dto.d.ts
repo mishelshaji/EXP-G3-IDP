@@ -17,8 +17,8 @@ declare interface ObjectiveViewDto {
     userId: string;
 
     idpId: number;
-
-    categoryId: number;
+    
+    category: any;
 
     status: string;
 

@@ -16,7 +16,7 @@ namespace Idp.Domain.Models
         [StringLength(200)]
         public string? Name { get; set; }
 
-        public DateTime Year { get; set; }
+        public int Year { get; set; }
 
         [ForeignKey(nameof(ApplicationUserId))]
         public string ApplicationUserId { get; set; }

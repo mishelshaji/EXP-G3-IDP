@@ -22,8 +22,8 @@ export class ObjectiveService {
      * The getAll method will fetch the list of objectives from the server.
      * @returns {Observable<ObjectiveViewDto[]>} Return the list of objectives from the server.
      */
-    getAll() {
-        return this.http.get<ObjectiveViewDto[]>(this.url);
+    getAll(idpId: string | number) {
+        return this.http.get<ObjectiveViewDto[]>(this.url + "/" + idpId);
     }
 
     /**

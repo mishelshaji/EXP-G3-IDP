@@ -10,16 +10,10 @@
     background-color: #a062f77c;
 }
 
-.arrow-button {
-    color: hsl(0, 0%, 50%);
-    width: 15vh;
-    height: 20vh;
-}
-
-.arrow-button:hover {
-    color: #6F88FC;
-}
-
 .progress {
     overflow-x: scroll;
+}
+
+.image {
+    background-image: linear-gradient(#FFFFFF, #FFFFFF, #003041 ,#003041);
 }

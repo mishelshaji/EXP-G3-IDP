@@ -3,6 +3,7 @@ using Idp.Domain.Models;
 using Idp.Service.Data;
 using Idp.Service.Service;
 using Idp.Service.Services;
+using IDP.Service.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -69,7 +70,7 @@ builder.Services.AddScoped<ManagerService>();
 builder.Services.AddScoped<EmployeeService>();
 builder.Services.AddScoped<ObjectiveService>();
 builder.Services.AddScoped<CategoryService>();
-
+builder.Services.AddScoped<TrainingService>();
 
 var app = builder.Build();
 

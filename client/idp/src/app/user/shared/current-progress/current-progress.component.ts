@@ -46,12 +46,4 @@ export class CurrentProgressComponent {
       }
     },
   }
-
-  scrollLeft() {
-    this.progressId = this.progressId - 1;
-  }
-
-  scrollRight() {
-    this.progressId = this.progressId + 1;
-  }
 }

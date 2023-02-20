@@ -144,7 +144,7 @@ namespace Idp.Service.Services
                 issuer,
                 audience,
                 claims,
-                expires: DateTime.Now.AddMinutes(1),
+                expires: DateTime.Now.AddDays(1),
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

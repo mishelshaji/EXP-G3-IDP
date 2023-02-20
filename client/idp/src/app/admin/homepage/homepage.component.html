@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="d-flex flex-row p-2">
+        <div class="width ">
+            <div class="row">
+                <div class=" col-sm-6 col-md-4 col-lg-3 mb-3" *ngFor="let counter of counters.slice(0, 2)">
+                    <div class="card h-100 bg-white border-0">
+                        <div class="card-body d-flex flex-column">
+                            <i class="fas fa-clock fa-3x mb-3"></i>
+                            <h4 class="card-title text-center">{{ counter.count }}</h4>
+                            <p class="card-text text-center" id="totalPendingIDP">{{ counter.name }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-3" *ngFor="let counter of counters.slice(2)">
+                    <div class="card h-100 bg-white border-0 bg-gradient">
+                        <div class="card-body d-flex flex-column">
+                            <i class="fas fa-users fa-3x mb-3"></i>
+                            <h4 class="card-title text-center">{{ counter.count }}</h4>
+                            <p class="card-text text-center" id="totalEmployees">{{ counter.name }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container p-2">
+    <table class="table ">
+        <thead>
+            <tr>
+                <th scope="col">Profile</th>
+                <th scope="col">Name</th>
+                <th scope="col">Department</th>
+                <th scope="col">IDP-Name</th>
+                <th scope="col">Objective</th>
+                <th scope="col">
+                    <div class="form-group d-flex">
+                        <label for="status">Remarks </label>
+                        <select class="form-control" id="status">
+                            <option value="all">All</option>
+                            <option value="not started">Not Started</option>
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users" [hidden]="selectedStatus !== 'all' && user.remark !== selectedStatus && 
+            (selectedStatus !== 'completed' || user.remark!== 'Completed') && 
+            (selectedStatus !== 'not started' || user.remark !== 'Not Started') && 
+            (selectedStatus !== 'pending' || user.remark !== 'Pending')">
+                <td><img src="{{user.profile}}" alt="{{user.name}}"></td>
+                <td>{{user.name}}</td>
+                <td>{{user.department}}</td>
+                <td>{{user.idp}}</td>
+                <td>{{user.objective}}</td>
+                <td>{{user.remark}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -17,13 +17,13 @@ namespace idp.Service.Services
             _db = db;
         }
 
-        public async Task<IdpViewDto> AddIdpAsync(CreateIdpDto dto)
+        public async Task<IdpViewDto> AddIdpAsync(CreateIdpDto dto, string userId)
         {
             var result = new IdpPlan
             {
                 Name = dto.Name,
                 Year = dto.Year,
-                ApplicationUserId = dto.UserId
+                ApplicationUserId = userId
             };
 
             _db.Idps.Add(result);
@@ -38,10 +38,10 @@ namespace idp.Service.Services
             };
         }
 
-        public async Task<List<IdpViewDto>> GetIdpAsync()
+        public async Task<List<IdpViewDto>> GetIdpAsync(string userId)
         {
             var res = await _db.Idps.ToListAsync();
-            return res.Select(c => new IdpViewDto
+            return res.Where(m => m.ApplicationUserId == userId).Select(c => new IdpViewDto
             {
                 Id = c.Id,
                 Name = c.Name,

@@ -59,15 +59,15 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody id="target">
+                <tbody id="target" *ngFor="let item of action">
                     <tr>
-                        <td>1</td>
-                        <td>item</td>
-                        <td>Description</td>
-                        <td>Start Date</td>
-                        <td>End Date</td>
-                        <td>Certificate</td>
-                        <td>Progress</td>
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.startDate}}</td>
+                        <td>{{item.endDate}}</td>
+                        <td>{{item.certificate}}</td>
+                        <td>{{item.progress}}</td>
                         <td>
                             <button class="btn btn-warning" (click)="editProgress()">
                                 <span class="fa fa-eye"></span>

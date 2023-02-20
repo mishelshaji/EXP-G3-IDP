@@ -21,5 +21,7 @@ namespace Idp.Service.Dto
         public int Progress { get; set; }
 
         public string? Certificate { get; set; }
+
+        public int ObjectiveId { get; set; }
     }
 }

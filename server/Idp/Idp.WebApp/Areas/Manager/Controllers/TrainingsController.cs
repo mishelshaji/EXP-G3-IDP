@@ -4,10 +4,10 @@ using IDP.Service.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace IDP.WebApp.Areas.Admin.Controllers
+namespace Idp.WebApp.Areas.Manager.Controllers
 {
 
-    public class TrainingsController : AdminControllerBase
+    public class TrainingsController : ManagerControllerBase
     {
         private readonly TrainingService _service;
 

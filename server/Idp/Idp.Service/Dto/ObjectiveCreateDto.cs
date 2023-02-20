@@ -14,8 +14,6 @@ namespace Idp.Service.Dto
 
         public int CategoryId { get; set; }
 
-        public int EmployeeId { get; set; }
-
         public int IdpId { get; set; }
 
         public DateTime? StartDate { get; set; } 

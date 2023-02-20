@@ -3,6 +3,7 @@ using idp.Service.Services;
 using Idp.WebApp.Areas.User.Controllers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Idp.WebApp.Controllers
 {
@@ -19,7 +20,8 @@ namespace Idp.WebApp.Controllers
         [ProducesResponseType(typeof(IdpViewDto), StatusCodes.Status200OK)]
         public async Task<ActionResult> Post(CreateIdpDto dto)
         {
-            var result = await _service.AddIdpAsync(dto);
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _service.AddIdpAsync(dto, userId);
             return Ok(result);
         }
 
@@ -27,7 +29,8 @@ namespace Idp.WebApp.Controllers
         [ProducesResponseType(typeof(IdpViewDto), StatusCodes.Status200OK)]
         public async Task<ActionResult> GetIdp()
         {
-            var result = await _service.GetIdpAsync();
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _service.GetIdpAsync(userId);
             return Ok(result);
 
         }

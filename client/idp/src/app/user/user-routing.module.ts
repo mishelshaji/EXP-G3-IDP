@@ -17,7 +17,7 @@ const routes: Routes = [
       { path: '', component: HomepageComponent },
       { path: 'objective-detailed', component: ObjectiveDetailedComponent },
       { path: 'idp', component: ShowAllIdpComponent },
-      { path: 'objectives', component: ObjectivesComponent },
+      { path: 'objectives/:id', component: ObjectivesComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'add-training', component: AddTrainingComponent },
       { path: 'add-action', component: AddActionComponent},

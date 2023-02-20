@@ -14,11 +14,11 @@ namespace Idp.Service.Dto
 
         public bool Status { get; set; }
 
-        public int CategoryId { get; set; }
-
-        public int EmployeeId { get; set; }
+        public string CategoryName { get; set; }
 
         public int IdpId { get; set; }
+
+        public CategoryViewDto Category { get; set; }
 
         public DateTime? StartDate { get; set; }
 

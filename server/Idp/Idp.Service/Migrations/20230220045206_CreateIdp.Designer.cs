@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Idp.Service.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230219141715_CreateUser")]
-    partial class CreateUser
+    [Migration("20230220045206_CreateIdp")]
+    partial class CreateIdp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -176,8 +176,8 @@ namespace Idp.Service.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<DateTime>("Year")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

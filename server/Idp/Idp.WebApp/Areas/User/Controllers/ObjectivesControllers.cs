@@ -14,21 +14,23 @@ namespace Idp.WebApp.Areas.User.Controllers
             _service = service;
         }
 
-        [HttpGet]
-        [ProducesResponseType(typeof(ObjectiveViewDto[]), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAll()
-        {
-            var result = await _service.GetAllAsync();
-            return Ok(result);
-        }
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(ObjectiveViewDto[]), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetOne(int id)
+        public async Task<IActionResult> GetAll(int id)
         {
-            var result = await _service.GetByIdAsync(id);
-            return result == null ? NotFound() : Ok(result);
+            var result = await _service.GetByIdpAsync(id);
+            return Ok(result);
         }
+
+        //[HttpGet("{id}")]
+        //[ProducesResponseType(typeof(ObjectiveViewDto[]), StatusCodes.Status200OK)]
+        //[ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
+        //public async Task<IActionResult> GetOne(int id)
+        //{
+        //    var result = await _service.GetByIdAsync(id);
+        //    return result == null ? NotFound() : Ok(result);
+        //}
+
         [HttpPost]
         [ProducesResponseType(typeof(ObjectiveViewDto[]), StatusCodes.Status201Created)]
         public async Task<IActionResult> Post(ObjectiveCreateDto dto)
