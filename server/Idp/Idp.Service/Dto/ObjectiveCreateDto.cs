@@ -10,7 +10,7 @@ namespace Idp.Service.Dto
     {
         public string Name { get; set; }
 
-        public bool Status { get; set; }
+        public StatusType Status { get; set; }
 
         public int CategoryId { get; set; }
 

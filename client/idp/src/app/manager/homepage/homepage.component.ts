@@ -12,7 +12,7 @@ export class HomepageComponent implements OnInit {
     { name: 'Total Empolyees', count: 1000, limit: 1500 },
     { name: 'Total Created IDP', count: 0, limit: 126 },
     { name: 'Total Pending IDP', count: 0, limit: 600 },
-    { name: 'Total Completed IDP', count: 0, limit: 660 },
+    { name: 'Total Completed IDP', count: 0, limit: 660 }
   ];
 
   intervalIds: any[] = [];

@@ -29,7 +29,7 @@ namespace Idp.Domain.Models
         public string? UserId { get; set; }
         public ApplicationUser User { get; set; }
 
-        public bool Status { get; set; }
+        public StatusType Status { get; set; }
 
     }
 }

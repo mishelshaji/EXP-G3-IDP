@@ -7,12 +7,14 @@ import { ForgotComponent } from '../user/forgot/forgot.component';
 import { UserUploadComponent } from '../admin/user-upload/user-upload.component';
 
 const routes: Routes = [
-  { path: '', component: LandingLayoutComponent, children: [
-    {path: '', component: LobbyComponent},
-    { path: 'signin', component: SigninComponent },
-    { path: 'forgot-password', component: ForgotComponent },
-    { path: 'userupload', component: UserUploadComponent }
-  ] }
+  {
+    path: '', component: LandingLayoutComponent, children: [
+      { path: '', component: LobbyComponent },
+      { path: 'signin', component: SigninComponent },
+      { path: 'forgot-password', component: ForgotComponent },
+      { path: 'userupload', component: UserUploadComponent }
+    ]
+  }
 ];
 
 @NgModule({

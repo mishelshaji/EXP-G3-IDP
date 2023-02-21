@@ -28,7 +28,6 @@ export class SigninComponent {
         if (role == "User")
           this.router.navigateByUrl('/user');
         this.router.navigateByUrl('/manager');
-        console.log(response.result);
       }
     })
   }
