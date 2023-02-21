@@ -88,7 +88,7 @@ namespace IDP.Service.Services
             };
         }
 
-        public async Task<ServiceResponse<TrainingViewDto>?> UpdateAsync(int id, TrainingViewDto dto)
+        public async Task<ServiceResponse<TrainingViewDto>?> UpdateAsync(int id, TrainingUpdateDto dto)
         {
             var response = new ServiceResponse<TrainingViewDto>();
 
@@ -96,20 +96,10 @@ namespace IDP.Service.Services
             if (category == null)
                 return null;
 
-            if (await _db.Trainings.AnyAsync(m => m.Name == dto.Name))
-            {
-                response.AddError("Name", "A category with the same name already exists.");
-            }
-
             if (!response.IsValid)
                 return response;
 
-            category.Name = dto.Name;
-            category.Link = dto.Link;
             category.Progress = dto.Progress;
-            category.StartDate = dto.StartDate;
-            category.EndDate = dto.EndDate;
-            category.ObjectiveId = dto.ObjectiveId;
             await _db.SaveChangesAsync();
 
             response.Result = new TrainingViewDto
@@ -120,7 +110,6 @@ namespace IDP.Service.Services
                 Progress = category.Progress,
                 StartDate = category.StartDate,
                 EndDate = category.EndDate,
-                ObjectiveId = dto.ObjectiveId,
             };
             return response;
         }

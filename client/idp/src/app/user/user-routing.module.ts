@@ -9,7 +9,6 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { ObjectiveDetailedComponent } from '../shared/objective-detailed/objective-detailed.component';
 import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
-import { UserUploadComponent } from './user-upload/user-upload.component';
 
 const routes: Routes = [
   {
@@ -24,7 +23,6 @@ const routes: Routes = [
       { path: 'home', component: HomepageComponent },
       { path: 'idp', component: ShowAllIdpComponent },
       { path: 'create-objective/:id', component: CreateObjectiveComponent },
-      { path: 'userupload', component: UserUploadComponent }
     ]
   }
 ];

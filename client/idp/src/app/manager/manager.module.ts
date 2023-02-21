@@ -5,8 +5,8 @@ import { ManagerLayoutComponent } from './manager-layout/manager-layout.componen
 import { ViewAllEmployeeComponent } from '../shared/view-all-employee/view-all-employee.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
-import { NavbarManagerComponent } from '../shared/navbar-manager/navbar-manager.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { NavbarUserComponent } from '../shared/navbar-user/navbar-user.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     ViewAllEmployeeComponent,
     FontAwesomeModule,
     FormsModule,
-    NavbarManagerComponent
+    NavbarUserComponent
   ]
 })
 export class ManagerModule { }

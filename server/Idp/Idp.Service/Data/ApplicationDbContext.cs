@@ -81,8 +81,6 @@ namespace Idp.Service.Data
         public DbSet<EmployeeUpload> EmployeesUpload { get; set; }
 
         public DbSet<IdpPlan> Idps { get; set; }
-
-        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         
         public DbSet<Training> Trainings { get; set; }
         

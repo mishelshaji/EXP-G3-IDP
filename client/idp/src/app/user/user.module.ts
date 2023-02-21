@@ -18,7 +18,7 @@ import { ObjectivesComponent } from '../shared/objectives/objectives.component';
 import { NavbarUserComponent } from '../shared/navbar-user/navbar-user.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateObjectiveComponent } from './create-objective/create-objective.component';
-import { UserUploadComponent } from './user-upload/user-upload.component';
+import { UserUploadComponent } from '../admin/user-upload/user-upload.component';
 
 @NgModule({
     declarations: [

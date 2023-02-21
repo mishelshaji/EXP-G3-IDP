@@ -3,25 +3,61 @@ import { CommonModule } from '@angular/common';
 import { ActionService } from 'src/app/service/action.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TrainingService } from 'src/app/service/training.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-objective-detailed',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, FormsModule],
   templateUrl: './objective-detailed.component.html',
   styleUrls: ['./objective-detailed.component.css']
 })
 export class ObjectiveDetailedComponent {
-  edit: boolean = false;
+  edit: string = '';
+  id: number = 0;
+
+  model = {
+    progress: 0
+  }
 
   objectiveId: number = 0;
 
-  editProgress() {
-    this.edit = true;
+  editProgress(id: number, section: string) {
+    this.id = id;
+    this.edit = section;
   }
 
-  submitProgress() {
-    this.edit = false
+  submitProgress(id: number) {
+    if (this.edit == 'training') {
+      var item:TrainingUpdateDto = {
+        progress: this.model.progress
+      };
+      this.trainingService.update(id, item).subscribe({
+        next: () => {
+          alert("Training updated successfully");
+        },
+        error: (error) => {
+          console.error(error);
+          alert("Error updating training");
+        }
+      });
+
+    } else {
+      var item:ActionUpdateDto = {
+        progress: this.model.progress
+      };
+      this.actionService.update(id, item).subscribe({
+        next: () => {
+          alert("Training updated successfully");
+        },
+        error: (error) => {
+          console.error(error);
+          alert("Error updating training");
+        }
+      });
+    }
+
+    this.edit = '';
   }
 
   /**

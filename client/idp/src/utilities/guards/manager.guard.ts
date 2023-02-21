@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class UserGuard implements CanActivate {
+export class ManagerGuard implements CanActivate {
 
     constructor(
         private tokenHelper: TokenHelper,
@@ -22,7 +22,7 @@ export class UserGuard implements CanActivate {
             this.router.navigate(['/login']);
             return false;
         }
-        if (role.userrole !== "User") {
+        if (role.userrole !== "Manager") {
             this.router.navigate(['']);
             return false;
         }

@@ -20,8 +20,8 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr *ngFor="let training of training">
+                <tbody *ngFor="let training of training">
+                    <tr>
                         <td>{{training.id}}</td>
                         <td>{{training.name}}</td>
                         <td>{{training.description}}</td>
@@ -30,7 +30,23 @@
                         <td>{{training.endDate | date: 'dd/MM/YYYY'}}</td>
                         <td>{{training.progress}}</td>
                         <td>
-                            <button class="btn btn-warning">
+                            <button class="btn btn-warning" (click)="editProgress(training.id, 'training')" [disabled]="edit">
+                                <span class="fa fa-eye"></span>
+                                Edit
+                            </button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="edit == 'training' && id == training.id">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                        <input type="text" class="form-control" #trainingProgress="ngModel" minlength="1"
+                                [(ngModel)]="model.progress"></td>
+                        <td>
+                            <button class="btn btn-warning" [disabled]="!trainingProgress.touched && trainingProgress.invalid" (click)="submitProgress(training.id)">
                                 <span class="fa fa-eye"></span>
                                 Update
                             </button>
@@ -42,7 +58,8 @@
     </div>
     <div class="d-flex m-3">
         <h5 class="text-secondary">Action items</h5>
-        <a class="btn btn-outline-dark rounded-4 ms-auto h-25" [routerLink]="['/user/add-action', objectiveId]">Create new</a>
+        <a class="btn btn-outline-dark rounded-4 ms-auto h-25" [routerLink]="['/user/add-action', objectiveId]">Create
+            new</a>
     </div>
     <hr>
     <div class="d-flex justify-content-center mb-5">
@@ -70,9 +87,25 @@
                         <td>{{item.endDate | date: 'dd/MM/YYYY'}}</td>
                         <td>{{item.progress}}</td>
                         <td>
-                            <button class="btn btn-warning" (click)="editProgress()">
+                            <button class="btn btn-warning" (click)="editProgress(item.id, 'action')">
                                 <span class="fa fa-eye"></span>
                                 Edit
+                            </button>
+                        </td>
+                    </tr>
+                    <tr  *ngIf="edit == 'action' && id == item.id">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                        <input type="text" class="form-control" #trainingProgress="ngModel" minlength="1"
+                                [(ngModel)]="model.progress"></td>
+                        <td>
+                            <button class="btn btn-warning" [disabled]="!trainingProgress.touched && trainingProgress.invalid" (click)="submitProgress(item.id)">
+                                <span class="fa fa-eye"></span>
+                                Update
                             </button>
                         </td>
                     </tr>

@@ -16,7 +16,7 @@ export class HomepageComponent {
 
   model: IdpCreateDto = {
     name: '',
-    year: 0,
+    year: new Date().getFullYear(),
   }
 
   changeFunction(e:any) {

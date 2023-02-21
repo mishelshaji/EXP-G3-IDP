@@ -52,7 +52,7 @@ export class ActionService {
      * @param model The action data that will be sent to the server.
      * @returns {Observable<any>} An observable that will emit the response from the server.
      */
-    update(id: number, model: ActionCreateDto) {
+    update(id: number, model: ActionUpdateDto) {
         return this.http.put(this.url + '/' + id, model);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using IDP.Service.Dto;
+using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -104,6 +105,31 @@ namespace Idp.Service.Services
             };
 
             return result;
+        }
+        public async Task<ServiceResponse<ViewActionDto>?> UpdateAsync(int id, ActionUpdateDto dto)
+        {
+            var response = new ServiceResponse<ViewActionDto>();
+
+            var category = await _db.ObjectiveActions.FindAsync(id);
+            if (category == null)
+                return null;
+
+            if (!response.IsValid)
+                return response;
+
+            category.Progress = dto.Progress;
+            await _db.SaveChangesAsync();
+
+            response.Result = new ViewActionDto
+            {
+                Id = category.Id,
+                Name = category.Name,
+                Certificate = category.Certificate,
+                Progress = category.Progress,
+                StartDate = category.StartDate,
+                EndDate = category.EndDate,
+            };
+            return response;
         }
 
     }

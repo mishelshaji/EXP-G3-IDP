@@ -1,8 +1,12 @@
 ﻿using Idp.Service.Services;
+using IDP.Service.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Idp.WebApp.Areas.User.Controllers
 {
+    [Authorize(Roles = "User,Manager")]
     public class ObjectiveActionController : UserControllerBase
     {
         private readonly ObjectiveActionServices _service;
@@ -42,6 +46,21 @@ namespace Idp.WebApp.Areas.User.Controllers
                 return BadRequest(result.Errors);
 
             return Ok(result);
+        }
+
+        [HttpPut("{id}")]
+        [ProducesResponseType(typeof(TrainingViewDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Put(int id, ActionUpdateDto dto)
+        {
+            var result = await _service.UpdateAsync(id, dto);
+            if (result == null)
+                return NotFound();
+
+            if (!result.IsValid)
+                return BadRequest(result.Errors);
+
+            return Ok(result.Result);
         }
     }
 }

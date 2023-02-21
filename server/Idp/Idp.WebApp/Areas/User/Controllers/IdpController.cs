@@ -1,12 +1,14 @@
 ﻿using idp.Service.Dto;
 using idp.Service.Services;
 using Idp.WebApp.Areas.User.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace Idp.WebApp.Controllers
 {
+    [Authorize(Roles = "User,Manager")]
     public class IdpController : UserControllerBase
     {
         private readonly IdpService _service;

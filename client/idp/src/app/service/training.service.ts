@@ -52,7 +52,7 @@ export class TrainingService {
      * @param model The training data that will be sent to the server.
      * @returns {Observable<any>} An observable that will emit the response from the server.
      */
-    update(id: number, model: TrainingCreateDto) {
+    update(id: number, model: TrainingUpdateDto) {
         return this.http.put(this.url + '/' + id, model);
     }
 }

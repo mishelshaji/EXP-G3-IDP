@@ -44,7 +44,7 @@ namespace Idp.WebApp.Areas.Manager.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(TrainingViewDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Put(int id, TrainingViewDto dto)
+        public async Task<IActionResult> Put(int id, TrainingUpdateDto dto)
         {
             var result = await _service.UpdateAsync(id, dto);
             if (result == null)

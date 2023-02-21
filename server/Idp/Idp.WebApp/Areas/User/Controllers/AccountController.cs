@@ -6,6 +6,7 @@ using System.Security.Claims;
 
 namespace Idp.WebApp.Areas.User.Controllers
 {
+    //[Authorize(Roles = "User,Manager")]
     public class AccountsController : UserControllerBase
     {
         private readonly AccountsService _service;
@@ -41,7 +42,6 @@ namespace Idp.WebApp.Areas.User.Controllers
             return BadRequest(result.Errors);
         }
 
-        [Authorize(Roles = "User")]
         [HttpGet("profile")]
         [ProducesResponseType(typeof(ViewActionDto[]), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetProfile()
