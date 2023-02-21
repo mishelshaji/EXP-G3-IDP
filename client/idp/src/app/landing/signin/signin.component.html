@@ -7,7 +7,7 @@
                     <div>
                         <input type="text" name="email" class="mt-5 text-center w-100 p-2 rounded-3"
                             [(ngModel)]="model.email" #email="ngModel" placeholder="someone@gmail.com" minlength="6"
-                            maxlength="70" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                            maxlength="70" required>
                         <div class="text-danger" *ngIf="email.invalid && email.touched">
                             <div *ngIf="email.errors?.['minlength']">Email is too short.</div>
                             <div *ngIf="email.errors?.['required']">Email is required.</div>

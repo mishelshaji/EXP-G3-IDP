@@ -1,5 +1,7 @@
 ﻿using CsvHelper;
 using Idp.Domain.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Formats.Asn1;
@@ -12,16 +14,29 @@ namespace Idp.Service.Services
 {
     public class EmployeeService
     {
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<ApplicationUser> _signinManager;
+        private readonly IConfiguration _configuration;
+
         private readonly ApplicationDbContext _db;
 
         private readonly IHostingEnvironment _webHost;
 
         public EmployeeService(
         ApplicationDbContext db,
-        IHostingEnvironment webHost)
+        IHostingEnvironment webHost,
+        UserManager<ApplicationUser> userManager,
+        RoleManager<IdentityRole> roleManager,
+        SignInManager<ApplicationUser> signinManager,
+        IConfiguration configuration)
         {
             _db = db;
             _webHost = webHost;
+            _userManager = userManager;
+            _roleManager = roleManager;
+            _signinManager = signinManager;
+            _configuration = configuration;
         }
 
 
@@ -59,32 +74,80 @@ namespace Idp.Service.Services
 
             result.Result = new()
             {
-                Id = employees.Id
+                Id = employees.Id,
+                
             };
 
             var reader = new StreamReader(uploadsDir);
             var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-            var employeesFile = csv.GetRecords<EmployeeDto>();
+            var allEmployees = csv.GetRecords<EmployeeDto>().ToList();
 
-            var employeesList = new Employee();
+            var managers = allEmployees.Where(m => m.Role == "Manager").ToList();
 
-            //foreach (var employee in employeesFile)
-            //{
-            //   employeesList = new Employee
-            //   {
-            //       Name = employee.Name,
-            //       //Email= employee.Email,
-            //       Department = employee.Department,
-            //       Designation = employee.Designation,
-            //       Dob= employee.Dob,
-            //       //Phone= employee.Phone,
-            //       EmployeeId= employee.EmployeeId,
-            //       ManagerEmployeeId= employee.ManagerEmployeeId,
-            //       ManagerId = employee.ManagerId,
+            var others = allEmployees.Where(m => m.Role == "Employee").ToList();
 
-            //   }
-            //}
+            var registeredManagers = new List<ApplicationUser>();
+            foreach (var item in managers)
+            {
+                var user = new ApplicationUser()
+                {
+                    FirstName = item.FirstName,
+                    LastName = item.LastName,
+                    Email = item.Email,
+                    NormalizedEmail = item.Email.ToUpper(),
+                    PhoneNumber = item.Phone,
+                    Department = item.Department,
+                    Gender = item.Gender,
+                    Designation = item.Designation,
+                    Dob = item.Dob,
+                    EmployeeId = item.EmployeeId,
+                    UserName = item.EmployeeId,
+                    NormalizedUserName = item.EmployeeId.ToUpper(),
+                };
 
+                var hasher = new PasswordHasher<ApplicationUser>();
+                user.PasswordHash = hasher.HashPassword(user, "Pass@123");
+                await _db.Users.AddAsync(user);
+                registeredManagers.Add(user);
+            }
+            await _db.SaveChangesAsync();
+
+            foreach (var manager in registeredManagers)
+            {
+                await _userManager.AddToRoleAsync(manager, "Manager");
+            }
+
+            // Add users.
+            foreach (var item in others)
+            {
+                var user = new ApplicationUser()
+                {
+                    FirstName = item.FirstName,
+                    LastName = item.LastName,
+                    Email = item.Email,
+                    NormalizedEmail = item.Email.ToUpper(),
+                    PhoneNumber = item.Phone,
+                    Department = item.Department,
+                    Gender = item.Gender,
+                    Designation = item.Designation,
+                    Dob = item.Dob,
+                    EmployeeId = item.EmployeeId,
+                    UserName = item.EmployeeId,
+                    NormalizedUserName = item.EmployeeId.ToUpper(),
+                    ManagerId = registeredManagers.FirstOrDefault(m => m.EmployeeId == item.ManagerEmployeeId).Id
+                };
+
+                var hasher = new PasswordHasher<ApplicationUser>();
+                user.PasswordHash = hasher.HashPassword(user, "Pass@123");
+                await _db.Users.AddAsync(user);
+                registeredManagers.Add(user);
+            }
+            await _db.SaveChangesAsync();
+
+            foreach (var user in registeredManagers)
+            {
+                await _userManager.AddToRoleAsync(user, "User");
+            }
             return result;
         }
     }

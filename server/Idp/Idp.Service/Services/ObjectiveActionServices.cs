@@ -31,7 +31,7 @@ namespace Idp.Service.Services
                     EndDate = c.EndDate,
                     StartDate = c.StartDate,
                     Progress = c.Progress,
-                    Description = c.Certificate,
+                    Description = c.Certificate
                 })
                 .ToListAsync();
         }
@@ -51,25 +51,6 @@ namespace Idp.Service.Services
                 })
                 .ToListAsync();
         }
-
-        //public async Task<ViewActionDto?> GetByIdAsync(int id)
-        //{
-        //    var action = await _db.ObjectiveActions.FindAsync(id);
-
-        //    if (action == null)
-        //        return null;
-
-        //    action = await _db.ObjectiveActions.FindAsync(id);
-        //    return action == null ? null : new ViewActionDto
-        //    {
-        //        Id = action.Id,
-        //        Name = action.Name,
-        //        EndDate = action.EndDate,
-        //        StartDate = action.StartDate,
-        //        Progress = action.Progress,
-        //        Description = action.Certificate,
-        //    };
-        //}
 
         public async Task<ServiceResponse<ViewActionDto>> CreateAsync(AddActionDto dto)
         {

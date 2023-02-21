@@ -28,6 +28,6 @@ namespace Idp.Service.Dto
 
         public int ManagerId { get; set; }
 
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
     }
 }

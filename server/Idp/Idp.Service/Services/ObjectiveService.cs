@@ -48,7 +48,29 @@ namespace Idp.Service.Service
                 EndDate = objective.EndDate
             };
         }
-        public async Task<ObjectiveViewDto> CreateAsync(ObjectiveCreateDto dto)
+
+        public async Task<List<ObjectiveViewDto>> GetByPendingAsync(int id)
+        {
+            return await _db.Objectives
+                .Include(m => m.Category)
+                .Where(m => m.IdpId == id && m.Status == false)
+                .Select(c => new ObjectiveViewDto
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Status = c.Status,
+                    IdpId = c.IdpId,
+                    StartDate = c.StartDate,
+                    EndDate = c.EndDate,
+                    Category = new()
+                    {
+                        Name = c.Category.Name
+                    }
+                })
+                .ToListAsync();
+        }
+
+        public async Task<ObjectiveViewDto> CreateAsync(ObjectiveCreateDto dto, string userId)
         {
             var objective = new Objective
             {
@@ -58,6 +80,7 @@ namespace Idp.Service.Service
                 StartDate = dto.StartDate,
                 EndDate = dto.EndDate,
                 IdpId= dto.IdpId,
+                UserId = userId,
             };
 
             _db.Objectives.Add(objective);

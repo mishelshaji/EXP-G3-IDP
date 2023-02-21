@@ -25,6 +25,10 @@ namespace Idp.Domain.Models
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
+        [ForeignKey(nameof(UserId))]
+        public string? UserId { get; set; }
+        public ApplicationUser User { get; set; }
+
         public bool Status { get; set; }
 
     }

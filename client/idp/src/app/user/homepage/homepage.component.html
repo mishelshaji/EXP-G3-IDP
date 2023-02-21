@@ -4,8 +4,8 @@
         <div class="mb-5 d-flex align-items-center">
             <label for="year">Year</label>
             <div class="ms-3">
-                <input type="number" id="year" name="year" min="{{2023}}" max="2100" name="year"
-                    class="form-control input-field col" placeholder="{{2023}}" [(ngModel)]="model.year" #year="ngModel"
+                <input type="number" id="year" name="year" min="2023" max="2100" name="year"
+                    class="form-control input-field col" placeholder="2023" [(ngModel)]="model.year" #year="ngModel"
                     (ngModelChange)="changeFunction($event)" required>
                 <div class="text-danger" *ngIf="year.invalid && year.touched">
                     <div *ngIf="year.errors?.['min']">Year should be above {{23}}</div>

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Idp.Service.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230220045206_CreateIdp")]
-    partial class CreateIdp
+    [Migration("20230221065743_CreateUser1")]
+    partial class CreateUser1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,8 +54,9 @@ namespace Idp.Service.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
+                    b.Property<string>("EmployeeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -73,9 +74,6 @@ namespace Idp.Service.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("ManagerId")
-                        .HasColumnType("int");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -109,8 +107,6 @@ namespace Idp.Service.Migrations
                     b.HasIndex("EmployeeId")
                         .IsUnique();
 
-                    b.HasIndex("ManagerId");
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -143,7 +139,7 @@ namespace Idp.Service.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Idp.Domain.Models.Employee", b =>
+            modelBuilder.Entity("Idp.Domain.Models.EmployeeUpload", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -157,7 +153,7 @@ namespace Idp.Service.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employees");
+                    b.ToTable("EmployeesUpload");
                 });
 
             modelBuilder.Entity("Idp.Domain.Models.IdpPlan", b =>
@@ -239,11 +235,16 @@ namespace Idp.Service.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("IdpId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Objectives");
                 });
@@ -299,8 +300,7 @@ namespace Idp.Service.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Link")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasMaxLength(50)
@@ -478,17 +478,6 @@ namespace Idp.Service.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Idp.Domain.Models.ApplicationUser", b =>
-                {
-                    b.HasOne("Idp.Domain.Models.Manager", "Manager")
-                        .WithMany()
-                        .HasForeignKey("ManagerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Manager");
-                });
-
             modelBuilder.Entity("Idp.Domain.Models.IdpPlan", b =>
                 {
                     b.HasOne("Idp.Domain.Models.ApplicationUser", "User")
@@ -514,9 +503,15 @@ namespace Idp.Service.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Idp.Domain.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Category");
 
                     b.Navigation("Idp");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Idp.Domain.Models.ObjectiveAction", b =>

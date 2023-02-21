@@ -1,0 +1,7 @@
+FirstName,LastName,Email,Phone,Designation,Department,EmployeeId,ManagerEmployeeId,ManagerId,Role,Dob,Gender
+"User","1","user1@mail.com","9856857401","none","none","EMP0001","EMP0001",0,"Manager","2002-01-01",male
+"User","2","user2@mail.com","9856857402","none","none","EMP0002","EMP0001",0,"Employee","2002-01-01",male
+"User","3","user3@mail.com","9856857403","none","none","EMP0003","EMP0003",0,"Manager","2002-01-01",male
+"User","4","user4@mail.com","9856857404","none","none","EMP0004","EMP0004",0,"Manager","2002-01-01",male
+"User","5","user5@mail.com","9856857405","none","none","EMP0005","EMP0003",0,"Employee","2002-01-01",male
+

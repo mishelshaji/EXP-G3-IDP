@@ -9,7 +9,9 @@ namespace Idp.Service.Dto
 {
     public class EmployeeDto
     {
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public string Email { get; set; }
 
@@ -28,5 +30,7 @@ namespace Idp.Service.Dto
         public string Role { get; set; }
 
         public DateTime Dob { get; set; }
+
+        public string Gender { get; set; }
     }
 }

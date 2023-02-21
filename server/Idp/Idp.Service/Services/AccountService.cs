@@ -47,7 +47,6 @@ namespace Idp.Service.Services
                 Department = dto.Department,
                 Designation = dto.Designation,
                 Dob = dto.Dob,
-                ManagerId = dto.ManagerId,
                 EmployeeId = dto.EmployeeId,
                 Gender = dto.Gender,
                 UserName = Guid.NewGuid().ToString()
@@ -133,7 +132,8 @@ namespace Idp.Service.Services
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
-                new Claim(ClaimTypes.Role, role)
+                new Claim(ClaimTypes.Role, role),
+                new Claim("userrole", role)
             };
 
             string issuer = _configuration["Jwt:Issuer"];

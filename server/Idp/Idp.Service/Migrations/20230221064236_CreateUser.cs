@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Idp.Service.Migrations
 {
-    public partial class CreateIdp : Migration
+    public partial class CreateUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,7 +37,7 @@ namespace Idp.Service.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Employees",
+                name: "EmployeesUpload",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -46,7 +46,7 @@ namespace Idp.Service.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employees", x => x.Id);
+                    table.PrimaryKey("PK_EmployeesUpload", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,7 +96,7 @@ namespace Idp.Service.Migrations
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Dob = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ManagerId = table.Column<int>(type: "int", nullable: false),
-                    EmployeeId = table.Column<int>(type: "int", nullable: false),
+                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -240,11 +240,17 @@ namespace Idp.Service.Migrations
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IdpId = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Objectives", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Objectives_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Objectives_Categories_CategoryId",
                         column: x => x.CategoryId,
@@ -291,7 +297,7 @@ namespace Idp.Service.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    Link = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Link = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Progress = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -413,6 +419,11 @@ namespace Idp.Service.Migrations
                 column: "IdpId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Objectives_UserId",
+                table: "Objectives",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Trainings_ObjectiveId",
                 table: "Trainings",
                 column: "ObjectiveId");
@@ -436,7 +447,7 @@ namespace Idp.Service.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: "EmployeesUpload");
 
             migrationBuilder.DropTable(
                 name: "ObjectiveActions");

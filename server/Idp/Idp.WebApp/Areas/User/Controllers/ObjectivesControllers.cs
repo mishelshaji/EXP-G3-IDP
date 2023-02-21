@@ -1,6 +1,7 @@
 ﻿using Idp.Service.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Idp.WebApp.Areas.User.Controllers
 {
@@ -22,20 +23,13 @@ namespace Idp.WebApp.Areas.User.Controllers
             return Ok(result);
         }
 
-        //[HttpGet("{id}")]
-        //[ProducesResponseType(typeof(ObjectiveViewDto[]), StatusCodes.Status200OK)]
-        //[ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
-        //public async Task<IActionResult> GetOne(int id)
-        //{
-        //    var result = await _service.GetByIdAsync(id);
-        //    return result == null ? NotFound() : Ok(result);
-        //}
-
         [HttpPost]
         [ProducesResponseType(typeof(ObjectiveViewDto[]), StatusCodes.Status201Created)]
         public async Task<IActionResult> Post(ObjectiveCreateDto dto)
         {
-            var result = await _service.CreateAsync(dto);
+
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _service.CreateAsync(dto, userId);
             return Ok(result);
         }
 

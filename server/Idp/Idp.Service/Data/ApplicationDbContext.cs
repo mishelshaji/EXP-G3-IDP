@@ -89,7 +89,5 @@ namespace Idp.Service.Data
         public DbSet<Objective> Objectives { get; set; }
 
         public DbSet<Category> Categories { get; set; }
-
-        public DbSet<Employee> Employees { get; set; }
     }
 }

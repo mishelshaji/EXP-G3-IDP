@@ -25,10 +25,10 @@ namespace Idp.Domain.Models
 
         public DateTime Dob { get; set; }
 
-        [ForeignKey(nameof(Manager))]
-        public int ManagerId { get; set; }
-        public Manager? Manager { get; set; }
+        public string EmployeeId { get; set; }
 
-        public int EmployeeId { get; set; }
+        [ForeignKey(nameof(Manager))]
+        public string? ManagerId { get; set; }
+        public ApplicationUser? Manager { get; set; }
     }
 }

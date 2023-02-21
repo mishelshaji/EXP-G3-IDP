@@ -16,11 +16,16 @@ export class CustomerGuard implements CanActivate {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         const hasToken = this.tokenHelper.hasToken();
-        console.log(hasToken);
+        // const role = this.tokenHelper.getDecodedToken();
+        // console.log(hasToken);
         if (!hasToken) {
             this.router.navigate(['/login']);
             return false;
         }
+        // if (role.userrole !== "User") {
+        //     this.router.navigate(['/login']);
+        //     return false;
+        // }
         return true;
     }
 
