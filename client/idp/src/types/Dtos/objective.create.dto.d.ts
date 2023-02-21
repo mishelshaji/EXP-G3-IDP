@@ -5,7 +5,7 @@ declare interface ObjectiveCreateDto {
 
     categoryId: number;
 
-    status: boolean;
+    status: statusType;
 
     startDate: Date;
 

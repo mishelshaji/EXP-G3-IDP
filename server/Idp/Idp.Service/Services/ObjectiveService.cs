@@ -53,7 +53,7 @@ namespace Idp.Service.Service
         {
             return await _db.Objectives
                 .Include(m => m.Category)
-                .Where(m => m.IdpId == id && m.Status == false)
+                .Where(m => m.IdpId == id && m.Status == StatusType.pending)
                 .Select(c => new ObjectiveViewDto
                 {
                     Id = c.Id,
