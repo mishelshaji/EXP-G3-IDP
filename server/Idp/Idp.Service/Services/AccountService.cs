@@ -34,38 +34,6 @@ namespace Idp.Service.Services
             _configuration = configuration;
         }
 
-        public async Task<ServiceResponse<bool>> CreateUserAsync(UserCreateDto dto)
-        {
-            var response = new ServiceResponse<bool>();
-
-            var user = new ApplicationUser
-            {
-                FirstName = dto.FirstName,
-                LastName = dto.LastName,
-                Email = dto.Email,
-                PhoneNumber = dto.PhoneNumber,
-                Department = dto.Department,
-                Designation = dto.Designation,
-                Dob = dto.Dob,
-                EmployeeId = dto.EmployeeId,
-                Gender = dto.Gender,
-                UserName = Guid.NewGuid().ToString()
-            };
-
-            // Create the user and add to role.
-            var userStatus = await _userManager.CreateAsync(user, dto.Password);
-            if (!userStatus.Succeeded)
-            {
-                response.AddError("", "Failed to create user");
-                return response;
-            }
-
-            await _userManager.AddToRoleAsync(user, "User");
-
-            response.Result = true;
-            return response;
-        }
-
         public async Task<ServiceResponse<string>> LoginAsync(LoginDto dto)
         {
             var response = new ServiceResponse<string>();

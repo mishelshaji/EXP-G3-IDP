@@ -16,20 +16,6 @@ namespace Idp.WebApp.Areas.User.Controllers
             _service = service;
         }
 
-        [HttpPost("user/register")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PostUser(UserCreateDto dto)
-        {
-            var result = await _service.CreateUserAsync(dto);
-            if (!result.IsValid)
-            {
-                return BadRequest(result.Errors);
-            }
-
-            return Ok();
-        }
-
         [HttpPost("login")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -35,5 +35,14 @@ namespace Idp.WebApp.Areas.User.Controllers
             return Ok(result);
         }
 
+        [HttpGet("{year}")]
+        [ProducesResponseType(typeof(ObjectiveViewDto[]), StatusCodes.Status200OK)]
+        public IActionResult GetProgress(int year)
+        {
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = _service.GetProgress(userId, year);
+            return Ok(result);
+        }
+
     }
 }

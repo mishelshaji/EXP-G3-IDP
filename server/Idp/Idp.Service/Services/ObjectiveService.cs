@@ -25,11 +25,11 @@ namespace Idp.Service.Service
                     Id = c.Id,
                     Name = c.Name,
                     Status = c.Status,
-                    IdpId= c.IdpId,
+                    IdpId = c.IdpId,
                     StartDate = c.StartDate,
                     EndDate = c.EndDate,
-                    Category = new() 
-                    { 
+                    Category = new()
+                    {
                         Name = c.Category.Name
                     }
                 })
@@ -79,7 +79,7 @@ namespace Idp.Service.Service
                 CategoryId = dto.CategoryId,
                 StartDate = dto.StartDate,
                 EndDate = dto.EndDate,
-                IdpId= dto.IdpId,
+                IdpId = dto.IdpId,
                 UserId = userId,
             };
 
@@ -93,8 +93,34 @@ namespace Idp.Service.Service
                 Status = objective.Status,
                 StartDate = objective.StartDate,
                 EndDate = objective.EndDate,
-                IdpId= dto.IdpId,
+                IdpId = dto.IdpId,
             };
+        }
+
+        public List<ObjectiveProgressDto> GetProgress(string userId, int year)
+        {
+            int idpId = _db.Idps.FirstOrDefault(m => m.Year == year).Id;
+
+            var objectiveProgressList = new List<ObjectiveProgressDto>();
+
+            var objectiveList = _db.Objectives.Where(m => m.IdpId == idpId).Take(4).ToList();
+
+            foreach (var objective in objectiveList)
+            {
+                var trainingTotal = _db.Trainings.Include(m => m.Objective).Where(m => m.Objective.Id == objective.Id).Count();
+                var training = _db.Trainings.Include(m => m.Objective).Where(m => m.Objective.Id == objective.Id).Sum(m => m.Progress);
+
+                var actionTotal = _db.ObjectiveActions.Include(m => m.Obj).Where(m => m.Obj.Id == objective.Id).Count();
+                var action = _db.ObjectiveActions.Include(m => m.Obj).Where(m => m.Obj.Id == objective.Id).Sum(m => m.Progress);
+
+                objectiveProgressList.Add(new ObjectiveProgressDto
+                {
+                    Name = objective.Name,
+                    Progress = (training + action) / (trainingTotal + actionTotal),
+                });
+            }
+
+            return objectiveProgressList;
         }
     }
 }
