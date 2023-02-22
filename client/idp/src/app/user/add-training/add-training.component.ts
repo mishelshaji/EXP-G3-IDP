@@ -18,6 +18,8 @@ export class AddTrainingComponent {
     link: '',
   }
 
+  currentDate = new Date().toISOString().split('T')[0];
+
   constructor(
     private service: TrainingService,
     private router: ActivatedRoute,

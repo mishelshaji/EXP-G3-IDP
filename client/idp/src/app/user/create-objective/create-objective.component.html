@@ -4,7 +4,7 @@
             <h1>Create Objective</h1>
             <div class="holder">
                 <label for="Category">Category:</label>
-                <select name="category" [(ngModel)]="model.categoryId" id="category" *ngFor="let item of category">
+                <select name="category" [(ngModel)]="model.categoryId" id="category" *ngFor="let item of category" required>
                     <option value="{{item.id}}">{{item.name}}</option>
                 </select>
                 <label for="objective">Name:</label>
@@ -15,12 +15,18 @@
                     <div *ngIf="name.errors?.['maxlength']">maximum 50 characters</div>
                 </div>
                 <label for="startdate">Start Date:</label>
-                <input name="startDate" type="date" [(ngModel)]="model.startDate" #start="ngModel" min="{{currentDate}}">
+                <input name="startDate" type="date" [(ngModel)]="model.startDate" #startDate="ngModel" min="{{currentDate}}" required>
+                 <div class="text-danger" *ngIf="startDate.invalid && startDate.touched">
+                    <div *ngIf="startDate.errors?.['required']">StartDate is required.</div>
+                </div>
                 <div>
                     <label class=""></label>
                 </div>
                 <label for="Enddate">End Date:</label>
-                <input name="endDate" type="date" [(ngModel)]="model.endDate" #end="ngModel" min="{{model.startDate}}">
+                <input name="endDate" type="date" [(ngModel)]="model.endDate" #endDate="ngModel" min="{{model.startDate}}" required>y
+                <div class="text-danger" *ngIf="endDate.invalid && endDate.touched">
+                    <div *ngIf="endDate.errors?.['required']">Enddate is required.</div>
+                </div>
                 <button value="submit" class="btn btn-success w-100 my-3 rounded-5">SAVE</button>
             </div>
         </form>
