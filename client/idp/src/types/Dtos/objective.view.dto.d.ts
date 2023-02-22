@@ -17,10 +17,10 @@ declare interface ObjectiveViewDto {
     userId: string;
 
     idpId: number;
+    
+    category: any;
 
-    categoryId: number;
-
-    status: string;
+    status: statusType;
 
     startDate: Date;
 

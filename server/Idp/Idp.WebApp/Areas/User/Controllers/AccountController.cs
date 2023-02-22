@@ -6,6 +6,7 @@ using System.Security.Claims;
 
 namespace Idp.WebApp.Areas.User.Controllers
 {
+    //[Authorize(Roles = "User,Manager")]
     public class AccountsController : UserControllerBase
     {
         private readonly AccountsService _service;
@@ -13,20 +14,6 @@ namespace Idp.WebApp.Areas.User.Controllers
         public AccountsController(AccountsService service)
         {
             _service = service;
-        }
-
-        [HttpPost("user/register")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PostUser(UserCreateDto dto)
-        {
-            var result = await _service.CreateUserAsync(dto);
-            if (!result.IsValid)
-            {
-                return BadRequest(result.Errors);
-            }
-
-            return Ok();
         }
 
         [HttpPost("login")]
@@ -41,7 +28,6 @@ namespace Idp.WebApp.Areas.User.Controllers
             return BadRequest(result.Errors);
         }
 
-        [Authorize(Roles = "User")]
         [HttpGet("profile")]
         [ProducesResponseType(typeof(ViewActionDto[]), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetProfile()

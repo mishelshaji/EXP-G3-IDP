@@ -22,8 +22,8 @@ export class ActionService {
      * The getAll method will fetch the list of actions from the server.
      * @returns {Observable<ActionViewDto[]>} Return the list of actions from the server.
      */
-    getAll() {
-        return this.http.get<ActionViewDto[]>(this.url);
+    getByObjective(id:number) {
+        return this.http.get<ActionViewDto[]>(this.url + "/" + id);
     }
 
     /**
@@ -41,7 +41,7 @@ export class ActionService {
      * @param model The action data that will be sent to the server.
      * @returns {Observable<any>} An observable that will emit the newly created action.
      */
-    create(model: ActionCreateDto) {
+    create(model: ActionCreateDto | FormData) {
         return this.http.post<ActionViewDto>(this.url, model);
     }
 
@@ -52,7 +52,7 @@ export class ActionService {
      * @param model The action data that will be sent to the server.
      * @returns {Observable<any>} An observable that will emit the response from the server.
      */
-    update(id: number, model: ActionCreateDto) {
+    update(id: number, model: ActionUpdateDto) {
         return this.http.put(this.url + '/' + id, model);
     }
 }

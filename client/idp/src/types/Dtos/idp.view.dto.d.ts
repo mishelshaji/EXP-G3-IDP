@@ -12,7 +12,7 @@ declare interface IdpViewDto {
      */
     name: string;
 
-    year: Date;
+    year: number;
 
     userId: number;
 }

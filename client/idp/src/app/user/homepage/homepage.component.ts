@@ -10,19 +10,17 @@ import { ProfileService } from 'src/app/service/profile.service';
 })
 export class HomepageComponent {
   
-  userId = {
-    id: ''
+  employee = {
+    employeeId: 0
   }
 
   model: IdpCreateDto = {
     name: '',
-    year: new Date(),
-    userId: this.userId.id
+    year: new Date().getFullYear(),
   }
 
   changeFunction(e:any) {
-    this.model.userId = this.userId.id;
-    this.model.name = 'IDP ' + 799 + ' ' + e;   
+    this.model.name = 'IDP ' + this.employee.employeeId + ' ' + e;   
     this.model.year = e;
   }
 
@@ -37,8 +35,8 @@ export class HomepageComponent {
   ngOnInit(): void {
     this.profileService.get().subscribe({
       next: (data) => {
-        this.userId = data;
-        console.log(this.userId.id);
+        this.employee = data;
+        console.log(this.employee.employeeId);
       },
       error: () => {
         console.log("Loading id failed. Please try again later.");        
@@ -54,11 +52,9 @@ export class HomepageComponent {
         },
         error: (error) => {
             console.error(error);
-            console.log(this.model);
             
             alert("Error creating idp");
         }
     })
   }
-
 }

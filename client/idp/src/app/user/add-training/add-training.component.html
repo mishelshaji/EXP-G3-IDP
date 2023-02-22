@@ -1,7 +1,7 @@
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-end mb-5">
     <div class="box1 me-5 w-50">
         <div class="container ps-5 pt-5 rounded-5 shadow shadow-dark">
-            <form #form="ngForm">
+            <form #form="ngForm" (ngSubmit)="createTraining()">
                 <table>
                     <thead>
                         <h3 class="text-secondary">Add Training</h3>
@@ -10,8 +10,8 @@
                         <tr>
                             <td>
                                 <label for="name" name="training">Training name</label>
-                                <input type="text" name="name" id="name" [(ngModel)]="model.training"
-                                    #training="ngModel" class="mt-5" [(ngModel)]="model.training" required>
+                                <input type="text" name="name" id="name" [(ngModel)]="model.name"
+                                    #training="ngModel" class="mt-5" [(ngModel)]="model.name" required>
                                 <div class="text-danger" *ngIf="training.invalid && training.touched">
                                     <div *ngIf="training.errors?.['required']">Training name is required.</div>
                                 </div>
@@ -19,8 +19,18 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="data">Ending Date</label>
-                                <input type="date" name="date" class="mt-5" id="date" [(ngModel)]="model.date"
+                                <label for="startData">Start Date</label>
+                                <input type="date" name="startdate" class="mt-5" id="startDate" [(ngModel)]="model.startDate"
+                                    #date="ngModel" required>
+                                <div class="text-danger" *ngIf="date.invalid && date.touched">
+                                    <div *ngIf="date.errors?.['required']">Date is required.</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="endData">Ending Date</label>
+                                <input type="date" name="endDate" class="mt-5" id="endDate" [(ngModel)]="model.endDate"
                                     #date="ngModel" required>
                                 <div class="text-danger" *ngIf="date.invalid && date.touched">
                                     <div *ngIf="date.errors?.['required']">Date is required.</div>
@@ -32,7 +42,7 @@
                                 <label for="url">Training course URL</label>
                                 <input type="text" name="url" id="url" class="mt-5"
                                     pattern="http(s?)(:\/\/)((www.)?)(([^.]+)\.)?([a-zA-z0-9\-_]+)(.com|.net|.gov|.org|.in)(\/[^\s]*)?"
-                                    [(ngModel)]="model.url" #url="ngModel" required>
+                                    [(ngModel)]="model.link" #url="ngModel" required>
                                 <div class="text-danger" *ngIf="url.invalid && url.touched">
                                     <div *ngIf="url.errors?.['required']">URL is required.</div>
                                     <div *ngIf="url.errors?.['pattern']">URL is invalid.</div>
@@ -41,16 +51,16 @@
                         </tr>
                         <tr>
                             <td>
-                                <textarea name="dis" id="dis" cols="60" rows="5" placeholder="Training description"
-                                    class="rounded-3 mt-5" [(ngModel)]="model.text" #text="ngModel" required></textarea>
-                                <div class="text-danger" *ngIf="text.invalid && text.touched">
-                                    <div *ngIf="text.errors?.['required']">Description is required.</div>
+                                <textarea name="description" id="dis" cols="60" rows="5" placeholder="Training description"
+                                    class="rounded-3 mt-5" [(ngModel)]="model.description" #description="ngModel" required></textarea>
+                                <div class="text-danger" *ngIf="description.invalid && description.touched">
+                                    <div *ngIf="description.errors?.['required']">Description is required.</div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <button type="submit" class="btn btn-outline-dark mt-3 w-25 rounded-5"
+                                <button type="submit" class="btn btn-outline-dark mt-3 w-25 rounded-5 mb-3"
                                     [disabled]="form.invalid">Submit</button>
                             </td>
                         </tr>

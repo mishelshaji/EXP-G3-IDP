@@ -13,8 +13,6 @@ namespace IDP.Service.Dto
         public int Progress { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public int UserId { get; set; }
-        public int IdpId { get; set; }
         public int ObjectiveId { get; set; }
      
     }

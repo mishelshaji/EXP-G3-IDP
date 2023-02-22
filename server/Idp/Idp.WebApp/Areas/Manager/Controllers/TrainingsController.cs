@@ -4,10 +4,10 @@ using IDP.Service.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace IDP.WebApp.Areas.Admin.Controllers
+namespace Idp.WebApp.Areas.Manager.Controllers
 {
 
-    public class TrainingsController : AdminControllerBase
+    public class TrainingsController : ManagerControllerBase
     {
         private readonly TrainingService _service;
 
@@ -44,7 +44,7 @@ namespace IDP.WebApp.Areas.Admin.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(TrainingViewDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Put(int id, TrainingViewDto dto)
+        public async Task<IActionResult> Put(int id, TrainingUpdateDto dto)
         {
             var result = await _service.UpdateAsync(id, dto);
             if (result == null)

@@ -14,7 +14,7 @@ export class ObjectiveService {
     /**
      * This is the base URL of the API. It will be used to make HTTP requests.
      */
-    url = 'https://localhost:7264/api/user/objective';
+    url = 'https://localhost:7264/api/user/ObjectivesControllers';
 
     constructor(private http: HttpClient) { }
 
@@ -22,8 +22,8 @@ export class ObjectiveService {
      * The getAll method will fetch the list of objectives from the server.
      * @returns {Observable<ObjectiveViewDto[]>} Return the list of objectives from the server.
      */
-    getAll() {
-        return this.http.get<ObjectiveViewDto[]>(this.url);
+    getAll(idpId: string | number) {
+        return this.http.get<ObjectiveViewDto[]>(this.url + "/" + idpId);
     }
 
     /**

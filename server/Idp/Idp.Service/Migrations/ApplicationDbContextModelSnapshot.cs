@@ -52,11 +52,15 @@ namespace Idp.Service.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
+                    b.Property<string>("EmployeeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
@@ -69,8 +73,8 @@ namespace Idp.Service.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<int>("ManagerId")
-                        .HasColumnType("int");
+                    b.Property<string>("ManagerId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -101,6 +105,9 @@ namespace Idp.Service.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EmployeeId")
+                        .IsUnique();
+
                     b.HasIndex("ManagerId");
 
                     b.HasIndex("NormalizedEmail")
@@ -114,7 +121,7 @@ namespace Idp.Service.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Idp.Domain.Models.Idp", b =>
+            modelBuilder.Entity("Idp.Domain.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -123,17 +130,63 @@ namespace Idp.Service.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("YearId")
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Idp.Domain.Models.EmployeeUpload", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Image")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmployeesUpload");
+                });
+
+            modelBuilder.Entity("Idp.Domain.Models.IdpPlan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("Year")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("YearId");
+                    b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("Idp");
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasFilter("[Name] IS NOT NULL");
+
+                    b.ToTable("Idps");
                 });
 
             modelBuilder.Entity("Idp.Domain.Models.Manager", b =>
@@ -152,7 +205,10 @@ namespace Idp.Service.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Manager");
+                    b.HasIndex("EmployeeId")
+                        .IsUnique();
+
+                    b.ToTable("Managers");
                 });
 
             modelBuilder.Entity("Idp.Domain.Models.Objective", b =>
@@ -163,8 +219,14 @@ namespace Idp.Service.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Category")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdpId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasMaxLength(200)
@@ -173,11 +235,19 @@ namespace Idp.Service.Migrations
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("IdpId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Objectives");
                 });
@@ -205,6 +275,40 @@ namespace Idp.Service.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("ObjId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Progress")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ObjId");
+
+                    b.ToTable("ObjectiveActions");
+                });
+
+            modelBuilder.Entity("Idp.Domain.Models.Training", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<int>("ObjectiveId")
                         .HasColumnType("int");
 
@@ -218,23 +322,7 @@ namespace Idp.Service.Migrations
 
                     b.HasIndex("ObjectiveId");
 
-                    b.ToTable("ObjectiveActions");
-                });
-
-            modelBuilder.Entity("Idp.Domain.Models.Year", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("Years")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Year");
+                    b.ToTable("Trainings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -395,34 +483,62 @@ namespace Idp.Service.Migrations
 
             modelBuilder.Entity("Idp.Domain.Models.ApplicationUser", b =>
                 {
-                    b.HasOne("Idp.Domain.Models.Manager", "Manager")
+                    b.HasOne("Idp.Domain.Models.ApplicationUser", "Manager")
                         .WithMany()
-                        .HasForeignKey("ManagerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ManagerId");
 
                     b.Navigation("Manager");
                 });
 
-            modelBuilder.Entity("Idp.Domain.Models.Idp", b =>
+            modelBuilder.Entity("Idp.Domain.Models.IdpPlan", b =>
                 {
-                    b.HasOne("Idp.Domain.Models.Year", "Year")
+                    b.HasOne("Idp.Domain.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("YearId")
+                        .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Year");
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Idp.Domain.Models.ObjectiveAction", b =>
+            modelBuilder.Entity("Idp.Domain.Models.Objective", b =>
                 {
-                    b.HasOne("Idp.Domain.Models.Idp", "Idp")
+                    b.HasOne("Idp.Domain.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Idp.Domain.Models.IdpPlan", "Idp")
                         .WithMany()
                         .HasForeignKey("IdpId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Idp.Domain.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Idp");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Idp.Domain.Models.ObjectiveAction", b =>
+                {
+                    b.HasOne("Idp.Domain.Models.Objective", "Obj")
+                        .WithMany()
+                        .HasForeignKey("ObjId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Obj");
+                });
+
+            modelBuilder.Entity("Idp.Domain.Models.Training", b =>
+                {
                     b.HasOne("Idp.Domain.Models.Objective", "Objective")
                         .WithMany()
                         .HasForeignKey("ObjectiveId")

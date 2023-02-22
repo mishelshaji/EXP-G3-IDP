@@ -34,38 +34,6 @@ namespace Idp.Service.Services
             _configuration = configuration;
         }
 
-        public async Task<ServiceResponse<bool>> CreateUserAsync(UserCreateDto dto)
-        {
-            var response = new ServiceResponse<bool>();
-
-            var user = new ApplicationUser
-            {
-                FirstName = dto.FirstName,
-                LastName = dto.LastName,
-                Email = dto.Email,
-                PhoneNumber = dto.PhoneNumber,
-                Department = dto.Department,
-                Designation = dto.Designation,
-                Dob = dto.Dob,
-                ManagerId = dto.ManagerId,
-                EmployeeId = dto.EmployeeId,
-                UserName = Guid.NewGuid().ToString()
-            };
-
-            // Create the user and add to role.
-            var userStatus = await _userManager.CreateAsync(user, dto.Password);
-            if (!userStatus.Succeeded)
-            {
-                response.AddError("", "Failed to create user");
-                return response;
-            }
-
-            await _userManager.AddToRoleAsync(user, "User");
-
-            response.Result = true;
-            return response;
-        }
-
         public async Task<ServiceResponse<string>> LoginAsync(LoginDto dto)
         {
             var response = new ServiceResponse<string>();
@@ -129,7 +97,8 @@ namespace Idp.Service.Services
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
-                new Claim(ClaimTypes.Role, role)
+                new Claim(ClaimTypes.Role, role),
+                new Claim("userrole", role)
             };
 
             string issuer = _configuration["Jwt:Issuer"];
@@ -143,7 +112,7 @@ namespace Idp.Service.Services
                 issuer,
                 audience,
                 claims,
-                expires: DateTime.Now.AddMinutes(1),
+                expires: DateTime.Now.AddDays(1),
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

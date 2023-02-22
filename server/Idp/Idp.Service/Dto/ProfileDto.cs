@@ -20,7 +20,7 @@ namespace Idp.Service.Dto
 
         public string Designation { get; set; }
 
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
 
         public string Gender { get; set; }
 

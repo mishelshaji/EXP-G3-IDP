@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Idp.Domain.Models
 {
-    public class Employee
+    public class EmployeeUpload
     {
         public int Id { get; set; }
 

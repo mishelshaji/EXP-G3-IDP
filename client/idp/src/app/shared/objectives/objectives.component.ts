@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ObjectiveService } from 'src/app/service/objective.service';
 
 @Component({
@@ -11,27 +11,18 @@ import { ObjectiveService } from 'src/app/service/objective.service';
   styleUrls: ['./objectives.component.css']
 })
 export class ObjectivesComponent {
-  
     /**
    * This is the list of objective that will be displayed in the UI.
    * It will be initialized in the ngOnInit method. The default value is null.
    */
-    objective:any = {
-      name: '',
-      description: '',
-      category: '',
-      startDate: '',
-      endDate: '',
-      categoryId: 0,
-      idpId: 0,
-      userId: '',
-    };
+    objective: ObjectiveViewDto[] | null = null;
 
+    idpId = 0;
 
     /**
      * @param service This is the instance of objectiveService that will be used to
      */
-    constructor(private service: ObjectiveService) {
+    constructor(private service: ObjectiveService, private router: ActivatedRoute) {
   
     }
   
@@ -42,7 +33,8 @@ export class ObjectivesComponent {
      * will be displayed to the user.
      */
     ngOnInit() {
-      this.service.getAll().subscribe({
+    this.idpId = this.router.snapshot.params["id"];
+      this.service.getAll(this.idpId).subscribe({
         next: (data: ObjectiveViewDto[] | null) => {
           this.objective = data;
           console.log(this.objective);

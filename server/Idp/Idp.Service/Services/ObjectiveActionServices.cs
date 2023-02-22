@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IDP.Service.Dto;
+using Microsoft.AspNetCore.Hosting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +12,14 @@ namespace Idp.Service.Services
     {
         private readonly ApplicationDbContext _db;
 
-        public ObjectiveActionServices(ApplicationDbContext db)
+        private readonly IHostingEnvironment _webHost;
+
+        public ObjectiveActionServices(
+        ApplicationDbContext db,
+        IHostingEnvironment webHost)
         {
             _db = db;
+            _webHost = webHost;
         }
 
         public async Task<List<ViewActionDto>> GetAllAsync()
@@ -25,32 +32,52 @@ namespace Idp.Service.Services
                     EndDate = c.EndDate,
                     StartDate = c.StartDate,
                     Progress = c.Progress,
+                    Description = c.Certificate
+                })
+                .ToListAsync();
+        }
+        public async Task<List<ViewActionDto>> GetByObjectiveAsync(int id)
+        {
+            return await _db.ObjectiveActions
+                .Where(m => m.ObjId == id)
+                .Select(c => new ViewActionDto
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    EndDate = c.EndDate,
+                    StartDate = c.StartDate,
+                    Progress = c.Progress,
                     Description = c.Certificate,
+                    ObjectiveId = c.ObjId
                 })
                 .ToListAsync();
         }
 
-        public async Task<ViewActionDto?> GetByIdAsync(int id)
+        public async Task<ServiceResponse<ViewActionDto>> CreateAsync(AddActionDto dto)
         {
-            var action = await _db.ObjectiveActions.FindAsync(id);
 
-            if (action == null)
-                return null;
+            var result = new ServiceResponse<ViewActionDto>();
 
-            action = await _db.ObjectiveActions.FindAsync(id);
-            return action == null ? null : new ViewActionDto
+            // Saving File to disk.
+            string fileNameByUser = dto.Certificate.FileName;
+            string fileExtension = Path.GetExtension(fileNameByUser).ToLower();
+            var allowedFileExtensions = new[] { ".pdf" };
+
+            if (!allowedFileExtensions.Contains(fileExtension))
             {
-                Id = action.Id,
-                Name = action.Name,
-                EndDate = action.EndDate,
-                StartDate = action.StartDate,
-                Progress = action.Progress,
-                Description = action.Certificate,
-            };
-        }
+                result.AddError(nameof(dto.Certificate), "Invalid file type.");
+                return result;
+            }
 
-        public async Task<ViewActionDto> CreateAsync(AddActionDto dto)
-        {
+            string staticFileDirs = _webHost.WebRootPath;
+            string uniqueFileName = Guid.NewGuid().ToString() + fileExtension;
+            string uploadsDir = Path.Join(staticFileDirs, "uploads", uniqueFileName);
+
+            using (var fileStream = new FileStream(uploadsDir, FileMode.Create))
+            {
+                await dto.Certificate.CopyToAsync(fileStream);
+            }
+
             var action = new ObjectiveAction
             {
                 Name = dto.Name,
@@ -58,13 +85,14 @@ namespace Idp.Service.Services
                 EndDate = dto.EndDate,
                 StartDate = dto.StartDate,
                 Progress = dto.Progress,
-                Certificate = dto.Certificate,
+                Certificate = Path.Combine(uniqueFileName),
+                ObjId = dto.ObjectiveId
             };
 
             _db.ObjectiveActions.Add(action);
             await _db.SaveChangesAsync();
 
-            return new ViewActionDto
+            result.Result = new ViewActionDto
             {
                 Id = action.Id,
                 Name = dto.Name,
@@ -72,8 +100,36 @@ namespace Idp.Service.Services
                 EndDate = dto.EndDate,
                 StartDate = dto.StartDate,
                 Progress = dto.Progress,
-                Certificate = dto.Certificate,
+                Certificate = Path.Combine(uniqueFileName),
+                ObjectiveId = dto.ObjectiveId,
             };
+
+            return result;
+        }
+        public async Task<ServiceResponse<ViewActionDto>?> UpdateAsync(int id, ActionUpdateDto dto)
+        {
+            var response = new ServiceResponse<ViewActionDto>();
+
+            var category = await _db.ObjectiveActions.FindAsync(id);
+            if (category == null)
+                return null;
+
+            if (!response.IsValid)
+                return response;
+
+            category.Progress = dto.Progress;
+            await _db.SaveChangesAsync();
+
+            response.Result = new ViewActionDto
+            {
+                Id = category.Id,
+                Name = category.Name,
+                Certificate = category.Certificate,
+                Progress = category.Progress,
+                StartDate = category.StartDate,
+                EndDate = category.EndDate,
+            };
+            return response;
         }
 
     }

@@ -19,13 +19,18 @@ export class SigninComponent {
     private router: Router,
     private tokenHelper: TokenHelper) { }
 
-  onSubmit() {
-    this.service.login(this.model).subscribe({
-      next: (response: any) => {
-        this.tokenHelper.setToken(response.result);
-        this.router.navigateByUrl('/user/profile');
-        console.log(response.result);
+    
+    onSubmit() {
+      this.service.login(this.model).subscribe({
+        next: (response: any) => {
+          this.tokenHelper.setToken(response.result);
+          const role = this.tokenHelper.getDecodedToken();
+        if (role == "User")
+          this.router.navigateByUrl('/user/');
+          
+        this.router.navigateByUrl('/manager');
       }
     })
   }
+
 }

@@ -7,19 +7,22 @@ declare interface ActionViewDto {
      */
     readonly id: number;
 
-    /**
-     * The name of the action.
-     */
     name: string;
 
-    endDate: Date;
+    startDate: Date;
 
-    objective: number;
+    endDate: Date
 
-    userId: number;
+    objective: number
 
+    userId: number
     /**
-     * The description of the action.
+     * The description of the action. It should be a short description of the
+     * action and should not exceed 250 characters.
      */
     description: string;
+
+    certificate: string
+
+    progress: number
 }

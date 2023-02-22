@@ -1,12 +1,14 @@
 ﻿using Idp.WebApp.Areas.User.Controllers;
 using IDP.Service.Dto;
 using IDP.Service.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace IDP.WebApp.Areas.User.Controllers
 {
-
+    [Authorize(Roles = "User,Manager")]
     public class TrainingsController : UserControllerBase
     {
         private readonly TrainingService _service;
@@ -33,18 +35,17 @@ namespace IDP.WebApp.Areas.User.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(TrainingViewDto), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetOne(int id)
+        [ProducesResponseType(typeof(TrainingViewDto[]), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetByObjectiveId(int id)
         {
-            var result = await _service.GetByIdAsync(id);
-            return result == null ? NotFound() : Ok(result);
+            var result = await _service.GetByObjectiveAsync(id);
+            return Ok(result);
         }
 
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(TrainingViewDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Put(int id, TrainingViewDto dto)
+        public async Task<IActionResult> Put(int id, TrainingUpdateDto dto)
         {
             var result = await _service.UpdateAsync(id, dto);
             if (result == null)

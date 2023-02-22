@@ -1,7 +1,7 @@
 <section class="mb-3">
     <div class="d-flex m-3">
         <h5 class="text-secondary">Objectives</h5>
-        <a class="btn btn-outline-dark rounded-4 ms-auto h-25" [routerLink]="['/user/create-objective']">Create new</a>
+        <a class="btn btn-outline-dark rounded-4 ms-auto h-25" [routerLink]="['/user/create-objective', idpId]">Create new</a>
     </div>
     <hr class="ms-3 me-3">
     <div class="d-flex justify-content-center">
@@ -11,7 +11,6 @@
                     <tr>
                         <th>SlNo</th>
                         <th>Name</th>
-                        <th>Description</th>
                         <th>Category</th>
                         <th>Start Date</th>
                         <th>End Date</th>
@@ -22,12 +21,11 @@
                     <tr>
                         <td>{{item.id}}</td>
                         <td>{{item.name}}</td>
-                        <td>{{item.description}}</td>
-                        <td>{{item.category}}</td>
-                        <td>{{item.startDate}}</td>
-                        <td>{{item.endDate}}</td>
+                        <td>{{item.category.name}}</td>
+                        <td>{{item.startDate | date: 'dd/MM/YYY'}}</td>
+                        <td>{{item.endDate | date: 'dd/MM/YYY'}}</td>
                         <td>
-                            <button class="btn btn-warning" [routerLink]="['/user/objective-detailed']">View</button>
+                            <a class="btn btn-warning" [routerLink]="['/user/objective-detailed', item.id]">View</a>
                         </td>
                     </tr>
                 </tbody>

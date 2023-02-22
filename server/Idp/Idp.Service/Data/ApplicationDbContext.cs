@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Idp.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
@@ -77,14 +76,18 @@ namespace Idp.Service.Data
 
         public DbSet<ObjectiveAction> ObjectiveActions { get; set; }
 
+        public DbSet<Manager> Managers { get; set; }
+
+        public DbSet<EmployeeUpload> EmployeesUpload { get; set; }
+
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+
+        public DbSet<IdpPlan> Idps { get; set; }
+        
+        public DbSet<Training> Trainings { get; set; }
+        
         public DbSet<Objective> Objectives { get; set; }
 
         public DbSet<Category> Categories { get; set; }
-
-        public DbSet<IDP> Idps { get; set; }
-
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        
-        public DbSet<Training> Trainings { get; set; }
     }
 }

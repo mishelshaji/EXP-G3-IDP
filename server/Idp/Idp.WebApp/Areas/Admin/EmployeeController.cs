@@ -1,12 +1,14 @@
-﻿using Idp.WebApp.Areas.User.Controllers;
+﻿using Idp.WebApp.Areas.Admin.Controllers;
+using Idp.WebApp.Areas.User.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Security.Claims;
 
-namespace Idp.WebApp.Areas.User.Controllers
+namespace Idp.WebApp.Areas.Admin
 {
-    public class EmployeeController : UserControllerBase
+    [Authorize(Roles = "Admin")]
+    public class EmployeeController : AdminControllerBase
     {
         private readonly EmployeeService _service;
 
