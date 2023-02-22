@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ObjectivePendingService } from 'src/app/service/objectivePending.service';
 
 @Component({
   selector: 'app-homepage',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
-  selectedStatus = 'all';
+  selectedStatus = 3;
 
   counters = [
     { name: 'Total Empolyees', count: 1000, limit: 1500 },
@@ -15,10 +16,25 @@ export class HomepageComponent implements OnInit {
     { name: 'Total Completed IDP', count: 0, limit: 660 }
   ];
 
+  constructor(private objectivdePending: ObjectivePendingService){}
+
   intervalIds: any[] = [];
+
+  objectivePending: PendingObjectiveDto[] | null = null;
 
   ngOnInit() {
     this.startCounters();
+    
+    this.objectivdePending.getPending().subscribe({
+      next: (data) => {
+        this.objectivePending = data;
+        console.log(this.objectivePending);
+      },
+      error: (error) => {
+        console.log(error);
+        console.log("Loading pending failed. Please try again later.");        
+      }
+    });
   }
 
   startCounters() {
@@ -32,133 +48,11 @@ export class HomepageComponent implements OnInit {
       }, 0.01);
     }
   }
-
-  messages = [
-    {
-      sender: 'John Doe',
-      subject: 'Important Message',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    },
-    {
-      sender: 'Jane Doe',
-      subject: 'Urgent Message',
-      text: 'Praesent vestibulum dictum dui, eu gravida justo placerat a.',
-    },
-    {
-      sender: 'Bob Smith',
-      subject: 'Follow-Up',
-      text: 'Vivamus eget velit vel libero mollis consectetur.',
-    },
-  ];
-
-  users = [
-    {
-      name: 'John Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Sales',
-      objective: 'Increase sales by 10%',
-      idp: 'IMP-ID-200828-2022',
-      status: 'not started',
-    },
-    {
-      name: 'Jane Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Marketing',
-      objective: 'Develop a new marketing strategy',
-      idp: 'IMP-ID-200808-2022',
-      status: 'pending',
-    },
-    {
-      name: 'Jim Smith',
-      profile: 'https://picsum.photos/100',
-      department: 'IT',
-      objective: 'Improve system performance by 20%',
-      idp: 'IMP-ID-200908-2022',
-      status: 'pending',
-    },
-    {
-      name: 'John Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Sales',
-      objective: 'Increase sales by 10%',
-      idp: 'IMP-ID-200828-2022',
-      status: 'completed  ',
-    },
-    {
-      name: 'Jane Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Marketing',
-      objective: 'Develop a new marketing strategy',
-      idp: 'IMP-ID-200808-2022',
-      status: 'pending',
-    },
-    {
-      name: 'Jim Smith',
-      profile: 'https://picsum.photos/100',
-      department: 'IT',
-      objective: 'Improve system performance by 20%',
-      idp: 'IMP-ID-200908-2022',
-      status: 'pending',
-    },
-    {
-      name: 'John Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Sales',
-      objective: 'Increase sales by 10%',
-      idp: 'IMP-ID-200828-2022',
-      status: 'completed',
-    },
-    {
-      name: 'Jane Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Marketing',
-      objective: 'Develop a new marketing strategy',
-      idp: 'IMP-ID-200808-2022',
-      status: 'pending',
-    },
-    {
-      name: 'Jim Smith',
-      profile: 'https://picsum.photos/100',
-      department: 'IT',
-      objective: 'Improve system performance by 20%',
-      idp: 'IMP-ID-200908-2022',
-      status: 'not started',
-    },
-    {
-      name: 'John Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Sales',
-      objective: 'Increase sales by 10%',
-      idp: 'IMP-ID-200828-2022',
-      status: 'pending',
-    },
-    {
-      name: 'Jane Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Marketing',
-      objective: 'Develop a new marketing strategy',
-      idp: 'IMP-ID-200808-2022',
-      status: 'pending',
-    },
-    {
-      name: 'Jim Smith',
-      profile: 'https://picsum.photos/100',
-      department: 'IT',
-      objective: 'Improve system performance by 20%',
-      idp: 'IMP-ID-200908-2022',
-      status: 'not started',
-    },
-  ];
-
-  constructor() {}
-
-  lastMessage(message: any) {
-    return this.messages.indexOf(message) === this.messages.length - 1;
-  }
   
   resultMessage: string = '';
 
   onApprove() {
+    
     this.resultMessage = 'Approved';
   }
 

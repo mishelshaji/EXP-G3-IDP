@@ -20,7 +20,7 @@ declare interface ObjectiveViewDto {
     
     category: any;
 
-    status: statusType;
+    status: number;
 
     startDate: Date;
 

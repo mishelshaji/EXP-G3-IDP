@@ -15,11 +15,11 @@ namespace Idp.WebApp.Areas.Manager.Controllers
             this._service = services;
         }
 
-        [HttpGet("{managerId}")]
+        [HttpGet]
         [ProducesResponseType(typeof(ViewPendingObjectiveDto[]), StatusCodes.Status200OK)]
-        public ActionResult GetAllAsync(string managerId)
+        public ActionResult GetAllAsync()
         {
-            //string managerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string managerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var result = _service.GetAll(managerId);
             return Ok(result);
         }

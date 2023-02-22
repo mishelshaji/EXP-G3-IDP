@@ -71,6 +71,7 @@ builder.Services.AddScoped<EmployeeService>();
 builder.Services.AddScoped<ObjectiveService>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<TrainingService>();
+builder.Services.AddScoped<ObjectivePendingService>();
 
 var app = builder.Build();
 

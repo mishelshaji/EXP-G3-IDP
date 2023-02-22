@@ -8,30 +8,21 @@ using System.Security.Claims;
 namespace Idp.WebApp.Areas.User.Controllers
 {
     [Authorize(Roles = "User,Manager")]
-    public class ObjectivesControllers : UserControllerBase
+    public class HomePageProgress : UserControllerBase
     {
         private readonly ObjectiveService _service;
 
-        public ObjectivesControllers(ObjectiveService service)
+        public HomePageProgress(ObjectiveService service)
         {
             _service = service;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{year}")]
         [ProducesResponseType(typeof(ObjectiveViewDto[]), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAll(int id)
+        public IActionResult GetProgress(int year)
         {
-            var result = await _service.GetByIdpAsync(id);
-            return Ok(result);
-        }
-
-        [HttpPost]
-        [ProducesResponseType(typeof(ObjectiveViewDto[]), StatusCodes.Status201Created)]
-        public async Task<IActionResult> Post(ObjectiveCreateDto dto)
-        {
-
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var result = await _service.CreateAsync(dto, userId);
+            var result = _service.GetProgress(userId, year);
             return Ok(result);
         }
 

@@ -1,1 +1,0 @@
-enum statusType { rejected, pending, accepted };

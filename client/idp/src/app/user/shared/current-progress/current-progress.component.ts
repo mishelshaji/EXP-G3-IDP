@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
+import { HomepageService } from 'src/app/service/homepage.service';
 
 @Component({
   selector: 'app-current-progress',
@@ -11,21 +12,33 @@ export class CurrentProgressComponent {
   trainingName: string[] = [];
   trainingProgress: number[] = [];
 
-  arrowLeftIcon = faArrowAltCircleLeft;
-  arrowRightIcon = faArrowAltCircleRight;
-
   trainingItem: any[] = [];
-  constructor() {
+  constructor(
+  private progress: HomepageService,
+  ) { }
 
-  }
+  objectiveProgress: HomePageDto[] | null = null;
 
   idpName: string[] = ['.Net expert', 'Expert in Angular', '.Net advanced', 'node expert', 'become good at preesentation'];
 
+  progress1: number[] = [];
+  progressName: string[] = [];
+
   ngOnInit() {
-    this.trainingItem.forEach(element => {
-      this.trainingName.push(element.name);
-      this.trainingProgress.push(element.progress);
-    })
+    this.progress.getProgress(new Date().getFullYear()).subscribe({
+      next: (data: any) => {
+        this.objectiveProgress = data.result;
+        this.objectiveProgress?.forEach(e =>{
+            console.log(e.progress);  
+            this.progress1.push(parseInt(e.progress));
+            this.progressName.push(e.name);
+          });
+      },
+      error: (error) => {
+        console.log(error);
+        console.log("Loading progress failed. Please try again later.");        
+      }
+    });
   }
 
   data = {

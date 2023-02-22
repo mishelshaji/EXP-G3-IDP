@@ -13,7 +13,7 @@ export class CreateObjectiveComponent {
     idpId: 0,
     name: '',
     categoryId: 0,
-    status: statusType.pending,
+    status: 1,
     startDate: new Date(),
     endDate: new Date()
   };
