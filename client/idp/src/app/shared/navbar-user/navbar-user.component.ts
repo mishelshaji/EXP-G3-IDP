@@ -12,16 +12,20 @@ import { TokenHelper } from 'src/utilities/helpers/tokenHelper';
 })
 
 export class NavbarUserComponent {
+
+  role: string = '';
+
   createIdp() {
     var id: any = document.getElementById('idp');
     id.style.display = id.style.display == 'block' ? 'none' : 'block';
   }
 
-  /**
-   *
-   */
   constructor(private router: Router, private token: TokenHelper) {
     
+  }
+
+  ngOnInit() {
+    this.role = this.token.getDecodedToken().userrole;
   }
 
   navigateToProfile() {

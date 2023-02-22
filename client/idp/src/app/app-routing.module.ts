@@ -8,7 +8,8 @@ import { NotfoundComponent } from './shared/notfound/notfound.component';
 const routes: Routes = [
   {
     path: 'user',
-    canActivate: [UserGuard,ManagerGuard],
+    // canActivate: [UserGuard],
+    
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
   {

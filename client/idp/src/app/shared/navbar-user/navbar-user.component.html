@@ -9,7 +9,11 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/user/']">Home</a>
+                    <a class="nav-link" *ngIf="role == 'User'" [routerLink]="['/user/']">Home</a>
+                    <a class="nav-link" *ngIf="role == 'Manager'" [routerLink]="['/manager/']">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn nav-link" *ngIf="role == 'Manager'" [routerLink]="['/user/']">Top Objectives</a>
                 </li>
                 <li class="nav-item">
                     <a class="btn nav-link" (click)="createIdp()">Create IDP</a>

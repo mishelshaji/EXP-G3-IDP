@@ -11,7 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
 import { FooterComponent } from '../shared/footer/footer.component';
-import { NavbarManagerComponent } from '../shared/navbar-manager/navbar-manager.component';
+import { NavbarUserComponent } from '../shared/navbar-user/navbar-user.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +27,9 @@ import { NavbarManagerComponent } from '../shared/navbar-manager/navbar-manager.
     FormsModule,
     UserRoutingModule,
     NgbModule,
-    NavbarManagerComponent,
     RouterModule,
-    FooterComponent
+    FooterComponent,
+    NavbarUserComponent
   ]
 })
 export class ManagerModule { }

@@ -28,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     FontAwesomeModule,
     RouterModule,
     NavbarAdminComponent,
-    FormsModule
+    FormsModule,
+    NavbarAdminComponent
   ]
 })
 export class AdminModule { }
