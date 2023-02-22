@@ -9,3 +9,55 @@ footer {
 #contact {
     display: none;
 }
+
+.container {
+    padding-top: 50px;
+  }
+  
+  form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  form label {
+    font-weight: bold;
+  }
+  
+  form textarea {
+    resize: none;
+  }
+  
+  label {
+    font-weight: bold;
+    color: #025157;
+  }
+  
+  .btn-primary {
+    background-color: #067aed;
+    border-color: #025157;
+  }
+  
+  .btn-primary:disabled {
+    background-color: #034361;
+    border-color: #022316;
+  }
+  
+  .alert-success {
+    background-color: #186d18;
+    border-color: #f30e0e;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .btn-primary:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .bulge-on-hover:hover {
+    transform: scale(1.05);
+    border-width: 3px;
+    border-color: #211b6d
+  }

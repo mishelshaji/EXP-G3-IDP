@@ -50,17 +50,16 @@ namespace idp.Service.Services
             }).ToList();
         }
 
-        public async Task<IdpViewDto?> GetByIdAsync(string id)
+        public async Task<List<IdpViewDto?>> GetByIdAsync(string userId)
         {
-            var id1 = Convert.ToInt32(id);
-            IdpPlan? idp = await _db.Idps.FindAsync(id1);
-            return idp == null ? null : new IdpViewDto
+            var res = await _db.Idps.ToListAsync();
+            return res.Where(m => m.ApplicationUserId == userId).Select(c => new IdpViewDto
             {
-                Id = idp.Id,
-                Name = idp.Name,
-                Year = idp.Year,
-                UserId = idp.ApplicationUserId 
-            };
+                Id = c.Id,
+                Name = c.Name,
+                Year = c.Year,
+                UserId = c.ApplicationUserId
+            }).ToList();
         }
     }
 }

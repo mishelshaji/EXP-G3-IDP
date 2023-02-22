@@ -20,5 +20,7 @@ namespace Idp.Service.Dto
         public string? ObjectiveName { get; set; }
 
         public StatusType Remark { get; set; }
+
+        public int ObjectiveId { get; set; }
     }
 }

@@ -7,11 +7,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NavbarUserComponent } from '../shared/navbar-user/navbar-user.component';
+import { UserRoutingModule } from '../user/user-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
 
 @NgModule({
   declarations: [
     ManagerLayoutComponent,
-    HomepageComponent
+    HomepageComponent,
+    ShowAllIdpComponent,
   ],
   imports: [
     CommonModule,
@@ -19,7 +25,10 @@ import { NavbarUserComponent } from '../shared/navbar-user/navbar-user.component
     ViewAllEmployeeComponent,
     FontAwesomeModule,
     FormsModule,
-    NavbarUserComponent
+    UserRoutingModule,
+    NgbModule,
+    NavbarUserComponent,
+    RouterModule
   ]
 })
 export class ManagerModule { }

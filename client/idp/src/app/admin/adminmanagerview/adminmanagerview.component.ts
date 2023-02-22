@@ -3,11 +3,11 @@ import { ObjectivePendingService } from 'src/app/service/objectivePending.servic
 import { ObjectiveUpdateService } from 'src/app/service/objectiveUpdate.service';
 
 @Component({
-  selector: 'app-homepage',
-  templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css'],
+  selector: 'app-adminmanagerview',
+  templateUrl: './adminmanagerview.component.html',
+  styleUrls: ['./adminmanagerview.component.css'],
 })
-export class HomepageComponent implements OnInit {
+export class AdminmanagerviewComponent {
   selectedStatus = 3;
 
   counters = [

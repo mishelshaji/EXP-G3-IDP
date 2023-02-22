@@ -42,7 +42,6 @@
     </div>
 </div>
 <div class="container p-2">
-
     <table class="table ">
         <thead>
             <tr>
@@ -66,7 +65,6 @@
         </thead>
         <tbody *ngFor="let user of objectivePending" >
             <tr [hidden]="selectedStatus != user.remark && selectedStatus != 3">
-                <!-- <td><img src="{{user.profile}}" alt="{{user.name}}"></td> -->
                 <td>{{user.userName}}</td>
                 <td>{{user.department}}</td>
                 <td>{{user.idpName}}</td>
@@ -74,12 +72,12 @@
                 <td style="text-align: center;">{{user.remark == 0 ? 'Rejected' : user.remark == 1 ? 'Pending' : 'Accepted'}}</td>
                 <td>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-success"  id="approve-btn" (click)="onApprove()" [style.display]="resultMessage ? 'none' : 'inline-block'">Approve</button>
-                        <button type="button" class="btn btn-danger"  id="reject-btn" (click)="onReject()"[style.display]="resultMessage ? 'none' : 'inline-block'">Reject</button>
+                        <button type="button" class="btn btn-success"  id="approve-btn" (click)="onApprove(user.objectiveId)" [style.display]="resultMessage ? 'none' : 'inline-block'">Approve</button>
+                        <button type="button" class="btn btn-danger"  id="reject-btn" (click)="onReject(user.objectiveId)"[style.display]="resultMessage ? 'none' : 'inline-block'">Reject</button>
                         <p *ngIf="resultMessage" class="result-msg" [class.approved]="user.remark === 2" [class.rejected]="user.remark === 2">{{ resultMessage }}</p>
                     </div>
                 </td>
-                <td><a [routerLink]="['/user/idp']" class="text-warning text-decoration-none">View</a></td>
+                <td><a [routerLink]="['/manager/idp', user.userId]" class="text-warning text-decoration-none">View</a></td>
             </tr>
         </tbody>
     </table>

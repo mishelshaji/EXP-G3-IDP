@@ -44,8 +44,4 @@ export class ObjectiveService {
     create(model: ObjectiveCreateDto) {
         return this.http.post<ObjectiveViewDto>(this.url, model);
     }
-
-    update(id: number, model: TrainingUpdateDto) {
-        return this.http.put(this.url + '/' + id, model);
-    }
 }

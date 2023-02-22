@@ -21,17 +21,20 @@ namespace Idp.Service.Services
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<ApplicationUser> _signinManager;
         private readonly IConfiguration _configuration;
+        private readonly ApplicationDbContext _db;
 
         public AccountsService(
             UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
             SignInManager<ApplicationUser> signinManager,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            ApplicationDbContext db)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signinManager = signinManager;
             _configuration = configuration;
+            _db = db;
         }
 
         public async Task<ServiceResponse<string>> LoginAsync(LoginDto dto)
@@ -84,6 +87,29 @@ namespace Idp.Service.Services
                 Dob = user.Dob,
                 Gender = user.Gender,
             };
+        }
+
+        public async Task<List<ProfileViewDto>> GetManagerProfileAsync()
+        {
+            var managers = await _userManager.GetUsersInRoleAsync("Manager");
+            var managerList = new List<ProfileViewDto>();
+            foreach (var user in managers)
+            {
+                managerList.Add(new ProfileViewDto
+                {
+                    Id = user.Id,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
+                    Department = user.Department,
+                    Designation = user.Designation,
+                    EmployeeId = user.EmployeeId,
+                    Dob = user.Dob,
+                    Gender = user.Gender,
+                });
+            }
+            return managerList;
         }
 
         private string GenerateToken(ApplicationUser user)

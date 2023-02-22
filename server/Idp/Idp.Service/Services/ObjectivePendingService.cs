@@ -28,7 +28,8 @@ namespace idp.Service.Services
                 Department = c.User.Department,
                 IdpName = c.Idp.Name,
                 ObjectiveName = c.Name,
-                Remark = c.Status
+                Remark = c.Status,
+                ObjectiveId= c.Id,
             }).ToList();
             return res;
         }

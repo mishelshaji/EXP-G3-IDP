@@ -1,0 +1,31 @@
+<div class="container">
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Employee Id</th>
+        <th>Designation</th>
+        <th>Department</th>
+        <th>Gender</th>
+        <th>Dob</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let manager of managers">
+        <td>{{manager.firstName + " " + manager.lastName}}</td>
+        <td>{{manager.email}}</td>
+        <td>{{manager.employeeId}}</td>
+        <td>{{manager.designation}}</td>
+        <td>{{manager.department}}</td>
+        <td>{{manager.gender}}</td>
+        <td>{{manager.dob}}</td>
+        <td>
+          <a [routerLink]="['view',manager.employeeId]">
+            <button type="button" class="btn btn-primary">View</button>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

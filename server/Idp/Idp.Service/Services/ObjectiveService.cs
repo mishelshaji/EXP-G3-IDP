@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IDP.Service.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -128,6 +129,31 @@ namespace Idp.Service.Service
             }
 
             return objectiveProgressList;
+        }
+
+        public async Task<ServiceResponse<ObjectiveViewDto>?> UpdateAsync(int id, ObjectiveUpdateDto dto)
+        {
+            var response = new ServiceResponse<ObjectiveViewDto>();
+
+            var objective = await _db.Objectives.FindAsync(id);
+            if (objective == null)
+                return null;
+
+            if (!response.IsValid)
+                return response;
+
+            objective.Status = dto.status;
+            await _db.SaveChangesAsync();
+
+            response.Result = new ObjectiveViewDto
+            {
+                Id = objective.Id,
+                Name = objective.Name,
+                Status = objective.Status,
+                StartDate = objective.StartDate,
+                EndDate = objective.EndDate,
+            };
+            return response;
         }
     }
 }

@@ -1,0 +1,30 @@
+<div class="container p-2">
+  <table class="table ">
+      <thead>
+          <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Department</th>
+              <th scope="col">IDP-Name</th>
+              <th scope="col">Objective</th>
+              <th scope="col">
+                  <div class="form-group d-flex">
+                      <select class="form-control select" id="status" ngModel="selectedStatus">
+                          <option value="3">All Status</option>
+                          <option value="0">Rejected</option>
+                          <option value="1">Created</option>
+                          <option value="2">Progress</option>
+                      </select>
+                  </div>
+              </th>
+          </tr>
+      </thead>
+      <tbody *ngFor="let user of objectivePending" >
+          <tr [hidden]="selectedStatus != user.remark && selectedStatus != 3">
+              <td>{{user.userName}}</td>
+              <td>{{user.department}}</td>
+              <td>{{user.idpName}}</td>
+              <td>{{user.objectiveName}}</td>
+              <td style="text-align: center;">{{user.remark == 0 ? 'Rejected' : user.remark == 1 ? 'Created' : 'Progress'}}</td>
+          </tr>
+      </tbody>
+  </table>

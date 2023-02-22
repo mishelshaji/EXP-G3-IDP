@@ -113,10 +113,5 @@ namespace IDP.Service.Services
             };
             return response;
         }
-
-        public Task<TrainingViewDto> UpdateAsync(int id, TrainingCreateDto dto)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
