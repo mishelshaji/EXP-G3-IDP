@@ -35,6 +35,7 @@ export class CreateObjectiveComponent {
       this.categoryService.getAll().subscribe({
         next: (data: CategoryViewDto[] | null) => {
           this.category = data;
+          console.log(data);
         },
         error: () => {
           console.log("Loading category failed. Please try again later.");

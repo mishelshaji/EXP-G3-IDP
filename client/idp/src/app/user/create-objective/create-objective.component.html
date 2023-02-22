@@ -23,7 +23,7 @@
                     <label class=""></label>
                 </div>
                 <label for="Enddate">End Date:</label>
-                <input name="endDate" type="date" [(ngModel)]="model.endDate" #endDate="ngModel" min="{{model.startDate}}" required>y
+                <input name="endDate" type="date" [(ngModel)]="model.endDate" #endDate="ngModel" min="{{model.startDate}}" required>
                 <div class="text-danger" *ngIf="endDate.invalid && endDate.touched">
                     <div *ngIf="endDate.errors?.['required']">Enddate is required.</div>
                 </div>
