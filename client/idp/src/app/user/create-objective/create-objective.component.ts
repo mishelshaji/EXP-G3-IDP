@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/service/category.service';
 import { ObjectiveService } from 'src/app/service/objective.service';
 
@@ -25,7 +25,8 @@ export class CreateObjectiveComponent {
   constructor(
     private objectiveService: ObjectiveService,
     private categoryService: CategoryService,
-    private router: ActivatedRoute,) { }
+    private router: ActivatedRoute,
+    private navigate: Router) { }
 
     ngOnInit() {      
     this.model.idpId = this.router.snapshot.params["id"];
@@ -44,6 +45,7 @@ export class CreateObjectiveComponent {
     this.objectiveService.create(this.model).subscribe({
         next: () => {
             alert("Objective created successfully");
+            return this.navigate.navigate(['user', 'objectives', this.model.idpId]);
         },
         error: (error) => {
             console.error(error);

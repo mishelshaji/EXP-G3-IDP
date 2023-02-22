@@ -52,7 +52,6 @@ export class HomepageComponent {
         },
         error: (error) => {
             console.error(error);
-            console.log(this.model);
             
             alert("Error creating idp");
         }

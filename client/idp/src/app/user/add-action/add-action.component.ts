@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ActionService } from 'src/app/service/action.service';
 
 @Component({
@@ -20,7 +20,8 @@ export class AddActionComponent {
 
   constructor(
     private service: ActionService,
-    private router: ActivatedRoute) { }
+    private router: ActivatedRoute,
+    private navigate: Router) { }
 
   formData = new FormData();
 
@@ -40,6 +41,7 @@ export class AddActionComponent {
     this.service.create(this.formData).subscribe({
       next: () => {
         alert("Action created successfully");
+        return this.navigate.navigate(['user', 'objective-detailed', this.model.objectiveId]);
       },
       error: (error) => {
         console.error(error);

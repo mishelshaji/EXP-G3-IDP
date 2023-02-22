@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TrainingService } from 'src/app/service/training.service';
 
 @Component({
@@ -20,7 +20,8 @@ export class AddTrainingComponent {
 
   constructor(
     private service: TrainingService,
-    private router: ActivatedRoute) { }
+    private router: ActivatedRoute,
+    private navigate: Router) { }
 
   ngOnInit() {
     this.model.objectiveId = this.router.snapshot.params["id"];
@@ -31,6 +32,7 @@ export class AddTrainingComponent {
     this.service.create(this.model).subscribe({
       next: () => {
         alert("Training created successfully");
+        return this.navigate.navigate(['user', 'objective-detailed', this.model.objectiveId]);
       },
       error: (error) => {
         console.error(error);

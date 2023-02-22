@@ -26,7 +26,8 @@ export class SigninComponent {
           this.tokenHelper.setToken(response.result);
           const role = this.tokenHelper.getDecodedToken();
         if (role == "User")
-          this.router.navigateByUrl('/user');
+          this.router.navigateByUrl('/user/');
+          
         this.router.navigateByUrl('/manager');
       }
     })
