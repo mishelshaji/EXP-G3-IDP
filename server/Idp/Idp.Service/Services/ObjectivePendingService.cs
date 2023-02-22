@@ -27,6 +27,7 @@ namespace idp.Service.Services
               UserId =  c.User.Id, 
               UserName =  c.User.FirstName + " " + c.User.LastName, 
               Department = c.User.Department,
+              IdpName = c.Idp.Name,
               ObjectiveName = c.Name,
               Remark = c.Status
             }).ToList();

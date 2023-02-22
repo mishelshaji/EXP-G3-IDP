@@ -15,6 +15,8 @@ namespace Idp.Service.Dto
 
         public string? Department { get; set; }
 
+        public string? IdpName { get; set; }
+
         public string? ObjectiveName { get; set; }
 
         public StatusType Remark { get; set; }
