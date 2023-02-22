@@ -8,7 +8,7 @@ import { NotfoundComponent } from './shared/notfound/notfound.component';
 const routes: Routes = [
   {
     path: 'user',
-    // canActivate: [UserGuard],
+    canActivate: [UserGuard,ManagerGuard],
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    // canActivate: [AdminGuard],
+    canActivate: [AdminGuard],
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
   },

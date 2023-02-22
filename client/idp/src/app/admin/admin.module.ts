@@ -9,6 +9,8 @@ import { GetReportComponent } from './get-report/get-report.component';
 import { RouterModule } from '@angular/router';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { AdminmanagerviewComponent } from './adminmanagerview/adminmanagerview.component';
+import { NavbarAdminComponent } from '../shared/navbar-admin/navbar-admin.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { AdminmanagerviewComponent } from './adminmanagerview/adminmanagerview.c
     NgbModule,
     FontAwesomeModule,
     RouterModule,
+    NavbarAdminComponent,
+    FormsModule
   ]
 })
 export class AdminModule { }

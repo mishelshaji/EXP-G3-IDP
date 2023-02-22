@@ -6,12 +6,12 @@ import { ViewAllEmployeeComponent } from '../shared/view-all-employee/view-all-e
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { HomepageComponent } from './homepage/homepage.component';
-import { NavbarUserComponent } from '../shared/navbar-user/navbar-user.component';
 import { UserRoutingModule } from '../user/user-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
+import { FooterComponent } from '../shared/footer/footer.component';
+import { NavbarManagerComponent } from '../shared/navbar-manager/navbar-manager.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +27,9 @@ import { ShowAllIdpComponent } from './show-all-idp/show-all-idp.component';
     FormsModule,
     UserRoutingModule,
     NgbModule,
-    NavbarUserComponent,
-    RouterModule
+    NavbarManagerComponent,
+    RouterModule,
+    FooterComponent
   ]
 })
 export class ManagerModule { }

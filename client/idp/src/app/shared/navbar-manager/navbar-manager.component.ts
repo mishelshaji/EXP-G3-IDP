@@ -4,14 +4,14 @@ import { Router, RouterLink } from '@angular/router';
 import { TokenHelper } from 'src/utilities/helpers/tokenHelper';
 
 @Component({
-  selector: 'app-navbar-user',
+  selector: 'app-navbar-manager',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  templateUrl: './navbar-user.component.html',
-  styleUrls: ['./navbar-user.component.css']
+  templateUrl: './navbar-manager.component.html',
+  styleUrls: ['./navbar-manager.component.css']
 })
 
-export class NavbarUserComponent {
+export class NavbarManagerComponent {
   createIdp() {
     var id: any = document.getElementById('idp');
     id.style.display = id.style.display == 'block' ? 'none' : 'block';

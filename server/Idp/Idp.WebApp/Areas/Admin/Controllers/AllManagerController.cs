@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace Idp.WebApp.Areas.User.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class AllManagerController : AdminControllerBase
     {
         private readonly AccountsService _service;

@@ -27,8 +27,6 @@ namespace Idp.WebApp.Areas.Admin
                 return BadRequest(result.Errors);
 
             return Ok(result);
-
-            //return CreatedAtAction(nameof(GetOne), new { id = result.Result.Id }, result.Result);
         }
 
     }

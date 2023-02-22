@@ -11,7 +11,7 @@ export class EmailServices {
   constructor(private http: HttpClient) {}
   sentEmail(emailRequest: Email): Observable<Email> {
     return this.http.post<Email>(
-      'https://localhost:7091/api/Email',
+      'https://localhost:7264/api/Email',
       emailRequest
     );
   }

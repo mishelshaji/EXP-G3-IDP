@@ -20,6 +20,8 @@ export class HomepageComponent {
     year: new Date().getFullYear(),
   }
 
+  currentYear = new Date().getFullYear();
+
   changeFunction(e:any) {
     this.model.name = 'IDP ' + this.employee.employeeId + ' ' + e;   
     this.model.year = e;

@@ -32,7 +32,8 @@ namespace Idp.Service.Services
                     EndDate = c.EndDate,
                     StartDate = c.StartDate,
                     Progress = c.Progress,
-                    Description = c.Certificate
+                    Description = c.Description,
+                    Certificate = c.Certificate,
                 })
                 .ToListAsync();
         }
@@ -47,7 +48,8 @@ namespace Idp.Service.Services
                     EndDate = c.EndDate,
                     StartDate = c.StartDate,
                     Progress = c.Progress,
-                    Description = c.Certificate,
+                    Description = c.Description,
+                    Certificate = c.Certificate,
                     ObjectiveId = c.ObjId
                 })
                 .ToListAsync();

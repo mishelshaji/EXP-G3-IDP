@@ -15,9 +15,12 @@
                     <div *ngIf="name.errors?.['maxlength']">maximum 50 characters</div>
                 </div>
                 <label for="startdate">Start Date:</label>
-                <input name="startDate" type="date" [(ngModel)]="model.startDate" #start="ngModel">
+                <input name="startDate" type="date" [(ngModel)]="model.startDate" #start="ngModel" min="{{currentDate}}">
+                <div>
+                    <label class=""></label>
+                </div>
                 <label for="Enddate">End Date:</label>
-                <input name="endDate" type="date" [(ngModel)]="model.endDate" #end="ngModel">
+                <input name="endDate" type="date" [(ngModel)]="model.endDate" #end="ngModel" min="{{model.startDate}}">
                 <button value="submit" class="btn btn-success w-100 my-3 rounded-5">SAVE</button>
             </div>
         </form>

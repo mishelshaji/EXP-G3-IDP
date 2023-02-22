@@ -107,6 +107,7 @@ namespace Idp.Service.Service
             var objectiveList = _db.Objectives
                 .Include(m => m.Trainings)
                 .Include(m => m.ObjectiveActions)
+                .Where(m=> m.UserId== userId)  
                 .Where(m => m.IdpId == idpId)
                 .Take(4)
                 .ToList();

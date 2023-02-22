@@ -28,7 +28,6 @@ export class AddTrainingComponent {
   }
 
   createTraining() {
-    console.log(this.model);
     this.service.create(this.model).subscribe({
       next: () => {
         alert("Training created successfully");

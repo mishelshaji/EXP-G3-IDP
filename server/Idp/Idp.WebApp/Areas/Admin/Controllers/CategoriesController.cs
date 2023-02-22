@@ -1,10 +1,12 @@
 ﻿using Idp.Service.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Idp.WebApp.Areas.Admin.Controllers
 {
-
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : AdminControllerBase
     {
         private readonly CategoryService _service;

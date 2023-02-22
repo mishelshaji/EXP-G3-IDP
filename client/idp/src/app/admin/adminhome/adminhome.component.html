@@ -1,3 +1,17 @@
+<h3 class="text-secondary mt-5 ms-5 me-5">Upload Employees</h3>
+<hr class="ms-5 me-5">
+<div class="container d-flex ms-5 mb-5 me-5 align-items-center">
+  <input type="file" name="file" class="form-control" required (change)="fileSelected($event)">
+  <button (click)="uploadFile()" class="btn btn-outline-dark border">Upload</button>
+</div>
+<h3 class="text-secondary mt-5 ms-5 me-5">Set Objective Category</h3>
+<hr class="ms-5 me-5">
+<div class="container d-flex ms-5 mb-5 me-5 align-items-center">
+  <input type="text" name="category" class="form-control" [(ngModel)]="model.name" #category="ngModel" required>
+  <button (click)="setCategory()" class="btn btn-outline-dark border">Submit</button>
+</div>
+<h3 class="text-secondary mt-5 ms-5 me-5">Managers List</h3>
+<hr class="ms-5 me-5">
 <div class="container">
   <table class="table table-bordered table-hover">
     <thead class="thead-dark">
@@ -19,10 +33,10 @@
         <td>{{manager.designation}}</td>
         <td>{{manager.department}}</td>
         <td>{{manager.gender}}</td>
-        <td>{{manager.dob}}</td>
+        <td>{{manager.dob | date: 'dd/MM/YYY'}}</td>
         <td>
-          <a [routerLink]="['view',manager.employeeId]">
-            <button type="button" class="btn btn-primary">View</button>
+          <a [routerLink]="['view',manager.id]  ">
+            <button type="button" class="btn btn-warning">View</button>
           </a>
         </td>
       </tr>

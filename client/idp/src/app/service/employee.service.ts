@@ -13,7 +13,7 @@ export class EmployeeService {
     /**
      * This is the base URL of the API. It will be used to make HTTP requests.
      */
-    url = 'https://localhost:7264/api/user/employee';
+    url = 'https://localhost:7264/api/Admin/Employee';
 
     constructor(private http: HttpClient) { }
 

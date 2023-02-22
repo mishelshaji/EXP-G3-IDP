@@ -17,6 +17,8 @@ export class ObjectivesComponent {
    */
     objective: ObjectiveViewDto[] | null = null;
 
+    objectiveLength: number = 0;
+
     idpId = 0;
 
     /**
@@ -35,9 +37,10 @@ export class ObjectivesComponent {
     ngOnInit() {
     this.idpId = this.router.snapshot.params["id"];
       this.service.getAll(this.idpId).subscribe({
-        next: (data: ObjectiveViewDto[] | null) => {
+        next: (data: ObjectiveViewDto[]) => {
           this.objective = data;
-          console.log(this.objective);
+          this.objectiveLength = data?.length;
+          console.log(data?.length);
         },
         error: () => {
           alert("Loading objective failed. Please try again later.");

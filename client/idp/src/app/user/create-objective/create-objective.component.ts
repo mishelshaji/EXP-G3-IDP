@@ -18,6 +18,8 @@ export class CreateObjectiveComponent {
     endDate: new Date()
   };
 
+  currentDate = new Date().toISOString().split('T')[0];
+  
   category: CategoryViewDto[] | null = null;
 
   objectives: ObjectiveViewDto[] | null = null;

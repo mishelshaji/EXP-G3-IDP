@@ -9,11 +9,17 @@ namespace IDP.Service.Dto
     public class TrainingCreateDto
     {
         public string Name { get; set; }
+
         public string Link { get; set; }
+
         public int Progress { get; set; }
+
         public DateTime StartDate { get; set; }
+
         public DateTime EndDate { get; set; }
+
         public int ObjectiveId { get; set; }
-     
+
+        public string Description { get; set; }
     }
 }

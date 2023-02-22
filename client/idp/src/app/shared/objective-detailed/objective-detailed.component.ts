@@ -22,6 +22,9 @@ export class ObjectiveDetailedComponent {
 
   objectiveId: number = 0;
 
+  actionLength: number = 0;
+  trainingLength: number = 0;
+
   editProgress(id: number, section: string) {
     this.id = id;
     this.edit = section;
@@ -89,8 +92,9 @@ export class ObjectiveDetailedComponent {
   ngOnInit() {
     this.objectiveId = this.router.snapshot.params["id"];
     this.trainingService.getByObjective(this.objectiveId).subscribe({
-      next: (data: TrainingViewDto[] | null) => {
+      next: (data: TrainingViewDto[]) => {
         this.training = data;
+        this.trainingLength = data?.length;
         console.log(this.training);
       },
       error: () => {
@@ -99,8 +103,9 @@ export class ObjectiveDetailedComponent {
     });
 
     this.actionService.getByObjective(this.objectiveId).subscribe({
-      next: (data: ActionViewDto[] | null) => {
+      next: (data: ActionViewDto[]) => {
         this.action = data;
+        this.actionLength = data?.length;
         console.log(this.action);
       },
       error: () => {
