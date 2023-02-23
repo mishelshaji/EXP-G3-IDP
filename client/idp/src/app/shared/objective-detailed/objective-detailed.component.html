@@ -93,7 +93,9 @@
                         <td>{{i+1}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.description}}</td>
-                        <td>{{item.certificate}}</td>
+                        <td>
+                            <a href="https://localhost:7264/uploads/{{item.certificate}}" download>Download</a>
+                        </td>
                         <td>{{item.startDate | date: 'dd/MM/YYYY'}}</td>
                         <td>{{item.endDate | date: 'dd/MM/YYYY'}}</td>
                         <td>{{item.progress}}</td>

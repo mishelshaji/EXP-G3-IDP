@@ -85,6 +85,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseStaticFiles(new StaticFileOptions
+{
+    ServeUnknownFileTypes= true,
+});
+
 app.UseCors(options =>
 {
     options.AllowAnyOrigin();
