@@ -1,5 +1,6 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { HomepageService } from 'src/app/service/homepage.service';
 import { IdpService } from 'src/app/service/idp.service';
 import { ProfileService } from 'src/app/service/profile.service';
 
@@ -18,6 +19,8 @@ export class HomepageComponent {
     name: '',
     year: new Date().getFullYear(),
   }
+
+  currentYear = new Date().getFullYear();
 
   changeFunction(e:any) {
     this.model.name = 'IDP ' + this.employee.employeeId + ' ' + e;   
@@ -41,7 +44,7 @@ export class HomepageComponent {
       error: () => {
         console.log("Loading id failed. Please try again later.");        
       }
-    })
+    });
   }
 
   createIdp() {

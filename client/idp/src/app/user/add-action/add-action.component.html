@@ -20,7 +20,7 @@
                         <td>
                             <label for="startingData">Starting Date</label>
                             <input type="date" name="date" class="mt-5" id="startingdate"
-                                [(ngModel)]="model.startDate" #startDate="ngModel" required>
+                                [(ngModel)]="model.startDate" #startDate="ngModel" min="{{currentDate}}" required>
                             <div class="text-danger" *ngIf="startDate.invalid && startDate.touched">
                                 <div *ngIf="startDate.errors?.['required']">Start date is required.</div>
                             </div>
@@ -30,7 +30,7 @@
                         <td>
                             <label for="endData">Ending Date</label>
                             <input type="date" name="date" class="mt-5" id="endDate" [(ngModel)]="model.endDate"
-                                #endDate="ngModel" required>
+                                #endDate="ngModel"  min="{{model.startDate}}" required>
                             <div class="text-danger" *ngIf="endDate.invalid && endDate.touched">
                                 <div *ngIf="endDate.errors?.['required']">End date is required.</div>
                             </div>

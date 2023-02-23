@@ -71,6 +71,10 @@ builder.Services.AddScoped<EmployeeService>();
 builder.Services.AddScoped<ObjectiveService>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<TrainingService>();
+builder.Services.AddScoped<ObjectivePendingService>();
+builder.Services.AddScoped<EmailService>();
+builder.Services.AddScoped<AdminService>();
+
 
 var app = builder.Build();
 
@@ -80,6 +84,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    ServeUnknownFileTypes= true,
+});
 
 app.UseCors(options =>
 {

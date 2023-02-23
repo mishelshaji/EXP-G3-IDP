@@ -25,6 +25,10 @@ export class ProfileService {
     get() {
         return this.http.get<ProfileViewDto>(this.url + '/');
     }
+
+    getManager() {
+        return this.http.get<ProfileViewDto[]>(this.url + '/');
+    }
   
     /**
      * Updates an existing Profile on the server. It will send a PUT request to

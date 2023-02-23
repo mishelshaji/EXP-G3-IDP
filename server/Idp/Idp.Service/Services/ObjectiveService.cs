@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IDP.Service.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,7 +46,7 @@ namespace Idp.Service.Service
                 Name = objective.Name,
                 Status = objective.Status,
                 StartDate = objective.StartDate,
-                EndDate = objective.EndDate
+                EndDate = objective.EndDate,
             };
         }
 
@@ -53,7 +54,7 @@ namespace Idp.Service.Service
         {
             return await _db.Objectives
                 .Include(m => m.Category)
-                .Where(m => m.IdpId == id && m.Status == StatusType.pending)
+                .Where(m => m.IdpId == id && m.Status != StatusType.accepted)
                 .Select(c => new ObjectiveViewDto
                 {
                     Id = c.Id,
@@ -80,7 +81,7 @@ namespace Idp.Service.Service
                 StartDate = dto.StartDate,
                 EndDate = dto.EndDate,
                 IdpId = dto.IdpId,
-                UserId = userId,
+                UserId = userId,            
             };
 
             _db.Objectives.Add(objective);
@@ -97,30 +98,63 @@ namespace Idp.Service.Service
             };
         }
 
-        public List<ObjectiveProgressDto> GetProgress(string userId, int year)
+        public async Task<List<ObjectiveProgressDto>> GetProgress(string userId, int year)
         {
             int idpId = _db.Idps.FirstOrDefault(m => m.Year == year).Id;
 
             var objectiveProgressList = new List<ObjectiveProgressDto>();
 
-            var objectiveList = _db.Objectives.Where(m => m.IdpId == idpId).Take(4).ToList();
-
-            foreach (var objective in objectiveList)
+            var objectiveList = _db.Objectives
+                .Include(m => m.Trainings)
+                .Include(m => m.ObjectiveActions)
+                .Where(m => m.UserId == userId)
+                .Where(m => m.IdpId == idpId)
+                .Take(4)
+                .ToList();
+            foreach (var item in objectiveList)
             {
-                var trainingTotal = _db.Trainings.Include(m => m.Objective).Where(m => m.Objective.Id == objective.Id).Count();
-                var training = _db.Trainings.Include(m => m.Objective).Where(m => m.Objective.Id == objective.Id).Sum(m => m.Progress);
+                var trainingPogress = item.Trainings.Sum(m => m.Progress);
+                var actionPogress = item.Trainings.Sum(m => m.Progress);
 
-                var actionTotal = _db.ObjectiveActions.Include(m => m.Obj).Where(m => m.Obj.Id == objective.Id).Count();
-                var action = _db.ObjectiveActions.Include(m => m.Obj).Where(m => m.Obj.Id == objective.Id).Sum(m => m.Progress);
+                var training = item.Trainings.Count();
+                var action = item.Trainings.Count();
 
-                objectiveProgressList.Add(new ObjectiveProgressDto
+                if (training + action != 0)
                 {
-                    Name = objective.Name,
-                    Progress = (training + action) / (trainingTotal + actionTotal),
-                });
+                    objectiveProgressList.Add(new ObjectiveProgressDto
+                    {
+                        Name = item.Name,
+                        Progress = (trainingPogress + actionPogress) / (training + action),
+                    });
+                }
             }
 
             return objectiveProgressList;
+        }
+
+        public async Task<ServiceResponse<ObjectiveViewDto>?> UpdateAsync(int id, ObjectiveUpdateDto dto)
+        {
+            var response = new ServiceResponse<ObjectiveViewDto>();
+
+            var objective = await _db.Objectives.FindAsync(id);
+            if (objective == null)
+                return null;
+
+            if (!response.IsValid)
+                return response;
+
+            objective.Status = dto.status;
+            await _db.SaveChangesAsync();
+
+            response.Result = new ObjectiveViewDto
+            {
+                Id = objective.Id,
+                Name = objective.Name,
+                Status = objective.Status,
+                StartDate = objective.StartDate,
+                EndDate = objective.EndDate,
+            };
+            return response;
         }
     }
 }

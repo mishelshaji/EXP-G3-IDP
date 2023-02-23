@@ -22,7 +22,7 @@ declare interface TrainingViewDto {
      */
     description: string;
 
-    url: string
+    link: string
 
     progress: number
 }

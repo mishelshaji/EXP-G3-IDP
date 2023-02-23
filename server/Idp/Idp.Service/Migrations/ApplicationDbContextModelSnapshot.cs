@@ -529,7 +529,7 @@ namespace Idp.Service.Migrations
             modelBuilder.Entity("Idp.Domain.Models.ObjectiveAction", b =>
                 {
                     b.HasOne("Idp.Domain.Models.Objective", "Obj")
-                        .WithMany()
+                        .WithMany("ObjectiveActions")
                         .HasForeignKey("ObjId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -540,7 +540,7 @@ namespace Idp.Service.Migrations
             modelBuilder.Entity("Idp.Domain.Models.Training", b =>
                 {
                     b.HasOne("Idp.Domain.Models.Objective", "Objective")
-                        .WithMany()
+                        .WithMany("Trainings")
                         .HasForeignKey("ObjectiveId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -597,6 +597,13 @@ namespace Idp.Service.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Idp.Domain.Models.Objective", b =>
+                {
+                    b.Navigation("ObjectiveActions");
+
+                    b.Navigation("Trainings");
                 });
 #pragma warning restore 612, 618
         }

@@ -45,14 +45,14 @@ namespace Idp.Service.Services
         {
             var result = new ServiceResponse<EmployeeViewDto>();
 
-            // Saving employees image to disk.
-            string fileNameByUser = dto.Image.FileName;
+            // Saving employees file to disk.
+            string fileNameByUser = dto.File.FileName;
             string fileExtension = Path.GetExtension(fileNameByUser).ToLower();
             var allowedFileExtensions = new[] { ".csv" };
 
             if (!allowedFileExtensions.Contains(fileExtension))
             {
-                result.AddError(nameof(dto.Image), "Invalid file type.");
+                result.AddError(nameof(dto.File), "Invalid file type.");
                 return result;
             }
 
@@ -62,12 +62,12 @@ namespace Idp.Service.Services
 
             using (var fileStream = new FileStream(uploadsDir, FileMode.Create))
             {
-                await dto.Image.CopyToAsync(fileStream);
+                await dto.File.CopyToAsync(fileStream);
             }
 
             var employees = new EmployeeUpload()
             {
-                Image = Path.Combine(uniqueFileName)
+                File = Path.Combine(uniqueFileName)
             };
             _db.EmployeesUpload.Add(employees);
             await _db.SaveChangesAsync();
@@ -86,7 +86,10 @@ namespace Idp.Service.Services
 
             var others = allEmployees.Where(m => m.Role == "Employee").ToList();
 
+            var admin = allEmployees.Where(m => m.Role == "Admin").ToList();
+
             var registeredManagers = new List<ApplicationUser>();
+
             foreach (var item in managers)
             {
                 var user = new ApplicationUser()
@@ -106,15 +109,18 @@ namespace Idp.Service.Services
                 };
 
                 var hasher = new PasswordHasher<ApplicationUser>();
-                user.PasswordHash = hasher.HashPassword(user, "Pass@123");
+                user.PasswordHash = hasher.HashPassword(user, "Manager@123");
                 await _db.Users.AddAsync(user);
                 registeredManagers.Add(user);
             }
             await _db.SaveChangesAsync();
 
-            foreach (var manager in registeredManagers)
+            if (managers.Count() != 0)
             {
-                await _userManager.AddToRoleAsync(manager, "Manager");
+                foreach (var manager in registeredManagers)
+                {
+                    await _userManager.AddToRoleAsync(manager, "Manager");
+                }
             }
 
             // Add users.
@@ -138,16 +144,53 @@ namespace Idp.Service.Services
                 };
 
                 var hasher = new PasswordHasher<ApplicationUser>();
-                user.PasswordHash = hasher.HashPassword(user, "Pass@123");
+                user.PasswordHash = hasher.HashPassword(user, "User@123");
+                await _db.Users.AddAsync(user);
+                registeredManagers.Add(user);
+            }
+            await _db.SaveChangesAsync();
+            if (others.Count() != 0)
+            {
+                foreach (var user in registeredManagers)
+                {
+                    await _userManager.AddToRoleAsync(user, "User");
+                }
+            }
+
+            //Add admin.
+            foreach (var item in admin)
+            {
+                var user = new ApplicationUser()
+                {
+                    FirstName = item.FirstName,
+                    LastName = item.LastName,
+                    Email = item.Email,
+                    NormalizedEmail = item.Email.ToUpper(),
+                    PhoneNumber = item.Phone,
+                    Department = item.Department,
+                    Gender = item.Gender,
+                    Designation = item.Designation,
+                    Dob = item.Dob,
+                    EmployeeId = item.EmployeeId,
+                    UserName = item.EmployeeId,
+                    NormalizedUserName = item.EmployeeId.ToUpper(),
+                };
+
+                var hasher = new PasswordHasher<ApplicationUser>();
+                user.PasswordHash = hasher.HashPassword(user, "Admin@123");
                 await _db.Users.AddAsync(user);
                 registeredManagers.Add(user);
             }
             await _db.SaveChangesAsync();
 
-            foreach (var user in registeredManagers)
+            if (admin.Count() != 0)
             {
-                await _userManager.AddToRoleAsync(user, "User");
+                foreach (var item in registeredManagers)
+                {
+                    await _userManager.AddToRoleAsync(item, "Admin");
+                }
             }
+
             return result;
         }
     }

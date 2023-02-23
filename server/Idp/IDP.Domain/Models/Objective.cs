@@ -31,5 +31,8 @@ namespace Idp.Domain.Models
 
         public StatusType Status { get; set; }
 
+        public IEnumerable<Training> Trainings { get; set; }
+
+        public IEnumerable<ObjectiveAction> ObjectiveActions { get; set; }
     }
 }

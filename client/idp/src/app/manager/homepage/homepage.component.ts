@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GetManagerHomeProgressService } from 'src/app/service/GetManagerHomeProgress.service';
+import { ObjectivePendingService } from 'src/app/service/objectivePending.service';
+import { ObjectiveUpdateService } from 'src/app/service/objectiveUpdate.service';
 
 @Component({
   selector: 'app-homepage',
@@ -6,18 +9,51 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
-  selectedStatus = 'all';
+  selectedStatus = 3;
 
-  counters = [
-    { name: 'Total Empolyees', count: 1000, limit: 1500 },
-    { name: 'Total Created IDP', count: 0, limit: 126 },
-    { name: 'Total Pending IDP', count: 0, limit: 600 },
-    { name: 'Total Completed IDP', count: 0, limit: 660 }
-  ];
+  
+  constructor(private objectivePendingService: ObjectivePendingService,
+    private counterValue: GetManagerHomeProgressService,
+    private objectiveUpdate: ObjectiveUpdateService) { }
+    
+    intervalIds: any[] = [];
+    
+    objectivePending: PendingObjectiveDto[] | null = null;
+    
+    progress: GetManagerHomeProgressDto | null = null;
 
-  intervalIds: any[] = [];
+    counters:any = [];
 
   ngOnInit() {
+    
+    this.objectivePendingService.getPending().subscribe({
+      next: (data) => {
+        this.objectivePending = data;
+        console.log(this.objectivePending);
+      },
+      error: (error) => {
+        console.log(error);
+        console.log("Loading pending failed. Please try again later.");
+      }
+    });
+    
+    
+    this.counterValue.getValue().subscribe({
+      next: (data) => {
+        this.progress = data;
+        console.log(data);
+        this.counters = [
+          { name: 'Total Empolyees', count: this.progress?.totalEmployee, limit: 100000 },
+          { name: 'Total Created IDP', count: this.progress?.totalCreatedIdp, limit: 100000 },
+          { name: 'Total Objective', count: this.progress?.totalObjective, limit:  100000},
+          { name: 'Total pending Objectives', count: this.progress?.totalPendingObjective, limit: 100000 }
+        ];
+      },
+      error: (error) => {
+        console.log(error);
+        console.log("Loading pending failed. Please try again later.");
+      }
+    });
     this.startCounters();
   }
 
@@ -33,136 +69,39 @@ export class HomepageComponent implements OnInit {
     }
   }
 
-  messages = [
-    {
-      sender: 'John Doe',
-      subject: 'Important Message',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    },
-    {
-      sender: 'Jane Doe',
-      subject: 'Urgent Message',
-      text: 'Praesent vestibulum dictum dui, eu gravida justo placerat a.',
-    },
-    {
-      sender: 'Bob Smith',
-      subject: 'Follow-Up',
-      text: 'Vivamus eget velit vel libero mollis consectetur.',
-    },
-  ];
-
-  users = [
-    {
-      name: 'John Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Sales',
-      objective: 'Increase sales by 10%',
-      idp: 'IMP-ID-200828-2022',
-      status: 'not started',
-    },
-    {
-      name: 'Jane Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Marketing',
-      objective: 'Develop a new marketing strategy',
-      idp: 'IMP-ID-200808-2022',
-      status: 'pending',
-    },
-    {
-      name: 'Jim Smith',
-      profile: 'https://picsum.photos/100',
-      department: 'IT',
-      objective: 'Improve system performance by 20%',
-      idp: 'IMP-ID-200908-2022',
-      status: 'pending',
-    },
-    {
-      name: 'John Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Sales',
-      objective: 'Increase sales by 10%',
-      idp: 'IMP-ID-200828-2022',
-      status: 'completed  ',
-    },
-    {
-      name: 'Jane Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Marketing',
-      objective: 'Develop a new marketing strategy',
-      idp: 'IMP-ID-200808-2022',
-      status: 'pending',
-    },
-    {
-      name: 'Jim Smith',
-      profile: 'https://picsum.photos/100',
-      department: 'IT',
-      objective: 'Improve system performance by 20%',
-      idp: 'IMP-ID-200908-2022',
-      status: 'pending',
-    },
-    {
-      name: 'John Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Sales',
-      objective: 'Increase sales by 10%',
-      idp: 'IMP-ID-200828-2022',
-      status: 'completed',
-    },
-    {
-      name: 'Jane Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Marketing',
-      objective: 'Develop a new marketing strategy',
-      idp: 'IMP-ID-200808-2022',
-      status: 'pending',
-    },
-    {
-      name: 'Jim Smith',
-      profile: 'https://picsum.photos/100',
-      department: 'IT',
-      objective: 'Improve system performance by 20%',
-      idp: 'IMP-ID-200908-2022',
-      status: 'not started',
-    },
-    {
-      name: 'John Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Sales',
-      objective: 'Increase sales by 10%',
-      idp: 'IMP-ID-200828-2022',
-      status: 'pending',
-    },
-    {
-      name: 'Jane Doe',
-      profile: 'https://picsum.photos/100',
-      department: 'Marketing',
-      objective: 'Develop a new marketing strategy',
-      idp: 'IMP-ID-200808-2022',
-      status: 'pending',
-    },
-    {
-      name: 'Jim Smith',
-      profile: 'https://picsum.photos/100',
-      department: 'IT',
-      objective: 'Improve system performance by 20%',
-      idp: 'IMP-ID-200908-2022',
-      status: 'not started',
-    },
-  ];
-
-  constructor() {}
-
-  lastMessage(message: any) {
-    return this.messages.indexOf(message) === this.messages.length - 1;
-  }
-  
   resultMessage: string = '';
 
-  onApprove() {
+  onApprove(id:number) {
+    var item: ObjectiveUpdateDto = {
+      status: 2
+    };
+    this.objectiveUpdate.update(id, item).subscribe({
+      next: () => {
+        alert("Approved objective");
+        window.location.reload();
+      },
+      error: (error) => {
+        console.error(error);
+        alert("Error accepting objective");
+      }
+    });
     this.resultMessage = 'Approved';
   }
 
-  onReject() {
+  onReject(id:number) {
+    var item: ObjectiveUpdateDto = {
+      status: 0
+    };
+    this.objectiveUpdate.update(id, item).subscribe({
+      next: () => {
+        alert("Rejected objective");
+        window.location.reload();
+      },
+      error: (error) => {
+        console.error(error);
+        alert("Error accepting objective");
+      }
+    });
     this.resultMessage = 'Rejected';
   }
 }

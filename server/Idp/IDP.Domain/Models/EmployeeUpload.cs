@@ -11,6 +11,6 @@ namespace Idp.Domain.Models
         public int Id { get; set; }
 
         [StringLength(250)]
-        public string? Image { get; set; }
+        public string? File { get; set; }
     }
 }

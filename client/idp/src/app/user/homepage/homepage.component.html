@@ -4,11 +4,11 @@
         <div class="mb-5 d-flex align-items-center">
             <label for="year">Year</label>
             <div class="ms-3">
-                <input type="number" id="year" name="year" min="{{model.year}}" max="2050" name="year"
+                <input type="number" id="year" name="year" min="{{currentYear}}" max="2050" name="year"
                     class="form-control input-field col" placeholder="2023" [(ngModel)]="model.year" #year="ngModel"
                     (ngModelChange)="changeFunction($event)" required>
                 <div class="text-danger" *ngIf="year.invalid && year.touched">
-                    <div *ngIf="year.errors?.['min']">Year should be above {{model.year}}</div>
+                    <div *ngIf="year.errors?.['min']">Year should be or above {{currentYear}}</div>
                     <div *ngIf="year.errors?.['required']">Year is required</div>
                     <div *ngIf="year.errors?.['max']">Year should be below 2100</div>
                 </div>

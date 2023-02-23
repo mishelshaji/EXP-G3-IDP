@@ -18,6 +18,8 @@ export class AddActionComponent {
     certificate: '',
   }
 
+  currentDate = new Date().toISOString().split('T')[0];
+
   constructor(
     private service: ActionService,
     private router: ActivatedRoute,

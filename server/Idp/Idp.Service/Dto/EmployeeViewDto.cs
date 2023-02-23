@@ -11,6 +11,6 @@ namespace Idp.Service.Dto
     {
         public int Id { get; set; }
 
-        public IFormFile? Image { get; set; }
+        public IFormFile? File { get; set; }
     }
 }

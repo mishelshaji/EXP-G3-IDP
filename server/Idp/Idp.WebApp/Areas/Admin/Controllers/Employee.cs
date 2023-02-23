@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace Idp.WebApp.Areas.Admin
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class EmployeeController : AdminControllerBase
     {
         private readonly EmployeeService _service;
@@ -27,8 +27,6 @@ namespace Idp.WebApp.Areas.Admin
                 return BadRequest(result.Errors);
 
             return Ok(result);
-
-            //return CreatedAtAction(nameof(GetOne), new { id = result.Result.Id }, result.Result);
         }
 
     }

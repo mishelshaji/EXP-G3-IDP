@@ -13,11 +13,13 @@ export class CreateObjectiveComponent {
     idpId: 0,
     name: '',
     categoryId: 0,
-    status: statusType.pending,
+    status: 1,
     startDate: new Date(),
     endDate: new Date()
   };
 
+  currentDate = new Date().toISOString().split('T')[0];
+  
   category: CategoryViewDto[] | null = null;
 
   objectives: ObjectiveViewDto[] | null = null;
@@ -33,6 +35,7 @@ export class CreateObjectiveComponent {
       this.categoryService.getAll().subscribe({
         next: (data: CategoryViewDto[] | null) => {
           this.category = data;
+          console.log(data);
         },
         error: () => {
           console.log("Loading category failed. Please try again later.");

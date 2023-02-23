@@ -18,6 +18,8 @@ export class AddTrainingComponent {
     link: '',
   }
 
+  currentDate = new Date().toISOString().split('T')[0];
+
   constructor(
     private service: TrainingService,
     private router: ActivatedRoute,
@@ -28,7 +30,6 @@ export class AddTrainingComponent {
   }
 
   createTraining() {
-    console.log(this.model);
     this.service.create(this.model).subscribe({
       next: () => {
         alert("Training created successfully");

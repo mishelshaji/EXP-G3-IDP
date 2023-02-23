@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomepageComponent } from './homepage.component';
+import { ShowAllIdpComponent } from './show-all-idp.component';
 
-describe('HomepageComponent', () => {
-  let component: HomepageComponent;
-  let fixture: ComponentFixture<HomepageComponent>;
+describe('ShowAllIdpComponent', () => {
+  let component: ShowAllIdpComponent;
+  let fixture: ComponentFixture<ShowAllIdpComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomepageComponent ]
+      declarations: [ ShowAllIdpComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HomepageComponent);
+    fixture = TestBed.createComponent(ShowAllIdpComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

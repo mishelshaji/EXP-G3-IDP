@@ -31,8 +31,8 @@ export class IdpService {
      * @param id The unique identifier of the idp.
      * @returns {Observable<any>} An observable that will emit the idp with the specified id.
      */
-    getById(id: number) {
-        return this.http.get<IdpViewDto>(this.url + '/' + id);
+    getById(id: string) {
+        return this.http.get<IdpViewDto[]>(this.url + '/' + id);
     }
 
     /**

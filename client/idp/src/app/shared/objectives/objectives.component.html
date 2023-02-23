@@ -4,8 +4,9 @@
         <a class="btn btn-outline-dark rounded-4 ms-auto h-25" [routerLink]="['/user/create-objective', idpId]">Create new</a>
     </div>
     <hr class="ms-3 me-3">
+    <h2 class="text-secondary text-center" *ngIf="objectiveLength == 0">No data found!</h2>
     <div class="d-flex justify-content-center">
-        <div class="scroll">
+        <div class="scroll" *ngIf="objectiveLength != 0">
             <table class="table table-striped table-hover text-light">
                 <thead>
                     <tr>
@@ -17,15 +18,16 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody id="target" *ngFor="let item of objective">
+                <tbody id="target" *ngFor="let item of objective; let i=index">
                     <tr>
-                        <td>{{item.id}}</td>
+                        <td>{{i+1}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.category.name}}</td>
                         <td>{{item.startDate | date: 'dd/MM/YYY'}}</td>
                         <td>{{item.endDate | date: 'dd/MM/YYY'}}</td>
                         <td>
-                            <a class="btn btn-warning" [routerLink]="['/user/objective-detailed', item.id]">View</a>
+                            <a class="btn btn-warning" *ngIf="item.status === 2" [routerLink]="['/user/objective-detailed', item.id]">View</a>
+                            <p *ngIf="item.status === 1 || item.status === 0" class="result-msg" [class.pending]="item.status === 1" [class.rejected]="item.status === 0">{{ item.status == 1 ? 'Pending' : 'Rejected' }}</p>
                         </td>
                     </tr>
                 </tbody>

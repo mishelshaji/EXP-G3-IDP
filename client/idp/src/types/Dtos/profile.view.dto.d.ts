@@ -5,7 +5,7 @@ declare interface ProfileViewDto {
     department: string,
     designation: string,
     dob: Date,
-    Gender: string,
+    gender: string,
     employeeId: number,
     email: string;
 }

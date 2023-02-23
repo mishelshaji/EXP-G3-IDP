@@ -27,6 +27,7 @@ namespace IDP.Service.Services
                     StartDate = c.StartDate,
                     EndDate = c.EndDate,
                     ObjectiveId = c.ObjectiveId,
+                    Description = c.Description,
                 }).ToListAsync();
         }
 
@@ -43,6 +44,7 @@ namespace IDP.Service.Services
                     StartDate = c.StartDate,
                     EndDate = c.EndDate,
                     ObjectiveId = c.ObjectiveId,
+                    Description= c.Description,
                 }).ToListAsync();
         }
 
@@ -56,9 +58,10 @@ namespace IDP.Service.Services
                 StartDate = dto.StartDate,
                 EndDate = dto.EndDate,
                 ObjectiveId = dto.ObjectiveId,
+                Description = dto.Description
             };
             _db.Trainings.Add(Training);
-                await _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
             return new TrainingViewDto
             {
                 Id = Training.Id,
@@ -68,6 +71,7 @@ namespace IDP.Service.Services
                 StartDate = Training.StartDate,
                 EndDate = Training.EndDate,
                 ObjectiveId = Training.ObjectiveId,
+                Description = Training.Description
             };
 
         }
@@ -79,12 +83,12 @@ namespace IDP.Service.Services
             {
                 Id = training.Id,
                 Name = training.Name,
-                Link= training.Link,
+                Link = training.Link,
                 Progress = training.Progress,
                 StartDate = training.StartDate,
                 EndDate = training.EndDate,
                 ObjectiveId = training.ObjectiveId,
-
+                Description = training.Description
             };
         }
 
@@ -112,11 +116,6 @@ namespace IDP.Service.Services
                 EndDate = category.EndDate,
             };
             return response;
-        }
-
-        public Task<TrainingViewDto> UpdateAsync(int id, TrainingCreateDto dto)
-        {
-            throw new NotImplementedException();
         }
     }
 }

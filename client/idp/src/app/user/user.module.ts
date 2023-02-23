@@ -19,6 +19,7 @@ import { NavbarUserComponent } from '../shared/navbar-user/navbar-user.component
 import { ProfileComponent } from './profile/profile.component';
 import { CreateObjectiveComponent } from './create-objective/create-objective.component';
 import { UserUploadComponent } from '../admin/user-upload/user-upload.component';
+import { FooterComponent } from '../shared/footer/footer.component';
 
 @NgModule({
     declarations: [
@@ -44,6 +45,7 @@ import { UserUploadComponent } from '../admin/user-upload/user-upload.component'
         NgbModule,
         ObjectivesComponent,
         NavbarUserComponent,
+        FooterComponent
     ]
 })
 export class UserModule { }
