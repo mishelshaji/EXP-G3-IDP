@@ -4,6 +4,7 @@ import { LandingRoutingModule } from './landing-routing.module';
 import { LobbyComponent } from './lobby/lobby.component';
 import { LandingLayoutComponent } from './landing-layout/landing-layout.component';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
+import { FooterComponent } from '../shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
   imports: [
     CommonModule,
     LandingRoutingModule,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ]
 })
 export class LandingModule { }

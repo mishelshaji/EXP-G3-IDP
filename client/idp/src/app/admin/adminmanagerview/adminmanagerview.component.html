@@ -1,7 +1,10 @@
+<div id="htmlData">
+<h3 class="text-secondary">Individual Development Plan Report</h3>
 <div class="container p-2">
-  <table class="table ">
+  <table class="table table-bordered">
       <thead>
           <tr>
+            <th scope="col">SlNo</th>
               <th scope="col">Name</th>
               <th scope="col">Department</th>
               <th scope="col">IDP-Name</th>
@@ -18,8 +21,9 @@
               </th>
           </tr>
       </thead>
-      <tbody *ngFor="let user of objectivePending" >
+      <tbody *ngFor="let user of objectivePending; let i=index" >
           <tr [hidden]="selectedStatus != user.remark && selectedStatus != 3">
+            <td>{{i+1}}</td>
               <td>{{user.userName}}</td>
               <td>{{user.department}}</td>
               <td>{{user.idpName}}</td>
@@ -27,4 +31,9 @@
               <td style="text-align: center;">{{user.remark == 0 ? 'Rejected' : user.remark == 1 ? 'Created' : 'Progress'}}</td>
           </tr>
       </tbody>
-  </table>
+</table>
+</div>
+</div>
+<div class="col-md-4 text-right">
+    <button class="btn btn-success btn-block ms-5" (click)="openPDF()">Download PDF</button>
+</div>

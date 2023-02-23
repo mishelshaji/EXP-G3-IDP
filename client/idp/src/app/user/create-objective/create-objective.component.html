@@ -4,8 +4,8 @@
             <h1>Create Objective</h1>
             <div class="holder">
                 <label for="Category">Category:</label>
-                <select name="category" [(ngModel)]="model.categoryId" id="category" *ngFor="let item of category" required>
-                    <option value="{{item.id}}">{{item.name}}</option>
+                <select name="category" [(ngModel)]="model.categoryId" id="category"required>
+                    <option  *ngFor="let item of category" value="{{item.id}}">{{item.name}}</option>
                 </select>
                 <label for="objective">Name:</label>
                 <input type="text" name="name" id="name" cols="30" rows="3" [(ngModel)]="model.name" #name="ngModel"
