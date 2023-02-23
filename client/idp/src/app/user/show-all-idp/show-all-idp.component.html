@@ -14,9 +14,9 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody id="target" *ngFor="let item of idp">
+                <tbody id="target" *ngFor="let item of idp; let i=index">
                     <tr>
-                        <td>{{item.id}}</td>
+                        <td>{{i+1}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.year}}</td>
                         <td>

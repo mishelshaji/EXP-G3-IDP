@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetManagerHomeProgressService } from 'src/app/service/GetManagerHomeProgress.service';
 import { ObjectivePendingService } from 'src/app/service/objectivePending.service';
 import { ObjectiveUpdateService } from 'src/app/service/objectiveUpdate.service';
 
@@ -10,23 +11,21 @@ import { ObjectiveUpdateService } from 'src/app/service/objectiveUpdate.service'
 export class HomepageComponent implements OnInit {
   selectedStatus = 3;
 
-  counters = [
-    { name: 'Total Empolyees', count: 1000, limit: 1500 },
-    { name: 'Total Created IDP', count: 0, limit: 126 },
-    { name: 'Total Pending IDP', count: 0, limit: 600 },
-    { name: 'Total Completed IDP', count: 0, limit: 660 }
-  ];
-
+  
   constructor(private objectivePendingService: ObjectivePendingService,
+    private counterValue: GetManagerHomeProgressService,
     private objectiveUpdate: ObjectiveUpdateService) { }
+    
+    intervalIds: any[] = [];
+    
+    objectivePending: PendingObjectiveDto[] | null = null;
+    
+    progress: GetManagerHomeProgressDto | null = null;
 
-  intervalIds: any[] = [];
-
-  objectivePending: PendingObjectiveDto[] | null = null;
+    counters:any = [];
 
   ngOnInit() {
-    this.startCounters();
-
+    
     this.objectivePendingService.getPending().subscribe({
       next: (data) => {
         this.objectivePending = data;
@@ -37,6 +36,25 @@ export class HomepageComponent implements OnInit {
         console.log("Loading pending failed. Please try again later.");
       }
     });
+    
+    
+    this.counterValue.getValue().subscribe({
+      next: (data) => {
+        this.progress = data;
+        console.log(data);
+        this.counters = [
+          { name: 'Total Empolyees', count: this.progress?.totalEmployee, limit: 100000 },
+          { name: 'Total Created IDP', count: this.progress?.totalCreatedIdp, limit: 100000 },
+          { name: 'Total Objective', count: this.progress?.totalObjective, limit:  100000},
+          { name: 'Total pending Objectives', count: this.progress?.totalPendingObjective, limit: 100000 }
+        ];
+      },
+      error: (error) => {
+        console.log(error);
+        console.log("Loading pending failed. Please try again later.");
+      }
+    });
+    this.startCounters();
   }
 
   startCounters() {

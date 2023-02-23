@@ -31,6 +31,25 @@ namespace idp.Service.Services
                 Remark = c.Status,
                 ObjectiveId= c.Id,
             }).ToList();
+
+            return res;
+        }
+
+        public GetManagerHomeProgressDto GetManagerHomeProgress(string managerId)
+        {
+            int totalUsers = _db.ApplicationUser.Where(m=>m.ManagerId== managerId).Count();
+            int totalIdp = _db.Idps.Include(m=>m.User).Where(m=>m.User.ManagerId == managerId).Count();
+            int totalObjective = _db.Objectives.Include(m => m.User).Where(m => m.User.ManagerId == managerId).Count();
+            int pendingObjective = _db.Objectives.Include(m => m.User).Where(m => m.User.ManagerId == managerId).Where(m=>m.Status == StatusType.pending).Count();
+
+            var res = new GetManagerHomeProgressDto
+            {
+                TotalCreatedIdp = totalIdp,
+                TotalEmployee = totalUsers,
+                TotalObjective = totalObjective,
+                TotalPendingObjective = pendingObjective,
+            };
+
             return res;
         }
     }

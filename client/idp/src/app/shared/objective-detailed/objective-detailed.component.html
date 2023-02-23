@@ -21,9 +21,9 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody *ngFor="let training of training">
+                <tbody *ngFor="let training of training; let i=index">
                     <tr>
-                        <td>{{training.id}}</td>
+                        <td>{{i}}</td>
                         <td>{{training.name}}</td>
                         <td>{{training.description}}</td>
                         <td><a href="{{training.link}}">{{training.link}}</a></td>
@@ -88,9 +88,9 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody id="target" *ngFor="let item of action">
+                <tbody id="target" *ngFor="let item of action; let i=index">
                     <tr>
-                        <td>{{item.id}}</td>
+                        <td>{{i}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.description}}</td>
                         <td>{{item.certificate}}</td>

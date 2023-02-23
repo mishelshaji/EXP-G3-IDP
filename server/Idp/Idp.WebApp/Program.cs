@@ -75,6 +75,7 @@ builder.Services.AddScoped<ObjectivePendingService>();
 builder.Services.AddScoped<EmailService>();
 builder.Services.AddScoped<AdminService>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
