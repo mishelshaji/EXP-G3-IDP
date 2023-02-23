@@ -81,7 +81,8 @@ namespace Idp.Service.Service
                 StartDate = dto.StartDate,
                 EndDate = dto.EndDate,
                 IdpId = dto.IdpId,
-                UserId = userId,            };
+                UserId = userId,            
+            };
 
             _db.Objectives.Add(objective);
             await _db.SaveChangesAsync();

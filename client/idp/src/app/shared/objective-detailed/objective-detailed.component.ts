@@ -4,6 +4,7 @@ import { ActionService } from 'src/app/service/action.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TrainingService } from 'src/app/service/training.service';
 import { FormsModule } from '@angular/forms';
+import { TokenHelper } from 'src/utilities/helpers/tokenHelper';
 
 @Component({
   selector: 'app-objective-detailed',
@@ -32,7 +33,7 @@ export class ObjectiveDetailedComponent {
 
   submitProgress(id: number) {
     if (this.edit == 'training') {
-      var item:TrainingUpdateDto = {
+      var item: TrainingUpdateDto = {
         progress: this.model.progress
       };
       this.trainingService.update(id, item).subscribe({
@@ -47,7 +48,7 @@ export class ObjectiveDetailedComponent {
       });
 
     } else {
-      var item:ActionUpdateDto = {
+      var item: ActionUpdateDto = {
         progress: this.model.progress
       };
       this.actionService.update(id, item).subscribe({
@@ -65,6 +66,8 @@ export class ObjectiveDetailedComponent {
     this.edit = '';
   }
 
+  role: any;
+
   /**
  * This is the list of action that will be displayed in the UI.
  * It will be initialized in the ngOnInit method. The default value is null.
@@ -81,7 +84,7 @@ export class ObjectiveDetailedComponent {
    * @param service This is the instance of ActionService that will be used to
    */
   constructor(private actionService: ActionService, private trainingService: TrainingService,
-    private router: ActivatedRoute) {
+    private router: ActivatedRoute, private token: TokenHelper) {
 
   }
 
@@ -92,6 +95,9 @@ export class ObjectiveDetailedComponent {
    * will be displayed to the user.
    */
   ngOnInit() {
+
+    this.role = this.token.getDecodedToken().userrole;
+
     this.objectiveId = this.router.snapshot.params["id"];
     this.trainingService.getByObjective(this.objectiveId).subscribe({
       next: (data: TrainingViewDto[]) => {

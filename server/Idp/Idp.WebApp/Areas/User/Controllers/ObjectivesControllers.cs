@@ -29,7 +29,6 @@ namespace Idp.WebApp.Areas.User.Controllers
         [ProducesResponseType(typeof(ObjectiveViewDto[]), StatusCodes.Status201Created)]
         public async Task<IActionResult> Post(ObjectiveCreateDto dto)
         {
-
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var result = await _service.CreateAsync(dto, userId);
             return Ok(result);

@@ -1,7 +1,7 @@
 <section class="mb-3">
     <div class="d-flex m-3">
         <h5 class="text-secondary">Objectives</h5>
-        <a class="btn btn-outline-dark rounded-4 ms-auto h-25" [routerLink]="['/user/create-objective', idpId]">Create new</a>
+        <a class="btn btn-outline-dark rounded-4 ms-auto h-25" [routerLink]="['/user/create-objective', idpId]" *ngIf="role === 'User'">Create new</a>
     </div>
     <hr class="ms-3 me-3">
     <h2 class="text-secondary text-center" *ngIf="objectiveLength == 0">No data found!</h2>
