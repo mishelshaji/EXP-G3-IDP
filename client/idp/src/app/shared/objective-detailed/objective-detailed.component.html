@@ -23,7 +23,7 @@
                 </thead>
                 <tbody *ngFor="let training of training; let i=index">
                     <tr>
-                        <td>{{i}}</td>
+                        <td>{{i+1}}</td>
                         <td>{{training.name}}</td>
                         <td>{{training.description}}</td>
                         <td><a href="{{training.link}}">{{training.link}}</a></td>
@@ -90,7 +90,7 @@
                 </thead>
                 <tbody id="target" *ngFor="let item of action; let i=index">
                     <tr>
-                        <td>{{i}}</td>
+                        <td>{{i+1}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.description}}</td>
                         <td>{{item.certificate}}</td>
