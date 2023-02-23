@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace Idp.WebApp.Areas.Admin
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class EmployeeController : AdminControllerBase
     {
         private readonly EmployeeService _service;

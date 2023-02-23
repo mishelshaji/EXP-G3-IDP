@@ -26,7 +26,8 @@
                         <td>{{item.startDate | date: 'dd/MM/YYY'}}</td>
                         <td>{{item.endDate | date: 'dd/MM/YYY'}}</td>
                         <td>
-                            <a class="btn btn-warning" [routerLink]="['/user/objective-detailed', item.id]">View</a>
+                            <a class="btn btn-warning" *ngIf="item.status === 2" [routerLink]="['/user/objective-detailed', item.id]">View</a>
+                            <p *ngIf="item.status === 1 || item.status === 0" class="result-msg" [class.pending]="item.status === 1" [class.rejected]="item.status === 0">{{ item.status == 1 ? 'Pending' : 'Rejected' }}</p>
                         </td>
                     </tr>
                 </tbody>

@@ -86,9 +86,10 @@ namespace Idp.Service.Services
 
             var others = allEmployees.Where(m => m.Role == "Employee").ToList();
 
-            var admin = allEmployees.Where(m => m.Role == "Admin");
+            var admin = allEmployees.Where(m => m.Role == "Admin").ToList();
 
             var registeredManagers = new List<ApplicationUser>();
+
             foreach (var item in managers)
             {
                 var user = new ApplicationUser()
@@ -114,9 +115,12 @@ namespace Idp.Service.Services
             }
             await _db.SaveChangesAsync();
 
-            foreach (var manager in registeredManagers)
+            if (managers.Count() != 0)
             {
-                await _userManager.AddToRoleAsync(manager, "Manager");
+                foreach (var manager in registeredManagers)
+                {
+                    await _userManager.AddToRoleAsync(manager, "Manager");
+                }
             }
 
             // Add users.
@@ -145,13 +149,15 @@ namespace Idp.Service.Services
                 registeredManagers.Add(user);
             }
             await _db.SaveChangesAsync();
-
-            foreach (var user in registeredManagers)
+            if (others.Count() != 0)
             {
-                await _userManager.AddToRoleAsync(user, "User");
+                foreach (var user in registeredManagers)
+                {
+                    await _userManager.AddToRoleAsync(user, "User");
+                }
             }
 
-            // Add admin.
+            //Add admin.
             foreach (var item in admin)
             {
                 var user = new ApplicationUser()
@@ -177,9 +183,12 @@ namespace Idp.Service.Services
             }
             await _db.SaveChangesAsync();
 
-            foreach (var item in registeredManagers)
+            if (admin.Count() != 0)
             {
-                await _userManager.AddToRoleAsync(item, "Admin");
+                foreach (var item in registeredManagers)
+                {
+                    await _userManager.AddToRoleAsync(item, "Admin");
+                }
             }
 
             return result;

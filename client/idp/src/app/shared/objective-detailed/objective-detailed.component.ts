@@ -38,6 +38,7 @@ export class ObjectiveDetailedComponent {
       this.trainingService.update(id, item).subscribe({
         next: () => {
           alert("Training updated successfully");
+          window.location.reload();
         },
         error: (error) => {
           console.error(error);
@@ -52,6 +53,7 @@ export class ObjectiveDetailedComponent {
       this.actionService.update(id, item).subscribe({
         next: () => {
           alert("Training updated successfully");
+          window.location.reload();
         },
         error: (error) => {
           console.error(error);

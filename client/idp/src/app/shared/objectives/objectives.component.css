@@ -16,3 +16,22 @@ p {
 thead {
     background-color: #161830;
 }
+
+#result-msg {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  .result-msg {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+  }  
+  .result-msg.pending {
+    color: #ffc906;
+  }
+  
+  .result-msg.rejected {
+    color: #e31e1e;
+  }

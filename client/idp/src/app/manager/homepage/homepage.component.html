@@ -56,9 +56,9 @@
                 <td style="text-align: center;">{{user.remark == 0 ? 'Rejected' : user.remark == 1 ? 'Pending' : 'Accepted'}}</td>
                 <td>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-success"  id="approve-btn" (click)="onApprove(user.objectiveId)" [style.display]="resultMessage ? 'none' : 'inline-block'">Approve</button>
-                        <button type="button" class="btn btn-danger"  id="reject-btn" (click)="onReject(user.objectiveId)"[style.display]="resultMessage ? 'none' : 'inline-block'">Reject</button>
-                        <p *ngIf="resultMessage" class="result-msg" [class.approved]="user.remark === 2" [class.rejected]="user.remark === 2">{{ resultMessage }}</p>
+                        <button type="button" *ngIf="user.remark === 1" class="btn btn-success"  id="approve-btn" (click)="onApprove(user.objectiveId)" [style.display]="resultMessage ? 'none' : 'inline-block'">Approve</button>
+                        <button type="button" *ngIf="user.remark === 1" class="btn btn-danger"  id="reject-btn" (click)="onReject(user.objectiveId)"[style.display]="resultMessage ? 'none' : 'inline-block'">Reject</button>
+                        <p *ngIf="user.remark === 2 || user.remark === 0" class="result-msg" [class.approved]="user.remark === 2" [class.rejected]="user.remark === 0">{{ user.remark === 2 ? 'Approved' : 'Rejected' }}</p>
                     </div>
                 </td>
                 <td><a [routerLink]="['/manager/idp', user.userId]" class="text-warning text-decoration-none">View</a></td>

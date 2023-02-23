@@ -44,6 +44,7 @@ namespace IDP.Service.Services
                     StartDate = c.StartDate,
                     EndDate = c.EndDate,
                     ObjectiveId = c.ObjectiveId,
+                    Description= c.Description,
                 }).ToListAsync();
         }
 

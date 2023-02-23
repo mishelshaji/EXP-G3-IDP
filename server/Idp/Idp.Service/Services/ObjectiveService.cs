@@ -46,7 +46,7 @@ namespace Idp.Service.Service
                 Name = objective.Name,
                 Status = objective.Status,
                 StartDate = objective.StartDate,
-                EndDate = objective.EndDate
+                EndDate = objective.EndDate,
             };
         }
 
@@ -54,7 +54,7 @@ namespace Idp.Service.Service
         {
             return await _db.Objectives
                 .Include(m => m.Category)
-                .Where(m => m.IdpId == id && m.Status == StatusType.pending)
+                .Where(m => m.IdpId == id && m.Status != StatusType.accepted)
                 .Select(c => new ObjectiveViewDto
                 {
                     Id = c.Id,
@@ -81,8 +81,7 @@ namespace Idp.Service.Service
                 StartDate = dto.StartDate,
                 EndDate = dto.EndDate,
                 IdpId = dto.IdpId,
-                UserId = userId,
-            };
+                UserId = userId,            };
 
             _db.Objectives.Add(objective);
             await _db.SaveChangesAsync();
@@ -107,7 +106,7 @@ namespace Idp.Service.Service
             var objectiveList = _db.Objectives
                 .Include(m => m.Trainings)
                 .Include(m => m.ObjectiveActions)
-                .Where(m=> m.UserId== userId)  
+                .Where(m => m.UserId == userId)
                 .Where(m => m.IdpId == idpId)
                 .Take(4)
                 .ToList();

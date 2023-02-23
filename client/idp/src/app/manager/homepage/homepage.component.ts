@@ -59,6 +59,8 @@ export class HomepageComponent implements OnInit {
     };
     this.objectiveUpdate.update(id, item).subscribe({
       next: () => {
+        alert("Approved objective");
+        window.location.reload();
       },
       error: (error) => {
         console.error(error);
@@ -74,6 +76,8 @@ export class HomepageComponent implements OnInit {
     };
     this.objectiveUpdate.update(id, item).subscribe({
       next: () => {
+        alert("Rejected objective");
+        window.location.reload();
       },
       error: (error) => {
         console.error(error);
